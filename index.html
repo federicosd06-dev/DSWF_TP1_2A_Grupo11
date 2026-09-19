@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Equipo 11 ~ TP1 para Frontend</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- MENÚ DE NAVEGACIÓN GLOBAL -->
+    <header>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Inicio</a></li>
+          <li><a href="bitacora.html">Bitácora</a></li>
+          <li><a href="/integrantes/perfil_fede.html">Fede</a></li>
+          <li><a href="integrantes/perfil-2.html">Integrante 2</a></li>
+          <li><a href="integrantes/perfil-3.html">Integrante 3</a></li>
+          <li><a href="integrantes/perfil-4.html">Integrante 4</a></li>
+          <li><a href="integrantes/perfil-5.html">Integrante 5</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- PROPÓSITO DEL EQUIPO -->
+      <section class="hero">
+        <h1>Bienvenidos al TP 1 del Grupo 11</h1>
+        <p>
+          Somos un grupo de estudiantes de la Tecnicatura de Desarrollo de
+          Software a Distancia. En este sitio web mostramos nuestras tarjetas de
+          presentación individuales, la bitácora con nuestro proceso de
+          aprendizaje y el trabajo colaborativo realizado con HTML, CSS y
+          JavaScript.
+        </p>
+      </section>
+
+      <!-- INTERACCIÓN JS DINÁMICA DE PORTADA -->
+      <section class="interaccion-portada">
+        <h2>Mensaje del día del equipo</h2>
+        <!-- Se quitó el botón para que sea totalmente automático -->
+        <p id="mensaje-dinamico"></p>
+      </section>
+
+      <!-- LISTADO DE INTEGRANTES -->
+      <section class="equipo-listado">
+        <h2>Integrantes del Grupo</h2>
+        <div class="cards-grid">
+          <article class="card-preview">
+            <h3>Federico Acosta Maneiro</h3>
+            <p>Líder de Proyecto ~ Estructuración & Deploy</p>
+            <a href="/integrantes/perfil_fede.html">Ver Perfil</a>
+          </article>
+
+          <article class="card-preview">
+            <h3>Integrante 2</h3>
+            <p>Diseño & CSS ~ Responsive Design</p>
+            <a href="integrantes/perfil-2.html">Ver Perfil</a>
+          </article>
+
+          <article class="card-preview">
+            <h3>Integrante 3</h3>
+            <p>Bitácora & Navegación</p>
+            <a href="integrantes/perfil-3.html">Ver Perfil</a>
+          </article>
+
+          <article class="card-preview">
+            <h3>Integrante 4</h3>
+            <p>Documentación Técnica & Registro de IA</p>
+            <a href="integrantes/perfil-4.html">Ver Perfil</a>
+          </article>
+
+          <article class="card-preview">
+            <h3>Integrante 5</h3>
+            <p>Control de Calidad & Gestión de Recursos</p>
+            <a href="integrantes/perfil-5.html">Ver Perfil</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2026 - Trabajo Práctico Grupal 1 | Materia Desarrollo Web
+        Frontend
+      </p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,283 @@
+/* ===================================================
+   IMPORTACIÓN DE FUENTES & VARIABLES GLOBALES
+   =================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+:root {
+  /* Paleta de colores consistente (Hexadecimal) */
+  --color-primario: #1a252f;
+  --color-secundario: #00adb5;
+  --color-fondo: #f4f6f8;
+  --color-tarjeta: #ffffff;
+  --color-texto: #222831;
+  --color-texto-suave: #555555;
+  --color-acento: #393e46;
+  --color-hover: #007b80;
+
+  /* Tipografía */
+  --fuente-principal: "Poppins", sans-serif;
+}
+
+/* ===================================================
+   RESET Y ESTILOS BASE
+   =================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===================================================
+   NAVEGACIÓN GLOBAL (Obligatoria en todas las páginas)
+   =================================================== */
+header {
+  background-color: var(--color-primario);
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+  background-color: var(--color-secundario);
+  color: #ffffff;
+}
+
+/* ===================================================
+   CONTENEDOR PRINCIPAL Y SECCIONES
+   =================================================== */
+main {
+  flex: 1;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-primario);
+  margin-bottom: 1rem;
+}
+
+.hero {
+  text-align: center;
+  background-color: var(--color-tarjeta);
+  padding: 2.5rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: 2rem;
+}
+
+.hero p {
+  color: var(--color-texto-suave);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ===================================================
+   PORTADA: TARJETAS DEL EQUIPO
+   =================================================== */
+.equipo-listado {
+  margin-top: 2rem;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.card-preview {
+  background-color: var(--color-tarjeta);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  border-top: 4px solid var(--color-secundario);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card-preview:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-preview a {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1.2rem;
+  background-color: var(--color-secundario);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.card-preview a:hover {
+  background-color: var(--color-hover);
+}
+
+/* ===================================================
+   TARJETA DE PERFIL INDIVIDUAL
+   =================================================== */
+.tarjeta-perfil {
+  background-color: var(--color-tarjeta);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 1.5rem;
+  border: 4px solid var(--color-secundario);
+}
+
+.bloque-perfil,
+.bloque-interactivo,
+.interaccion-portada {
+  background-color: var(--color-fondo);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+}
+
+.bloque-perfil ul,
+.bloque-perfil ol {
+  padding-left: 1.5rem;
+}
+
+.bloque-perfil li {
+  margin-bottom: 0.4rem;
+}
+
+/* BOTONES E INTERACTIVIDAD JS */
+button {
+  background-color: var(--color-primario);
+  color: #ffffff;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.95rem;
+  font-family: var(--fuente-principal);
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+button:hover {
+  background-color: var(--color-secundario);
+}
+
+#mensaje-dinamico,
+#resultado-interaccion {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--color-secundario);
+}
+
+/* ===================================================
+   FOOTER
+   =================================================== */
+footer {
+  background-color: var(--color-primario);
+  color: #ffffff;
+  text-align: center;
+  padding: 1.2rem;
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+/* ===================================================
+   BREAKPOINTS OBLIGATORIOS (Consigna TP1)
+   =================================================== */
+
+/* Breakpoint 1: Celulares / Pantallas pequeñas (Hasta 400px) */
+@media (max-width: 400px) {
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav a {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .tarjeta-perfil {
+    padding: 1.2rem;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Breakpoint 2: Tablets / Pantallas medianas (A partir de 900px) */
+@media (min-width: 900px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+}
+
+/* Breakpoint 3: Pantallas grandes / Escritorio (A partir de 1200px) */
+@media (min-width: 1200px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
