@@ -14,6 +14,10 @@
   --color-acento: #393e46;
   --color-hover: #007b80;
 
+  --color-sombra: rgba(0, 0, 0, 0.06);
+  --color-borde: rgba(0, 0, 0, 0.08);
+  --color-separador-util: rgba(255, 255, 255, 0.08);
+
   /* Tipografía */
   --fuente-principal: "Poppins", sans-serif;
 }
@@ -27,6 +31,11 @@
   box-sizing: border-box;
 }
 
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--fuente-principal);
   background-color: var(--color-fondo);
@@ -37,40 +46,196 @@ body {
   min-height: 100vh;
 }
 
+
+/* ESTILOS GLOBALES DE FOCO VISIBLE (ACCESIBILIDAD ELEGANTE) */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-secundario);
+  outline-offset: 3px;
+}
+
 /* ===================================================
-   NAVEGACIÓN GLOBAL (Obligatoria en todas las páginas)
+   NAVEGACIÓN GLOBAL 
    =================================================== */
 header {
   background-color: var(--color-primario);
-  padding: 1rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--color-borde);
+  box-shadow: 0 2px 8px var(--color-sombra);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-nav ul {
+.nav-contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.nav-utilidades {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+#nav-list {
   list-style: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
-nav a {
+#nav-list li {
+  border: none;
+}
+
+#nav-list a {
   color: #ffffff;
   text-decoration: none;
   font-weight: 600;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.25rem;
   border-radius: 6px;
   font-size: 0.95rem;
+  position: relative;
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
 }
 
-nav a:hover,
-nav a.active {
+/* ESTILO NAV ACTIVO */
+#nav-list a[aria-current="page"] {
   background-color: var(--color-secundario);
   color: #ffffff;
+  padding: 0.5rem 1.0rem;
+}
+
+.menu-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* EFECTO HOVER: Subrayado sutil animado (SOLO DESKTOP) */
+@media (min-width: 769px) {
+
+  .menu-toggle {
+    display: none;
+  }
+
+  #nav-list a:not([aria-current="page"])::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-secundario);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #nav-list a:not([aria-current="page"]):hover::after {
+    width: 100%;
+  }
+
+  #nav-list {
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    border-radius: 4px;
+  }
+
+  /* Animación hamburguesa a X */
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+  }
+
+  #nav-list {
+    background-color: var(--color-primario);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 1.5rem;
+    gap: 0;
+    border-bottom: 1px solid var(--color-borde);
+    box-shadow: 0 4px 10px var(--color-sombra);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, padding 0.3s ease;
+  }
+
+  /* Cuando JS inyecta la clase nav-open, se despliega */
+  #nav-list.nav-open {
+    max-height: 300px;
+    opacity: 1;
+    padding: 0.5rem 1.5rem 0rem 1.5rem;
+  }
+
+  #nav-list a {
+    text-align: center;
+    display: block;
+    padding: 1rem 0.5rem;
+  }
+
+  #nav-list a[aria-current="page"] {
+    display: block;
+    width: 100%;
+    margin: 0.25rem 0;
+  }
+
+  #nav-list li + li {
+    border-top: 1px solid var(--color-separador-util);
+  }
+
+  #nav-list li:has(a[aria-current="page"]) + li {
+    border-top: none;
+  }
+
 }
 
 /* ===================================================
@@ -196,7 +361,7 @@ h3 {
 }
 
 /* BOTONES E INTERACTIVIDAD JS */
-button {
+/* button {
   background-color: var(--color-primario);
   color: #ffffff;
   border: none;
@@ -219,7 +384,7 @@ button:hover {
   margin-top: 1rem;
   font-weight: 600;
   color: var(--color-secundario);
-}
+} */
 
 /* ===================================================
    FOOTER
@@ -239,16 +404,16 @@ footer {
 
 /* Breakpoint 1: Celulares / Pantallas pequeñas (Hasta 400px) */
 @media (max-width: 400px) {
-  nav ul {
+  /* nav ul {
     flex-direction: column;
     width: 100%;
-  }
+  } */
 
-  nav a {
+  /* nav a {
     display: block;
     width: 100%;
     text-align: center;
-  }
+  } */
 
   .hero h1 {
     font-size: 1.5rem;
