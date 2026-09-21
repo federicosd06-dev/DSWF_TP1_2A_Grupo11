@@ -1,12 +1,29 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="claro">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Equipo 11 ~ TP1 para Frontend</title>
 
-    <script src="js/main.js" defer></script>
+    <!--
+      Obtenemos el tema que se debe usar al cargar la página:
+      primero buscamos una preferencia guardada por el usuario.
+      Si no existe, usamos la preferencia de tema del sistema.
+    -->
+    <script>
+      (function () {
+        const temaSalvado = localStorage.getItem("theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oscuro" : "claro");
+
+        document.documentElement.setAttribute("data-theme", temaSalvado);
+
+        // Evitamos animaciones durante la inicialización para prevenir parpadeos.
+        document.documentElement.classList.add("no-transiciones");
+      })();
+    </script>
+
     <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/main.js" defer></script>
   </head>
   <body>
     <!-- MENÚ DE NAVEGACIÓN GLOBAL -->
@@ -31,6 +48,12 @@
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </button>
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema de la página">
+            <span class="theme-ic-wrapper" aria-hidden="true">
+              <span class="ic-sol">☀️</span>
+              <span class="ic-luna">🌙</span>
+            </span>
+          </button>
         </div>
       </div>
     </header>
@@ -50,7 +73,7 @@
 
       <!-- LISTADO DE INTEGRANTES -->
       <section id="quienes-somos" class="equipo-listado">
-        <h2>Integrantes del Grupo</h2>
+        <h2>¿Quiénes somos?</h2>
         <div class="cards-grid">
           <article class="card-preview">
             <h3>Federico Acosta Maneiro</h3>
@@ -59,8 +82,8 @@
           </article>
 
           <article class="card-preview">
-            <h3>Integrante 2</h3>
-            <p>Diseño & CSS ~ Responsive Design</p>
+            <h3>María Victoria Mariani</h3>
+            <p>Frontend & UI ~ Responsive, Animaciones & Accesibilidad</p>
             <a href="integrantes/perfil-2.html">Ver Perfil</a>
           </article>
 
