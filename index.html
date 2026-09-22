@@ -1,25 +1,61 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="claro">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Equipo 11 ~ TP1 para Frontend</title>
+
+    <!--
+      Obtenemos el tema que se debe usar al cargar la página:
+      primero buscamos una preferencia guardada por el usuario.
+      Si no existe, usamos la preferencia de tema del sistema.
+    -->
+    <script>
+      (function () {
+        const temaSalvado = localStorage.getItem("theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oscuro" : "claro");
+
+        document.documentElement.setAttribute("data-theme", temaSalvado);
+
+        // Evitamos animaciones durante la inicialización para prevenir parpadeos.
+        document.documentElement.classList.add("no-transiciones");
+      })();
+    </script>
+
     <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/main.js" defer></script>
   </head>
   <body>
     <!-- MENÚ DE NAVEGACIÓN GLOBAL -->
     <header>
-      <nav>
-        <ul>
-          <li><a href="index.html" class="active">Inicio</a></li>
-          <li><a href="bitacora.html">Bitácora</a></li>
-          <li><a href="/integrantes/perfil_fede.html">Fede</a></li>
-          <li><a href="integrantes/perfil-2.html">Integrante 2</a></li>
-          <li><a href="integrantes/perfil-3.html">Integrante 3</a></li>
-          <li><a href="integrantes/perfil-4.html">Integrante 4</a></li>
-          <li><a href="integrantes/perfil-5.html">Integrante 5</a></li>
-        </ul>
-      </nav>
+      <div class="nav-contenedor">
+        <a href="index.html" class="nav-logo">Equipo <span>11</span></a>
+        <div class="nav-utilidades">
+          <nav>
+            <ul id="nav-list">
+              <li><a href="index.html" aria-current="page">Inicio</a></li>
+              <li><a href="bitacora.html">Bitácora</a></li>
+              <li><a href="#quienes-somos">¿Quiénes somos?</a></li>
+            </ul>
+          </nav>
+          <button id="menu-toggle" 
+                  class="menu-toggle" 
+                  aria-label="Abrir menú de navegación" 
+                  aria-expanded="false" 
+                  aria-controls="nav-list" 
+                  type="button">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema de la página">
+            <span class="theme-ic-wrapper" aria-hidden="true">
+              <span class="ic-sol">☀️</span>
+              <span class="ic-luna">🌙</span>
+            </span>
+          </button>
+        </div>
+      </div>
     </header>
 
     <main>
@@ -35,45 +71,106 @@
         </p>
       </section>
 
-      <!-- INTERACCIÓN JS DINÁMICA DE PORTADA -->
-      <section class="interaccion-portada">
-        <h2>Mensaje del día del equipo</h2>
-        <!-- Se quitó el botón para que sea totalmente automático -->
-        <p id="mensaje-dinamico"></p>
-      </section>
-
       <!-- LISTADO DE INTEGRANTES -->
-      <section class="equipo-listado">
-        <h2>Integrantes del Grupo</h2>
-        <div class="cards-grid">
-          <article class="card-preview">
-            <h3>Federico Acosta Maneiro</h3>
-            <p>Líder de Proyecto ~ Estructuración & Deploy</p>
-            <a href="/integrantes/perfil_fede.html">Ver Perfil</a>
+      <section id="quienes-somos" class="equipo-listado">
+
+        <h2>¿Quiénes somos?</h2>
+
+        <div class="contenedor-tarjetas">
+
+          <article class="tarjeta fede">
+            <div class="tarjeta-izq">
+                <span class="tarjeta-etiqueta">Coordinación</span>
+                <h3 class="tarjeta-titulo">Federico Acosta Maneiro</h3>
+                <p class="tarjeta-desc">Líder de Proyecto ~ Estructuración & Deploy</p>
+            </div>
+
+            <div class="tarjeta-der">
+              <img class="avatar-movil" src="img/perfil.jpeg"
+                alt="Foto de Federico Acosta Maneiro" />
+              <a class="tarjeta-btn" aria-label="Ver perfil completo de Federico Acosta Maneiro" 
+                href="integrantes/perfil_fede.html">
+                <span class="tarjeta-btn-texto">Ver perfil</span>
+                <span class="tarjeta-btn-flecha" aria-hidden="true">→</span>
+              </a>
+            </div>
+            <img class="avatar-desktop" src="img/perfil.jpeg" alt="Ana Martínez"/>
           </article>
 
-          <article class="card-preview">
-            <h3>Integrante 2</h3>
-            <p>Diseño & CSS ~ Responsive Design</p>
-            <a href="integrantes/perfil-2.html">Ver Perfil</a>
+          <article class="tarjeta ria">
+            <div class="tarjeta-izq">
+                <span class="tarjeta-etiqueta">UI & Animaciones</span>
+                <h3 class="tarjeta-titulo">María Victoria Mariani</h3>
+                <p class="tarjeta-desc">Frontend & UI ~ Responsive, Animaciones & Accesibilidad</p>
+            </div>
+            
+            <div class="tarjeta-der">
+              <img class="avatar-movil" src="https://images.unsplash.com/photo-1743927907237-b38a45841386?q=80&w=626&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Foto de María Victoria Mariani" />
+              <a class="tarjeta-btn" aria-label="Ver perfil completo de María Victoria Mariani" 
+                href="integrantes/perfil_victoria.html">
+                <span class="tarjeta-btn-texto">Ver perfil</span>
+                <span class="tarjeta-btn-flecha" aria-hidden="true">→</span>
+              </a>
+            </div>
+            <img class="avatar-desktop" src="https://images.unsplash.com/photo-1743927907237-b38a45841386?q=80&w=626&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="María Victoria Mariani"/>
           </article>
 
-          <article class="card-preview">
-            <h3>Integrante 3</h3>
-            <p>Bitácora & Navegación</p>
-            <a href="integrantes/perfil-3.html">Ver Perfil</a>
+          <article class="tarjeta cande">
+            <div class="tarjeta-izq">
+                <span class="tarjeta-etiqueta">Bitacora & Navegación</span>
+                <h3 class="tarjeta-titulo">Candelaria Chazarreta</h3>
+                <p class="tarjeta-desc">Maquetación de la bitácora, enlaces y recorrido entre secciones.</p>
+            </div>
+            
+            <div class="tarjeta-der">
+              <img class="avatar-movil" src="https://images.unsplash.com/photo-1682597792658-244f5d8c29a4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjQ5fHxjYXQlMjBwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D"
+                alt="Foto de Candelaria Chazarreta" />
+              <a class="tarjeta-btn" aria-label="Ver perfil completo de Candelaria Chazarreta" 
+                href="integrantes/perfil_cande.html">
+                <span class="tarjeta-btn-texto">Ver perfil</span>
+                <span class="tarjeta-btn-flecha" aria-hidden="true">→</span>
+              </a>
+            </div>
+            <img class="avatar-desktop" src="https://images.unsplash.com/photo-1682597792658-244f5d8c29a4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjQ5fHxjYXQlMjBwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D" alt="Candelaria Chazarreta"/>
           </article>
 
-          <article class="card-preview">
-            <h3>Integrante 4</h3>
-            <p>Documentación Técnica & Registro de IA</p>
-            <a href="integrantes/perfil-4.html">Ver Perfil</a>
+          <article class="tarjeta marcos">
+            <div class="tarjeta-izq">
+                <span class="tarjeta-etiqueta">Documentación</span>
+                <h3 class="tarjeta-titulo">Marcos Aquino</h3>
+                <p class="tarjeta-desc">README, documentación técnica y registro del uso de IA.</p>
+            </div>
+            
+            <div class="tarjeta-der">
+              <img class="avatar-movil" src="https://plus.unsplash.com/premium_photo-1676914697574-4c07313ec055?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Foto de Marcos Aquino" />
+              <a class="tarjeta-btn" aria-label="Ver perfil completo de Marcos Aquino" 
+                href="integrantes/perfil_marcos.html">
+                <span class="tarjeta-btn-texto">Ver perfil</span>
+                <span class="tarjeta-btn-flecha" aria-hidden="true">→</span>
+              </a>
+            </div>
+            <img class="avatar-desktop" src="https://plus.unsplash.com/premium_photo-1676914697574-4c07313ec055?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Marcos Aquino"/>
           </article>
 
-          <article class="card-preview">
-            <h3>Integrante 5</h3>
-            <p>Control de Calidad & Gestión de Recursos</p>
-            <a href="integrantes/perfil-5.html">Ver Perfil</a>
+          <article class="tarjeta javier">
+            <div class="tarjeta-izq">
+                <span class="tarjeta-etiqueta">QA & Recursos</span>
+                <h3 class="tarjeta-titulo">Adrian Javier Cano</h3>
+                <p class="tarjeta-desc">Testing responsive, revisión de consola y optimización multimedia.</p>
+            </div>
+            
+            <div class="tarjeta-der">
+              <img class="avatar-movil" src="https://images.unsplash.com/photo-1623014164664-01ee622d4d28?auto=format&fit=crop&q=80&w=200"
+                alt="Foto de Adrian Javier Cano" />
+              <a class="tarjeta-btn" aria-label="Ver perfil completo de Adrian Javier Cano" 
+                href="integrantes/perfil_adrian.html">
+                <span class="tarjeta-btn-texto">Ver perfil</span>
+                <span class="tarjeta-btn-flecha" aria-hidden="true">→</span>
+              </a>
+            </div>
+            <img class="avatar-desktop" src="https://images.unsplash.com/photo-1623014164664-01ee622d4d28?auto=format&fit=crop&q=80&w=200" alt="Adrian Javier Cano"/>
           </article>
         </div>
       </section>
@@ -81,11 +178,8 @@
 
     <footer>
       <p>
-        &copy; 2026 - Trabajo Práctico Grupal 1 | Materia Desarrollo Web
-        Frontend
+        &copy; 2026 · Grupo 11 · Comisión A · IFTS Nº 29
       </p>
     </footer>
-
-    <script src="js/main.js"></script>
   </body>
 </html>
