@@ -522,7 +522,7 @@ h3 {
     margin-left: -40px;
   }
 
-  .tarjeta:is(:hover, :focus-within) {
+  .tarjeta:is(:hover, :has(:focus-visible)) {
     flex: 2.2;
     margin-left: -15px;
     z-index: 10;
@@ -531,8 +531,8 @@ h3 {
       0 0 30px rgba(56, 189, 248, 0.15);
   }
 
-  .contenedor-tarjetas:has(.tarjeta:is(:hover, :focus-within))
-  .tarjeta:not(:hover, :focus-within) {
+  .contenedor-tarjetas:has(.tarjeta:is(:hover, :has(:focus-visible)))
+  .tarjeta:not(:hover, :has(:focus-visible)) {
     transform: scale(0.95);
   }
 
@@ -592,11 +592,11 @@ h3 {
     opacity: 0;
   }
 
-  .tarjeta:is(:hover, :focus-within) .avatar-desktop {
+  .tarjeta:is(:hover, :has(:focus-visible)) .avatar-desktop {
     opacity: 1;
   }
-  .tarjeta:is(:hover, :focus-within) .tarjeta-desc,
-  .tarjeta:is(:hover, :focus-within) .tarjeta-btn {
+  .tarjeta:is(:hover, :has(:focus-visible)) .tarjeta-desc,
+  .tarjeta:is(:hover, :has(:focus-visible)) .tarjeta-btn {
     opacity: 1;
   }
 
