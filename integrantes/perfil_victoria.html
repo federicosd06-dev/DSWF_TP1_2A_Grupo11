@@ -24,6 +24,7 @@
 
     <link rel="stylesheet" href="../css/styles.css" />
     <script src="../js/main.js" defer></script>
+    <script src="../js/victoria_perfil.js" defer></script>
   </head>
   <body>
     <!-- MENÚ DE NAVEGACIÓN GLOBAL -->
@@ -59,6 +60,464 @@
     </header>
 
     <main>
+
+      <div class="tarjeta-unificada-ria">
+
+        <!-- =================================================
+             PERFIL + PELÍCULAS
+             ================================================= -->
+
+        <div class="fila-tarjeta">
+
+          <!-- PERFIL -->
+
+          <div class="columna-tarjeta">
+              <!-- Puntos decorativos animados por JavaScript -->
+              <div class="puntos-decorativos" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+            <div class="contenido-perfil">
+
+              <div class="identidad">
+
+                <img
+                  src="../img/ria/sami100.jpg"
+                  alt="Foto de perfil de María Victoria Mariani"
+                />
+
+                <div>
+                  <h1>María Victoria Mariani</h1>
+                  <p>Buenos Aires, Argentina · 35 años</p>
+                </div>
+
+              </div>
+
+
+              <section aria-labelledby="titulo-habilidades">
+
+                <h2 id="titulo-habilidades">
+                  Habilidades
+                </h2>
+
+                <ul class="habilidades">
+                  <li>PHP</li>
+                  <li>JavaScript</li>
+                  <li>Kotlin</li>
+                  <li>Java</li>
+                  <li>Python</li>
+                </ul>
+
+              </section>
+
+            </div>
+
+
+            <!-- Pestañas solamente visibles en móvil -->
+
+            <div class="tabs-movil" role="tablist" aria-label="Contenido del perfil">
+
+              <button
+                class="btn-tab"
+                data-target="seccion-peliculas"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="seccion-peliculas"
+              >
+                Películas
+              </button>
+
+              <button
+                class="btn-tab activo"
+                data-target="seccion-musica"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="seccion-musica"
+              >
+                Música
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- PELÍCULAS -->
+
+          <div class="columna-tarjeta">
+
+            <div
+              id="seccion-peliculas"
+              class="contenido-tab"
+              role="tabpanel"
+              aria-labelledby="tab-peliculas"
+            >
+
+              <section aria-labelledby="titulo-peliculas">
+
+                <h2 id="titulo-peliculas">
+                  Películas favoritas
+                </h2>
+
+                <ul class="lista-items">
+
+                  <li class="item">
+
+                    <div
+                      class="contenedor-poster"
+                      tabindex="0"
+                    >
+                      <img
+                        src="../img/ria/dnd.jpg"
+                        alt="Dungeons & Dragons"
+                        class="poster-item"
+                      />
+
+                      <span
+                        class="indicador-poster"
+                        aria-hidden="true"
+                      >
+                        ♥
+                      </span>
+                    </div>
+
+
+                    <div class="info-item">
+
+                      <div class="info-inicial">
+
+                        <span class="titulo-item">
+                          Dungeons &amp; Dragons
+                        </span>
+
+                        <span class="subtitulo-item">
+                          2023
+                        </span>
+
+                      </div>
+
+                      <div class="comentario-item">
+                        "Una película realmente divertida."
+                      </div>
+
+                    </div>
+
+                  </li>
+
+
+                  <li class="item">
+
+                    <div
+                      class="contenedor-poster"
+                      tabindex="0"
+                    >
+                      <img
+                        src="../img/ria/lort.jpg"
+                        alt="The Lord of the Rings"
+                        class="poster-item"
+                      />
+
+                      <span
+                        class="indicador-poster"
+                        aria-hidden="true"
+                      >
+                        ♥
+                      </span>
+                    </div>
+
+
+                    <div class="info-item">
+
+                      <div class="info-inicial">
+
+                        <span class="titulo-item">
+                          The Lord of the Rings Trilogy
+                        </span>
+
+                        <span class="subtitulo-item">
+                          2001–2003
+                        </span>
+
+                      </div>
+
+                      <div class="comentario-item">
+                        "Un homenaje a la obra de uno de los mejores escritores de la historia."
+                      </div>
+
+                    </div>
+
+                  </li>
+
+
+                  <li class="item">
+
+                    <div
+                      class="contenedor-poster"
+                      tabindex="0"
+                    >
+                      <img
+                        src="../img/ria/hmc.jpg"
+                        alt="Howl's Moving Castle"
+                        class="poster-item"
+                      />
+
+                      <span
+                        class="indicador-poster"
+                        aria-hidden="true"
+                      >
+                        ♥
+                      </span>
+                    </div>
+
+
+                    <div class="info-item">
+
+                      <div class="info-inicial">
+
+                        <span class="titulo-item">
+                          Howl's Moving Castle
+                        </span>
+
+                        <span class="subtitulo-item">
+                          2004
+                        </span>
+
+                      </div>
+
+                      <div class="comentario-item">
+                        "Si solo pudiera quedarme con una película animada, sería esta."
+                      </div>
+
+                    </div>
+
+                  </li>
+
+                </ul>
+
+              </section>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             MÚSICA — SIGUE SIENDO UNA FILA INDEPENDIENTE
+             ================================================= -->
+
+        <div
+          id="seccion-musica"
+          class="fila-musica contenido-tab activo"
+          role="tabpanel"
+          aria-labelledby="tab-musica"
+        >
+
+          <section aria-labelledby="titulo-musica">
+
+            <h2 id="titulo-musica">
+              Música favorita
+            </h2>
+
+            <ul class="lista-items">
+
+              <li class="item">
+
+                <div
+                  class="contenedor-poster"
+                  tabindex="0"
+                >
+                  <img
+                    src="../img/ria/ynwa.webp"
+                    alt="You Never Walk Alone"
+                    class="poster-item"
+                  />
+
+                  <span
+                    class="indicador-poster"
+                    aria-hidden="true"
+                  >
+                    ♥
+                  </span>
+                </div>
+
+
+                <div class="info-item">
+
+                  <div class="info-inicial">
+
+                    <span class="titulo-item">
+                      You Never Walk Alone
+                    </span>
+
+                    <span class="subtitulo-item">
+                      2017 - BTS
+                    </span>
+
+                  </div>
+
+                  <div class="comentario-item">
+                    "Un viaje lírico hacia el interior de siete artistas."
+                  </div>
+
+                </div>
+
+
+                <a
+                  href="https://www.youtube.com/results?search_query=BTS+You+Never+Walk+Alone"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-reproduccion"
+                  title="Escuchar en YouTube"
+                  aria-label="Escuchar You Never Walk Alone en YouTube"
+                >
+                  ▶
+                </a>
+
+              </li>
+
+
+              <li class="item">
+
+                <div
+                  class="contenedor-poster"
+                  tabindex="0"
+                >
+                  <img
+                    src="../img/ria/lse.jpg"
+                    alt="The Story of Light: Epilogue"
+                    class="poster-item"
+                  />
+
+                  <span
+                    class="indicador-poster"
+                    aria-hidden="true"
+                  >
+                    ♥
+                  </span>
+                </div>
+
+
+                <div class="info-item">
+
+                  <div class="info-inicial">
+
+                    <span class="titulo-item">
+                      The Story of Light: Epilogue
+                    </span>
+
+                    <span class="subtitulo-item">
+                      2018 - SHINee
+                    </span>
+
+                  </div>
+
+                  <div class="comentario-item">
+                    "Un homenaje a un artista increíble que nos dejó demasiado pronto."
+                  </div>
+
+                </div>
+
+
+                <a
+                  href="https://www.youtube.com/results?search_query=SHINee+The+Story+of+Light+Epilogue"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-reproduccion"
+                  title="Escuchar en YouTube"
+                  aria-label="Escuchar The Story of Light Epilogue en YouTube"
+                >
+                  ▶
+                </a>
+
+              </li>
+
+
+              <li class="item">
+
+                <div
+                  class="contenedor-poster"
+                  tabindex="0"
+                >
+                  <img
+                    src="../img/ria/co.jpg"
+                    alt="Circle"
+                    class="poster-item"
+                  />
+
+                  <span
+                    class="indicador-poster"
+                    aria-hidden="true"
+                  >
+                    ♥
+                  </span>
+                </div>
+
+
+                <div class="info-item">
+
+                  <div class="info-inicial">
+
+                    <span class="titulo-item">
+                      Circle
+                    </span>
+
+                    <span class="subtitulo-item">
+                      2025 - Onew
+                    </span>
+
+                  </div>
+
+                  <div class="comentario-item">
+                    "Vibra pura para cualquier situación. Perfecto para programar."
+                  </div>
+
+                </div>
+
+
+                <a
+                  href="https://www.youtube.com/results?search_query=Onew+Circle"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-reproduccion"
+                  title="Escuchar en YouTube"
+                  aria-label="Escuchar Circle en YouTube"
+                >
+                  ▶
+                </a>
+
+              </li>
+
+            </ul>
+
+          </section>
+
+        </div>
+
+      </div>
+
     </main>
 
     <footer>
