@@ -117,3 +117,49 @@ pointerQuery.addEventListener("change", () => {
   }
 
 });
+
+
+// ---------------------------------------------------------
+// Animación de puntos decorativos
+// ---------------------------------------------------------
+
+const decorativePoints = document.querySelectorAll(
+  ".tarjeta-unificada-ria .puntos-decorativos span"
+);
+
+const reduceMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+);
+
+if (reduceMotion.matches) {
+  // Con movimiento reducido, los puntos permanecen estáticos.
+  decorativePoints.forEach((point) => {
+    point.style.opacity = "0.35";
+  });
+} else {
+  // Cada punto recibe una fase y velocidad diferentes
+  // para evitar que todos aparezcan y desaparezcan al mismo tiempo.
+  const points = [...decorativePoints].map((element) => ({
+    element,
+    phase: Math.random() * Math.PI * 2,
+    speed: 0.0003 + Math.random() * 0.0005,
+    intensity: 0.35 + Math.random() * 0.35,
+  }));
+
+  function animatePoints(timestamp) {
+    points.forEach((point) => {
+      const wave = Math.sin(
+        timestamp * point.speed + point.phase
+      );
+
+      const opacity =
+        Math.max(0, wave) * point.intensity;
+
+      point.element.style.opacity = opacity;
+    });
+
+    requestAnimationFrame(animatePoints);
+  }
+
+  requestAnimationFrame(animatePoints);
+}

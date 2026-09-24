@@ -835,6 +835,8 @@ h3 {
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   overflow: hidden;
+  position: relative;
+  z-index: 1;
 
   /* -------------------------------------------------
      Estructura general
@@ -850,10 +852,57 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    position: relative;
+
+  .puntos-decorativos {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+      span {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        background-color: #c084fc;
+        opacity: 0;
+      }
+
+      /* posiciones */
+      span:nth-child(1)  { left: 5%;  top: 8%; }
+      span:nth-child(2)  { left: 18%; top: 4%; }
+      span:nth-child(3)  { left: 37%; top: 7%; }
+      span:nth-child(4)  { left: 61%; top: 5%; }
+      span:nth-child(5)  { left: 87%; top: 9%; }
+
+      span:nth-child(6)  { left: 2%;  top: 30%; }
+      span:nth-child(7)  { left: 97%; top: 27%; }
+
+      span:nth-child(8)  { left: 4%;  top: 52%; }
+      span:nth-child(9)  { left: 96%; top: 49%; }
+
+      span:nth-child(10) { left: 3%;  top: 73%; }
+      span:nth-child(11) { left: 97%; top: 70%; }
+
+      span:nth-child(12) { left: 12%; top: 93%; }
+      span:nth-child(13) { left: 32%; top: 97%; }
+      span:nth-child(14) { left: 53%; top: 94%; }
+      span:nth-child(15) { left: 74%; top: 97%; }
+      span:nth-child(16) { left: 91%; top: 93%; }
+
+      span:nth-child(17) { left: 25%; top: 18%; }
+      span:nth-child(18) { left: 73%; top: 21%; }
+      span:nth-child(19) { left: 23%; top: 81%; }
+      span:nth-child(20) { left: 78%; top: 82%; }
+    }
   }
 
   .contenido-perfil {
     margin: auto;
+    position:relative;
+    z-index: 1;
   }
 
   /* -------------------------------------------------
@@ -991,6 +1040,8 @@ h3 {
     display: flex;
     gap: 0.5rem;
     margin-top: 1.5rem;
+    position: relative;
+    z-index: 1;
 
     @media (max-width: 800px) {
       border-bottom: 1px solid var(--color-borde);
