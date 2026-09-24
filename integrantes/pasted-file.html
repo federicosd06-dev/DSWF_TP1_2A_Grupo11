@@ -1,0 +1,1373 @@
+<!doctype html>
+<html lang="es" data-theme="claro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Equipo 11 ~ María Victoria Mariani</title>
+
+  <style>
+    /* ===================================================
+       VARIABLES
+       =================================================== */
+
+    :root {
+      --color-primario: #1a252f;
+      --color-secundario: #00adb5;
+      --color-fondo: #f4f6f8;
+      --color-tarjeta: #ffffff;
+      --color-texto: #222831;
+      --color-texto-suave: #555555;
+      --color-borde: rgba(0, 0, 0, 0.08);
+
+      --color-etiqueta-violeta: #a855f7;
+      --color-etiqueta-violeta-bg: rgba(168, 85, 247, 0.15);
+
+      --btn-tarjeta-bg: rgba(0, 0, 0, 0.05);
+      --btn-tarjeta-border: rgba(0, 0, 0, 0.15);
+      --btn-tarjeta-text: var(--color-texto);
+
+      --fuente-principal: "Poppins", sans-serif;
+    }
+
+    [data-theme="oscuro"] {
+      --color-primario: #121212;
+      --color-secundario: #0d9488;
+      --color-fondo: #121212;
+      --color-tarjeta: #1e1e1e;
+      --color-texto: #d6d9de;
+      --color-texto-suave: #94a3b8;
+      --color-borde: rgba(255, 255, 255, 0.1);
+
+      --btn-tarjeta-bg: rgba(255, 255, 255, 0.08);
+      --btn-tarjeta-border: rgba(255, 255, 255, 0.15);
+      --btn-tarjeta-text: #ffffff;
+    }
+
+
+    /* ===================================================
+       RESET / BASE
+       =================================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--fuente-principal);
+      background: var(--color-fondo);
+      color: var(--color-texto);
+      line-height: 1.6;
+
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--color-secundario);
+      outline-offset: 3px;
+    }
+
+
+    /* ===================================================
+       NAV
+       =================================================== */
+
+    header {
+      background: var(--color-primario);
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--color-borde);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-contenedor {
+      max-width: 1200px;
+      margin: 0 auto;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav-utilidades {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    #nav-list {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    #nav-list a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .theme-toggle-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: white;
+      cursor: pointer;
+
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    /* ===================================================
+       TARJETA DE PERFIL
+       =================================================== */
+
+    .unified-card {
+      background: var(--color-tarjeta);
+      border: 1px solid var(--color-borde);
+      border-radius: 16px;
+      overflow: hidden;
+
+      /*
+       * En desktop la tarjeta tiene:
+       *
+       * ┌───────────────┬───────────────┐
+       * │    Perfil     │   Películas   │
+       * ├───────────────┴───────────────┤
+       * │            Música             │
+       * └──────────────────────────────┘
+       */
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "profile movies"
+        "music   music";
+    }
+
+    .profile-column {
+      grid-area: profile;
+
+      padding: 1.75rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .identity {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .identity img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .identity h1 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+
+    .identity p {
+      margin: 0.15rem 0 0;
+      font-size: 0.85rem;
+    }
+
+
+    /* ===================================================
+       HABILIDADES
+       =================================================== */
+
+    section h2 {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-texto-suave);
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-chips {
+      list-style: none;
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .skill-chips li {
+      background: var(--color-etiqueta-violeta-bg);
+      color: var(--color-etiqueta-violeta);
+
+      border-radius: 999px;
+      padding: 0.3rem 0.75rem;
+
+      font-size: 0.75rem;
+      font-weight: 500;
+
+      cursor: default;
+
+      transition:
+        background-color 0.8s ease,
+        color 0.8s ease,
+        transform 0.3s ease;
+    }
+
+    .skill-chips li:nth-child(1) {
+      --chip-bg: #ef4444;
+      --chip-color: #fff;
+    }
+
+    .skill-chips li:nth-child(2) {
+      --chip-bg: #f59e0b;
+      --chip-color: #fff;
+    }
+
+    .skill-chips li:nth-child(3) {
+      --chip-bg: #10b981;
+      --chip-color: #fff;
+    }
+
+    .skill-chips li:nth-child(4) {
+      --chip-bg: #3b82f6;
+      --chip-color: #fff;
+    }
+
+    .skill-chips li:nth-child(5) {
+      --chip-bg: #8b5cf6;
+      --chip-color: #fff;
+    }
+
+    @media (pointer: fine) {
+      .skill-chips li:hover {
+        background: var(--chip-bg);
+        color: var(--chip-color);
+        transform: scale(1.05);
+      }
+    }
+
+    @media (pointer: coarse) {
+      .skill-chips li {
+        cursor: pointer;
+      }
+
+      .skill-chips li.touch-active {
+        background: var(--chip-bg);
+        color: var(--chip-color);
+        transform: scale(1.05);
+      }
+    }
+
+
+    /* ===================================================
+       CONTENEDOR DE PESTAÑAS
+       =================================================== */
+
+    .tab-panels {
+      /*
+       * MOBILE:
+       *
+       * Movies y Music se colocan exactamente
+       * en la misma celda del grid.
+       *
+       * El alto del contenedor queda determinado
+       * por el panel más alto.
+       */
+      display: grid;
+      grid-template-columns: 1fr;
+
+      grid-area: panels;
+    }
+
+    .tab-content {
+      grid-area: 1 / 1;
+
+      padding: 1.75rem;
+
+      /*
+       * No usamos display:none.
+       *
+       * Así el panel invisible sigue aportando su
+       * altura al grid y evitamos que la página
+       * cambie bruscamente de altura.
+       */
+      visibility: hidden;
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+    }
+
+    .tab-content.active {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ===================================================
+       BOTONES DE PESTAÑAS
+       =================================================== */
+
+    .mobile-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+
+      border-bottom: 1px solid var(--color-borde);
+      padding-bottom: 1rem;
+    }
+
+    .tab-btn {
+      flex: 1;
+
+      background: var(--btn-tarjeta-bg);
+      border: 1px solid var(--btn-tarjeta-border);
+      color: var(--btn-tarjeta-text);
+
+      padding: 0.6rem;
+      border-radius: 8px;
+
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .tab-btn.active {
+      background: var(--color-etiqueta-violeta-bg);
+      color: var(--color-etiqueta-violeta);
+      border-color: var(--color-etiqueta-violeta);
+    }
+
+
+    /* ===================================================
+       LISTAS DE PELÍCULAS / MÚSICA
+       =================================================== */
+
+    .media-list {
+      list-style: none;
+
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .media-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      border-bottom: 1px solid var(--color-borde);
+      padding-bottom: 0.75rem;
+
+      position: relative;
+    }
+
+    .media-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .poster-container {
+      position: relative;
+
+      width: 46px;
+      height: 46px;
+
+      flex-shrink: 0;
+    }
+
+    .media-poster {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      border-radius: 8px;
+
+      display: block;
+
+      transition:
+        filter 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .poster-container:focus-visible {
+      outline: 2px solid var(--color-secundario);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+
+    .poster-indicator {
+      display: none;
+
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+
+      width: 20px;
+      height: 20px;
+
+      background: var(--color-primario);
+      border: 1px solid var(--color-borde);
+      border-radius: 50%;
+
+      align-items: center;
+      justify-content: center;
+
+      font-size: 0.65rem;
+      color: white;
+    }
+
+    @media (pointer: coarse) {
+      .poster-container {
+        cursor: pointer;
+      }
+
+      .poster-indicator {
+        display: flex;
+      }
+    }
+
+    .media-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      flex-grow: 1;
+      min-height: 42px;
+
+      overflow: hidden;
+    }
+
+    .media-default,
+    .media-comment {
+      transition:
+        all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .media-default {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .media-comment {
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+      align-items: center;
+
+      font-size: 0.8rem;
+      color: var(--color-etiqueta-violeta);
+      font-style: italic;
+      font-weight: 500;
+
+      opacity: 0;
+      pointer-events: none;
+
+      transform: translateY(12px);
+    }
+
+    .media-title {
+      font-size: 0.85rem;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .media-subtitle {
+      font-size: 0.75rem;
+      color: var(--color-texto-suave);
+    }
+
+    .media-item.touch-active .media-default {
+      opacity: 0;
+      transform: translateY(-12px);
+      pointer-events: none;
+    }
+
+    .media-item.touch-active .media-comment {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    @media (pointer: fine) {
+      .poster-container:hover .media-poster {
+        filter: saturate(1.3) contrast(1.05);
+      }
+
+      .poster-container:hover ~ .media-info .media-default,
+      .poster-container:focus-visible ~ .media-info .media-default {
+        opacity: 0;
+        transform: translateY(-12px);
+        pointer-events: none;
+      }
+
+      .poster-container:hover ~ .media-info .media-comment,
+      .poster-container:focus-visible ~ .media-info .media-comment {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+    }
+
+    .play-btn {
+      background: var(--color-etiqueta-violeta-bg);
+      color: var(--color-etiqueta-violeta);
+
+      border: none;
+      border-radius: 50%;
+
+      width: 44px;
+      height: 44px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      text-decoration: none;
+    }
+
+
+    /* ===================================================
+       DESKTOP
+       =================================================== */
+
+    @media (min-width: 801px) {
+
+      /*
+       * El wrapper deja de generar una caja propia.
+       * Sus hijos pasan a ser items del grid principal.
+       */
+      .tab-panels {
+        display: contents;
+      }
+
+      .profile-column {
+        border-right: 1px solid var(--color-borde);
+      }
+
+      #movies-section {
+        grid-area: movies;
+      }
+
+      #music-section {
+        grid-area: music;
+
+        border-top: 1px solid var(--color-borde);
+      }
+
+      /*
+       * En desktop ambos contenidos deben estar visibles.
+       * Las pestañas no existen visualmente.
+       */
+      .tab-content {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-tabs {
+        display: none;
+      }
+    }
+
+
+    /* ===================================================
+       MOBILE
+       =================================================== */
+
+    @media (max-width: 800px) {
+
+      .unified-card {
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        grid-template-areas:
+          "profile"
+          "panels";
+      }
+
+      .profile-column {
+        border-right: none;
+      }
+
+      #movies-section,
+      #music-section {
+        border-top: none;
+      }
+    }
+
+
+    /* ===================================================
+       FOOTER
+       =================================================== */
+
+    footer {
+      background: var(--color-primario);
+      color: white;
+
+      text-align: center;
+
+      padding: 1.2rem;
+      margin-top: auto;
+
+      font-size: 0.9rem;
+    }
+
+
+    /* ===================================================
+       REDUCED MOTION
+       =================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+
+    /* ===================================================
+       MOBILE NAV
+       =================================================== */
+
+    @media (max-width: 899px) {
+
+      .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+
+      .menu-toggle span {
+        width: 25px;
+        height: 3px;
+
+        background: white;
+        border-radius: 2px;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- ===================================================
+       NAVEGACIÓN
+       =================================================== -->
+
+  <header>
+    <div class="nav-contenedor">
+
+      <a href="../index.html" class="nav-logo">
+        Equipo <span>11</span>
+      </a>
+
+      <div class="nav-utilidades">
+
+        <nav>
+          <ul id="nav-list">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="bitacora.html">Bitácora</a></li>
+            <li>
+              <a href="../index.html#quienes-somos">
+                ¿Quiénes somos?
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <button
+          id="menu-toggle"
+          class="menu-toggle"
+          type="button"
+          aria-label="Abrir menú de navegación"
+          aria-expanded="false"
+          aria-controls="nav-list"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+
+        <button
+          id="theme-toggle"
+          class="theme-toggle-btn"
+          type="button"
+          aria-label="Cambiar tema de la página"
+        >
+          ☀️
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ===================================================
+       CONTENIDO
+       =================================================== -->
+
+  <main>
+
+    <div class="unified-card">
+
+      <!-- =========================
+           PERFIL
+           ========================= -->
+
+      <div class="profile-column">
+
+        <div>
+
+          <div class="identity">
+
+            <img
+              src="../img/ria/sami100.jpg"
+              alt="Foto de perfil de María Victoria Mariani"
+            >
+
+            <div>
+              <h1>María Victoria Mariani</h1>
+              <p>Buenos Aires, Argentina · 30 años</p>
+            </div>
+
+          </div>
+
+
+          <section aria-labelledby="skills-h">
+
+            <h2 id="skills-h">
+              Habilidades
+            </h2>
+
+            <ul class="skill-chips">
+              <li>PHP</li>
+              <li>JavaScript</li>
+              <li>Kotlin</li>
+              <li>Java</li>
+              <li>Python</li>
+            </ul>
+
+          </section>
+
+        </div>
+
+
+        <!-- =========================
+             TABS MOBILE
+             ========================= -->
+
+        <div class="mobile-tabs">
+
+          <button
+            class="tab-btn"
+            type="button"
+            data-target="movies-section"
+            aria-controls="movies-section"
+            aria-selected="false"
+          >
+            Películas
+          </button>
+
+          <button
+            class="tab-btn active"
+            type="button"
+            data-target="music-section"
+            aria-controls="music-section"
+            aria-selected="true"
+          >
+            Música
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- ===================================================
+           PANELES DE PELÍCULAS / MÚSICA
+           =================================================== -->
+
+      <div class="tab-panels">
+
+        <!-- =========================
+             PELÍCULAS
+             ========================= -->
+
+        <div
+          id="movies-section"
+          class="tab-content"
+          aria-hidden="true"
+          inert
+        >
+
+          <section aria-labelledby="movies-h">
+
+            <h2 id="movies-h">
+              Películas favoritas
+            </h2>
+
+            <ul class="media-list">
+
+              <li class="media-item">
+
+                <div class="poster-container" tabindex="0">
+
+                  <img
+                    src="../img/ria/dnd.jpg"
+                    alt="Dungeons & Dragons"
+                    class="media-poster"
+                  >
+
+                  <span
+                    class="poster-indicator"
+                    aria-hidden="true"
+                  >
+                    ♥
+                  </span>
+
+                </div>
+
+                <div class="media-info">
+
+                  <div class="media-default">
+
+                    <span class="media-title">
+                      Dungeons &amp; Dragons
+                    </span>
+
+                    <span class="media-subtitle">
+                      2023
+                    </span>
+
+                  </div>
+
+                  <div class="media-comment">
+                    "Diversión y carisma de principio a fin."
+                  </div>
+
+                </div>
+
+              </li>
+
+
+              <li class="media-item">
+
+                <div class="poster-container" tabindex="0">
+
+                  <img
+                    src="../img/ria/lort.jpg"
+                    alt="The Lord of the Rings"
+                    class="media-poster"
+                  >
+
+                  <span
+                    class="poster-indicator"
+                    aria-hidden="true"
+                  >
+                    ♥
+                  </span>
+
+                </div>
+
+                <div class="media-info">
+
+                  <div class="media-default">
+
+                    <span class="media-title">
+                      The Lord of the Rings Trilogy
+                    </span>
+
+                    <span class="media-subtitle">
+                      2001–2003
+                    </span>
+
+                  </div>
+
+                  <div class="media-comment">
+                    "La obra maestra definitiva de la fantasía."
+                  </div>
+
+                </div>
+
+              </li>
+
+
+              <li class="media-item">
+
+                <div class="poster-container" tabindex="0">
+
+                  <img
+                    src="../img/ria/hmc.jpg"
+                    alt="Howl's Moving Castle"
+                    class="media-poster"
+                  >
+
+                  <span
+                    class="poster-indicator"
+                    aria-hidden="true"
+                  >
+                    ♥
+                  </span>
+
+                </div>
+
+                <div class="media-info">
+
+                  <div class="media-default">
+
+                    <span class="media-title">
+                      Howl's Moving Castle
+                    </span>
+
+                    <span class="media-subtitle">
+                      2004
+                    </span>
+
+                  </div>
+
+                  <div class="media-comment">
+                    "Magia visual y atmósfera imbatible."
+                  </div>
+
+                </div>
+
+              </li>
+
+            </ul>
+
+          </section>
+
+        </div>
+
+
+        <!-- =========================
+             MÚSICA
+             ========================= -->
+
+        <div
+          id="music-section"
+          class="tab-content active"
+          aria-hidden="false"
+        >
+
+          <section aria-labelledby="music-h">
+
+            <h2 id="music-h">
+              Música favorita
+            </h2>
+
+            <ul class="media-list">
+
+              <li class="media-item">
+
+                <div class="poster-container" tabindex="0">
+
+                  <img
+                    src="../img/ria/ynwa.webp"
+                    alt="You Never Walk Alone"
+                    class="media-poster"
+                  >
+
+                  <span
+                    class="poster-indicator"
+                    aria-hidden="true"
+                  >
+                    ♥
+                  </span>
+
+                </div>
+
+                <div class="media-info">
+
+                  <div class="media-default">
+
+                    <span class="media-title">
+                      You Never Walk Alone
+                    </span>
+
+                    <span class="media-subtitle">
+                      2017 - BTS
+                    </span>
+
+                  </div>
+
+                  <div class="media-comment">
+                    "Energía pura cuando necesito ánimo."
+                  </div>
+
+                </div>
+
+                <a
+                  href="https://www.youtube.com/results?search_query=BTS+You+Never+Walk+Alone"
+                  target="_blank"
+                  rel="noopener"
+                  class="play-btn"
+                  aria-label="Escuchar You Never Walk Alone en YouTube"
+                >
+                  ▶
+                </a>
+
+              </li>
+
+
+              <li class="media-item">
+
+                <div class="poster-container" tabindex="0">
+
+                  <img
+                    src="../img/ria/lse.jpg"
+                    alt="The Story of Light: Epilogue"
+                    class="media-poster"
+                  >
+
+                  <span
+                    class="poster-indicator"
+                    aria-hidden="true"
+                  >
+                    ♥
+                  </span>
+
+                </div>
+
+                <div class="media-info">
+
+                  <div class="media-default">
+
+                    <span class="media-title">
+                      The Story of Light: Epilogue
+                    </span>
+
+                    <span class="media-subtitle">
+                      2018 - SHINee
+                    </span>
+
+                  </div>
+
+                  <div class="media-comment">
+                    "Una obra maestra vocal inolvidable."
+                  </div>
+
+                </div>
+
+                <a
+                  href="https://www.youtube.com/results?search_query=SHINee+The+Story+of+Light+Epilogue"
+                  target="_blank"
+                  rel="noopener"
+                  class="play-btn"
+                  aria-label="Escuchar The Story of Light Epilogue en YouTube"
+                >
+                  ▶
+                </a>
+
+              </li>
+
+
+              <li class="media-item">
+
+                <div class="poster-container" tabindex="0">
+
+                  <img
+                    src="../img/ria/skzr.png"
+                    alt="SKZ-REPLAY"
+                    class="media-poster"
+                  >
+
+                  <span
+                    class="poster-indicator"
+                    aria-hidden="true"
+                  >
+                    ♥
+                  </span>
+
+                </div>
+
+                <div class="media-info">
+
+                  <div class="media-default">
+
+                    <span class="media-title">
+                      SKZ-REPLAY
+                    </span>
+
+                    <span class="media-subtitle">
+                      2022 - Stray Kids
+                    </span>
+
+                  </div>
+
+                  <div class="media-comment">
+                    "Producción impecable y mucha fuerza."
+                  </div>
+
+                </div>
+
+                <a
+                  href="https://www.youtube.com/results?search_query=Stray+Kids+SKZ-REPLAY"
+                  target="_blank"
+                  rel="noopener"
+                  class="play-btn"
+                  aria-label="Escuchar SKZ-REPLAY en YouTube"
+                >
+                  ▶
+                </a>
+
+              </li>
+
+            </ul>
+
+          </section>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <footer>
+    <p>
+      &copy; 2026 · Grupo 11 · María Victoria Mariani
+    </p>
+  </footer>
+
+
+  <!-- ===================================================
+       JAVASCRIPT
+       =================================================== -->
+
+  <script>
+
+    /* ===================================================
+       PESTAÑAS
+       =================================================== */
+
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabButtons.forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const targetId = button.dataset.target;
+
+        tabButtons.forEach(btn => {
+
+          const isActive = btn === button;
+
+          btn.classList.toggle("active", isActive);
+          btn.setAttribute("aria-selected", isActive);
+
+        });
+
+
+        tabContents.forEach(content => {
+
+          const isActive = content.id === targetId;
+
+          content.classList.toggle("active", isActive);
+
+          content.setAttribute(
+            "aria-hidden",
+            String(!isActive)
+          );
+
+          /*
+           * inert evita que el contenido oculto
+           * pueda recibir foco o interacción.
+           */
+          content.inert = !isActive;
+
+        });
+
+      });
+
+    });
+
+
+    /* ===================================================
+       INTERACCIÓN TÁCTIL DE PELÍCULAS / MÚSICA
+       =================================================== */
+
+    document
+      .querySelectorAll(".poster-container")
+      .forEach(container => {
+
+        container.addEventListener("click", event => {
+
+          if (window.matchMedia("(pointer: coarse)").matches) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            const mediaItem =
+              container.closest(".media-item");
+
+            document
+              .querySelectorAll(".media-item")
+              .forEach(item => {
+
+                if (item !== mediaItem) {
+                  item.classList.remove("touch-active");
+                }
+
+              });
+
+            mediaItem.classList.toggle("touch-active");
+
+          }
+
+        });
+
+      });
+
+
+    /* ===================================================
+       INTERACCIÓN TÁCTIL DE SKILL CHIPS
+       =================================================== */
+
+    document
+      .querySelectorAll(".skill-chips li")
+      .forEach(chip => {
+
+        chip.addEventListener("click", () => {
+
+          if (window.matchMedia("(pointer: coarse)").matches) {
+
+            document
+              .querySelectorAll(".skill-chips li")
+              .forEach(otherChip => {
+
+                if (otherChip !== chip) {
+                  otherChip.classList.remove("touch-active");
+                }
+
+              });
+
+            chip.classList.toggle("touch-active");
+
+          }
+
+        });
+
+      });
+
+
+    /* ===================================================
+       TEMA
+       =================================================== */
+
+    const themeButton =
+      document.querySelector("#theme-toggle");
+
+    themeButton.addEventListener("click", () => {
+
+      const html = document.documentElement;
+
+      const nuevoTema =
+        html.dataset.theme === "oscuro"
+          ? "claro"
+          : "oscuro";
+
+      html.dataset.theme = nuevoTema;
+
+      localStorage.setItem("theme", nuevoTema);
+
+    });
+
+
+    /* ===================================================
+       MENÚ MÓVIL
+       =================================================== */
+
+    const menuButton =
+      document.querySelector("#menu-toggle");
+
+    const navList =
+      document.querySelector("#nav-list");
+
+    menuButton.addEventListener("click", () => {
+
+      const abierto =
+        menuButton.getAttribute("aria-expanded") === "true";
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(!abierto)
+      );
+
+      navList.style.display =
+        abierto ? "none" : "flex";
+
+    });
+
+  </script>
+
+</body>
+</html>
