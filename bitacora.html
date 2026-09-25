@@ -24,7 +24,7 @@
 
     <link rel="stylesheet" href="css/styles.css" />
     <script src="js/main.js" defer></script>
-    <script src="js/bitacora.js" defer></script>
+    <script type="module" src="js/bitacora.js"></script>
   </head>
   <body>
     <!-- MENÚ DE NAVEGACIÓN GLOBAL (idéntico al de index.html) -->
@@ -59,19 +59,17 @@
       </div>
     </header>
 
-   <section class="hero">
-  <h1>Bitácora del Proyecto</h1>
-  <p>Registro de decisiones, dificultades y evolución del trabajo colaborativo del Equipo 11.</p>
-</section>
+    <main>
+      <section class="hero">
+        <h1>Bitácora del Proyecto</h1>
+        <p>Registro de decisiones, dificultades y evolución del trabajo colaborativo del Equipo 11.</p>
+      </section>
 
-<!-- Contenedor vacío donde JS inyectará el acordeón -->
-<section id="contenedor-bitacora" class="bitacora-timeline">
-   <!-- Las entradas se renderizan aquí dinámicamente -->
-</section>
-
-<!-- IMPORTANTE: El orden de los scripts importa. Primero los datos, luego la lógica -->
-<script src="js/bitacoraData.js"></script>
-<script src="js/bitacora.js"></script>
+      <!-- Contenedor vacío donde JS inyectará el acordeón -->
+      <section id="contenedor-bitacora" class="bitacora-timeline">
+        <!-- Las entradas se renderizan aquí dinámicamente -->
+      </section>
+    </main>
 
     <footer>
       <p>

@@ -1,25 +1,39 @@
-// js/render.js
+import { bitacoraData } from "./bitacoraData.js";
+
 function renderLog() {
   const contenedor = document.getElementById("contenedor-bitacora");
 
-  // 1. Renderizado dinámico usando .map()
-  const plantillaHTML = bitacoraData.map(entrada => {
+  const plantillaHTML = bitacoraData.map((entrada, indice) => {
     // Lógica opcional para pintar de rojo los bugs y verde las resoluciones
     let claseTag = "timeline-tag";
     if (entrada.categoria === "Bug detectado") claseTag += " tag-alerta";
     if (entrada.categoria === "Bug resuelto") claseTag += " tag-exito";
 
+    // IDs únicos por entrada: conectan el botón con su panel (aria-controls)
+    // y el panel con su encabezado (aria-labelledby).
+    const idHeader = `header-bitacora-${indice}`;
+    const idPanel = `panel-bitacora-${indice}`;
+
     return `
       <article class="timeline-item">
-        <button class="timeline-header" aria-expanded="false">
-          <div class="timeline-meta">
-            <span class="timeline-fecha">${entrada.fecha}</span>
-            <span class="${claseTag}">${entrada.categoria}</span>
-          </div>
-          <h3 class="timeline-titulo">${entrada.titulo}</h3>
-          <span class="timeline-icono" aria-hidden="true">+</span>
-        </button>
-        <div class="timeline-content" aria-hidden="true">
+        <h2 class="timeline-titulo-wrapper">
+          <button class="timeline-header"
+                  id="${idHeader}"
+                  aria-expanded="false"
+                  aria-controls="${idPanel}">
+            <span class="timeline-meta">
+              <span class="timeline-fecha">${entrada.fecha}</span>
+              <span class="${claseTag}">${entrada.categoria}</span>
+            </span>
+            <span class="timeline-titulo">${entrada.titulo}</span>
+            <span class="timeline-icono" aria-hidden="true">+</span>
+          </button>
+        </h2>
+        <div class="timeline-content"
+             id="${idPanel}"
+             role="region"
+             aria-labelledby="${idHeader}"
+             aria-hidden="true">
           <div class="timeline-inner">
             <p>${entrada.texto}</p>
           </div>
@@ -34,7 +48,10 @@ function renderLog() {
   const acordeonHeaders = document.querySelectorAll(".timeline-header");
   acordeonHeaders.forEach(header => {
     header.addEventListener("click", () => {
-      const item = header.parentElement;
+      // Ojo: antes era header.parentElement, pero ahora el padre directo
+      // del botón es el <h2>, no el <article>. Con closest() buscamos
+      // el <article> más cercano sin importar cuántos niveles haya.
+      const item = header.closest(".timeline-item");
       const content = item.querySelector(".timeline-content");
       const isOpen = item.classList.contains("activo");
 

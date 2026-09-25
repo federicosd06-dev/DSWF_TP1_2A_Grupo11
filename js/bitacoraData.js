@@ -1,4 +1,3 @@
-// js/log-data.js
 const bitacoraData = [
   {
     fecha: "18 de septiembre de 2026",
@@ -43,3 +42,4 @@ const bitacoraData = [
     texto: "Se rediseñó parcialmente la sección hero, que de ahora en más pasa a llamarse banner, sumándole una textura decorativa y adaptando su comportamiento para pantallas pequeñas."
   }
 ];
+export { bitacoraData };
