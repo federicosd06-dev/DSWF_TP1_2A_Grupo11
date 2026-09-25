@@ -462,12 +462,12 @@ h3 {
   background-color: var(--color-etiqueta-rosa-bg);
 }
 
-.tarjeta.marcos .tarjeta-etiqueta { 
+.tarjeta.javier .tarjeta-etiqueta { 
   color: var(--color-etiqueta-ambar); 
   background-color: var(--color-etiqueta-ambar-bg);
 }
 
-.tarjeta.javier .tarjeta-etiqueta { 
+.tarjeta.marcos .tarjeta-etiqueta { 
   color: var(--color-etiqueta-coral); 
   background-color: var(--color-etiqueta-coral-bg);
 }
@@ -1768,3 +1768,193 @@ footer {
 }
 
    /*==========CANDE====================*/
+
+   /*========== MARCOS ==========*/
+
+.tarjeta-perfil.marcos {
+  --color-marcos: var(--color-etiqueta-coral);
+}
+
+.tarjeta-perfil.marcos .avatar {
+  border-color: var(--color-marcos);
+}
+
+/*========== HABILIDADES ==========*/
+
+.marcos-habilidades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  padding: 0;
+  list-style: none;
+}
+
+.marcos-habilidades li {
+  padding: .4rem .8rem;
+  border-radius: 20px;
+  background: var(--color-etiqueta-coral);
+  color: #fff;
+  font-weight: 600;
+}
+
+.habilidad-proximamente {
+  opacity: .7;
+  border: 1px dashed var(--color-marcos);
+  background: transparent !important;
+  color: var(--color-marcos) !important;
+}
+
+/*========== PELÍCULAS ==========*/
+
+.marcos-peliculas-grid,
+.marcos-albumes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.marcos-flip-card,
+.marcos-album-card {
+  height: 340px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.marcos-flip-inner,
+.marcos-album-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform .6s;
+  transform-style: preserve-3d;
+}
+
+.marcos-flip-card.girada .marcos-flip-inner,
+.marcos-album-card.girada .marcos-album-inner {
+  transform: rotateY(180deg);
+}
+
+.marcos-flip-front,
+.marcos-flip-back,
+.marcos-album-front,
+.marcos-album-back {
+  position: absolute;
+  inset: 0;
+  padding: 1rem;
+  border-radius: 10px;
+  background: var(--color-tarjeta);
+  backface-visibility: hidden;
+  text-align: center;
+  box-shadow: var(--sombra-tarjeta);
+}
+
+.marcos-flip-back,
+.marcos-album-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.marcos-poster {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.marcos-pelicula-titulo,
+.marcos-album-titulo {
+  margin: .5rem 0 .2rem;
+  font-size: .95rem;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+}
+
+.marcos-pelicula-autor,
+.marcos-album-autor,
+.marcos-ayuda {
+  color: var(--color-texto-suave);
+  font-size: .85rem;
+}
+
+
+/*========== ÁLBUMES ==========*/
+
+.marcos-album-card {
+  height: 320px;
+}
+
+.marcos-album-cover {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/*========== QA ==========*/
+
+#btn-diagnostico {
+  padding: .7rem 1.2rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--color-marcos);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#resultado-diagnostico {
+  display: grid;
+  gap: .4rem;
+  margin-top: 1rem;
+}
+
+.diagnostico-item {
+  padding: .5rem;
+  border-radius: 6px;
+  background: var(--color-fondo);
+}
+
+/*========== RESPONSIVE ==========*/
+
+@media (max-width: 899px) {
+  .marcos-peliculas-grid,
+  .marcos-albumes-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .marcos-peliculas-grid,
+  .marcos-albumes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .marcos-flip-card {
+    height: 330px;
+  }
+
+  .marcos-album-card {
+    height: 380px;
+  }
+
+  .marcos-album-back {
+    padding: 1.2rem;
+    overflow-y: auto;
+  }
+
+  .marcos-album-back p {
+    overflow-wrap: break-word;
+  }
+}
+
+/*========== ACCESIBILIDAD ==========*/
+
+@media (prefers-reduced-motion: reduce) {
+  .marcos-flip-inner,
+  .marcos-album-inner {
+    transition: none;
+  }
+}
