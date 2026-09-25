@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Equipo 11 ~ Marcos Aquino</title>
+
+  <script>
+    (() => {
+      const temaGuardado = localStorage.getItem("theme");
+      const tema = temaGuardado ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "oscuro"
+          : "claro");
+
+      document.documentElement.setAttribute("data-theme", tema);
+      document.documentElement.classList.add("no-transiciones");
+    })();
+  </script>
+
+  <link rel="stylesheet" href="../css/styles.css  ">
+  
+  <script src="../js/main.js" defer></script>
+  <script src="../js/marcos_perfil.js" defer></script>
+</head>
+
+<body>
+
+  <header>
+    <div class="nav-contenedor">
+
+      
+      <a href="../index.html" class="nav-logo">Equipo <span>11</span></a>
+
+      <div class="nav-utilidades">
+
+        <nav aria-label="Navegación principal">
+          <ul id="nav-list">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../bitacora.html">Bitácora</a></li>
+            <li><a href="../index.html#quienes-somos">¿Quiénes somos?</a></li>
+          </ul>
+        </nav>
+
+        <button
+          id="menu-toggle"
+          class="menu-toggle"
+          type="button"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="nav-list">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <button
+          id="theme-toggle"
+          class="theme-toggle-btn"
+          type="button"
+          aria-label="Cambiar tema">
+          <span class="ic-sol">☀️</span>
+          <span class="ic-luna">🌙</span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <article class="tarjeta-perfil marcos">
+
+      <img
+        src="../img/machito_marcos.jpeg"
+        alt="Foto de perfil de Marcos"
+        class="avatar">
+
+      <h1>Marcos Aquino</h1>
+
+      <p>
+        Ciudad: Buenos Aires, Argentina<br>
+        Edad: 28 Años
+      </p>
+
+      <!--========== SOBRE MÍ ==========-->
+        <section class="bloque-perfil">
+          <h2>Sobre mí</h2>
+
+          <p>
+            Siempre me llamaron la atención las historias que hablan sobre el tiempo,
+            las decisiones y cómo nuestras elecciones van cambiando el rumbo de nuestras vidas.
+            Por eso me gustan especialmente las películas y canciones que tratan esos temas.
+          </p>
+
+          <p>
+            Actualmente estoy aprendiendo programación porque también me interesa la tecnología
+            y cómo puede cambiar la forma en que vivimos y el curso de nuestras propias vidas.
+          </p>
+        </section>
+
+      <section class="bloque-perfil">
+        <h2>Habilidades</h2>
+
+        <ul class="marcos-habilidades">
+          <li>HTML5</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>Python</li>
+          <li>C#</li>
+          <li>Figma</li>
+          <li>Git / GitHub</li>
+          <li class="habilidad-proximamente"> Cargando nuevas habilidades...</li>
+        </ul>
+      </section>
+
+      <section class="bloque-perfil">
+        <h2>Películas favoritas</h2>
+
+        <p class="marcos-ayuda">
+          Hacé clic sobre una película para una descripcion personalizada.
+        </p>
+
+        <div class="marcos-peliculas-grid">
+
+          <article class="marcos-flip-card" tabindex="0" role="button">
+            <div class="marcos-flip-inner">
+
+              <div class="marcos-flip-front">
+                <img
+                  src="../img/benjamin-button.webp"
+                  alt="El curioso caso de Benjamin Button"
+                  class="marcos-poster">
+                <h3 class="marcos-pelicula-titulo">
+                  El curioso caso de Benjamin Button
+                </h3>
+                <p class="marcos-pelicula-autor">
+                  David Fincher
+                </p>
+              </div>
+
+              <div class="marcos-flip-back">
+                <h3>Tiempo</h3>
+                <p>El paso del tiempo y las decisiones llevan a Benjamin a una vida nómade,
+                 llena de experiencias que van formando su historia.</p>
+              </div>
+
+            </div>
+          </article>
+
+          <article class="marcos-flip-card" tabindex="0" role="button">
+            <div class="marcos-flip-inner">
+
+              <div class="marcos-flip-front">
+                <img
+                  src="../img/about-time.jpg"
+                  alt="Cuestión de tiempo"
+                  class="marcos-poster">
+                <h3 class="marcos-pelicula-titulo">
+                  Cuestión de tiempo
+                </h3>
+                <p class="marcos-pelicula-autor">
+                  Richard Curtis
+                </p>
+              </div>
+
+              <div class="marcos-flip-back">
+                <h3>Decisiones</h3>
+                <p>Tim puede volver al pasado y corregir decisiones, 
+                pero aprende que incluso las pequeñas elecciones cotidianas construyen su vida.</p>
+              </div>
+
+            </div>
+          </article>
+
+          <article class="marcos-flip-card" tabindex="0" role="button">
+            <div class="marcos-flip-inner">
+
+              <div class="marcos-flip-front">
+                <img
+                  src="../img/padrino-2.webp"
+                  alt="El Padrino II"
+                  class="marcos-poster">
+                <h3 class="marcos-pelicula-titulo">
+                  El Padrino II
+                </h3>
+                <p class="marcos-pelicula-autor">
+                  Francis Ford Coppola
+                </p>
+              </div>
+
+              <div class="marcos-flip-back">
+                <h3>Destino</h3>
+                <p>Muestra cómo las decisiones de Vito y Michael, 
+                a lo largo del tiempo, van formando el destino de la familia y su poder.</p>
+              </div>
+
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="bloque-perfil">
+        <h2>Álbumes favoritos</h2>
+
+        <p class="marcos-ayuda">
+          Hacé clic sobre un álbum para ver mi canción favorita.
+        </p>
+
+        <div class="marcos-albumes-grid">
+
+          <article class="marcos-album-card" tabindex="0" role="button">
+            <div class="marcos-album-inner">
+
+              <div class="marcos-album-front">
+                <img
+                  src="../img/luzbelito.jpg"
+                  alt="Luzbelito"
+                  class="marcos-album-cover">
+                <h3 class="marcos-album-titulo">
+                  Luzbelito
+                </h3>
+                <p class="marcos-album-autor">
+                  Patricio Rey y sus Redonditos de Ricota
+                </p>
+              </div>
+
+              <div class="marcos-album-back">
+                <h3>-Me matan limón-</h3>
+                
+                <p>Relata las ultimas horas con vida de un personaje que me llama la atencion</p>
+              </div>
+
+            </div>
+          </article>
+
+          <article class="marcos-album-card" tabindex="0" role="button">
+            <div class="marcos-album-inner">
+
+              <div class="marcos-album-front">
+                <img
+                  src="../img/debi-tirar-mas-fotos.png"
+                  alt="DeBÍ TiRAR MáS FOToS"
+                  class="marcos-album-cover">
+                <h3 class="marcos-album-titulo">
+                  DeBÍ TiRAR MáS FOToS
+                </h3>
+                <p class="marcos-album-autor">
+                  Bad Bunny
+                </p>
+              </div>
+
+              <div class="marcos-album-back">
+                <h3>-Baile Inolvidable-</h3>
+                
+                <p>Relata el recuerdo de una persona en su juventud en las noches de puerto rico
+                a travez de la musica y el baile. Soy yo viviendo esa juventud de salsa y amigos</p>
+              </div>
+
+            </div>
+          </article>
+
+          <article class="marcos-album-card" tabindex="0" role="button">
+            <div class="marcos-album-inner">
+
+              <div class="marcos-album-front">
+                <img
+                  src="../img/la-vida-era-mas-corta.jpg"
+                  alt="La vida era más corta"
+                  class="marcos-album-cover">
+                <h3 class="marcos-album-titulo">
+                  La vida era más corta
+                </h3>
+                <p class="marcos-album-autor">
+                  Milo J
+                </p>
+              </div>
+
+              <div class="marcos-album-back">
+                <h3>-Niño-</h3>
+                <p>sobre heridas en la infancia, el abandono y la vulnerabilidad.
+                 Me gusta por su mensaje de consuelo, esperanza y conexión con el niño interior</p>
+              </div>
+
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="bloque-interactivo">
+        <h2>Pruebas de QA</h2>
+
+        <p>
+          Comprobación de las funcionalidades del perfil.
+        </p>
+
+        <button id="btn-diagnostico" type="button">
+          Ejecutar diagnóstico
+        </button>
+
+        <div id="resultado-diagnostico" aria-live="polite"></div>
+      </section>
+
+    </article>
+
+  </main>
+
+  <footer>
+    <p>Equipo 11 · TP1 · Perfil de Marcos</p>
+  </footer>
+
+</body>
+
+</html>
