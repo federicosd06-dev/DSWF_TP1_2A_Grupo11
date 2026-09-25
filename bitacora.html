@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es" data-theme="claro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bitácora ~ Equipo 11</title>
+
+    <!--
+      Obtenemos el tema que se debe usar al cargar la página:
+      primero buscamos una preferencia guardada por el usuario.
+      Si no existe, usamos la preferencia de tema del sistema.
+    -->
+    <script>
+      (function () {
+        const temaSalvado = localStorage.getItem("theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oscuro" : "claro");
+
+        document.documentElement.setAttribute("data-theme", temaSalvado);
+
+        // Evitamos animaciones durante la inicialización para prevenir parpadeos.
+        document.documentElement.classList.add("no-transiciones");
+      })();
+    </script>
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/main.js" defer></script>
+    <script src="js/bitacora.js" defer></script>
+  </head>
+  <body>
+    <!-- MENÚ DE NAVEGACIÓN GLOBAL (idéntico al de index.html) -->
+    <header>
+      <div class="nav-contenedor">
+        <a href="index.html" class="nav-logo">Equipo <span>11</span></a>
+        <div class="nav-utilidades">
+          <nav>
+            <ul id="nav-list">
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="bitacora.html" aria-current="page">Bitácora</a></li>
+              <li><a href="index.html#quienes-somos">¿Quiénes somos?</a></li>
+            </ul>
+          </nav>
+          <button id="menu-toggle"
+                  class="menu-toggle"
+                  aria-label="Abrir menú de navegación"
+                  aria-expanded="false"
+                  aria-controls="nav-list"
+                  type="button">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema de la página">
+            <span class="theme-ic-wrapper" aria-hidden="true">
+              <span class="ic-sol">☀️</span>
+              <span class="ic-luna">🌙</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+   <section class="hero">
+  <h1>Bitácora del Proyecto</h1>
+  <p>Registro de decisiones, dificultades y evolución del trabajo colaborativo del Equipo 11.</p>
+</section>
+
+<!-- Contenedor vacío donde JS inyectará el acordeón -->
+<section id="contenedor-bitacora" class="bitacora-timeline">
+   <!-- Las entradas se renderizan aquí dinámicamente -->
+</section>
+
+<!-- IMPORTANTE: El orden de los scripts importa. Primero los datos, luego la lógica -->
+<script src="js/bitacoraData.js"></script>
+<script src="js/bitacora.js"></script>
+
+    <footer>
+      <p>
+        &copy; 2026 · Grupo 11 · Comisión A · IFTS Nº 29
+      </p>
+    </footer>
+  </body>
+</html>
