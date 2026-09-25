@@ -1920,6 +1920,7 @@ footer {
   .timeline-meta { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
   .timeline-header { padding: 1rem; }
   .timeline-inner p { padding: 1rem; }
+}
 
    /*========== MARCOS ==========*/
 
