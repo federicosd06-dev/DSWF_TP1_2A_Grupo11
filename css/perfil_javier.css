@@ -91,6 +91,10 @@ header {
   border-radius: 50%;
 }
 
+.avatar-flip-inner.girado {
+  transform: rotateY(180deg);
+}
+
 .avatar.avatar-cara {
   position: absolute !important;
   top: 0;

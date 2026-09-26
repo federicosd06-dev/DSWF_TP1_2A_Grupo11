@@ -69,7 +69,7 @@
       } finally {
         window.clearTimeout(timeoutId);
       }
-    }
+    };
 
     const detectPublicIp = async () => {
       for (const serviceUrl of ipServices) {
@@ -90,6 +90,26 @@
       .catch(() => {
         showIpMessage("No se pudo detectar la IP pública", "ip-error");
       });
+  }
+
+  const avatarContainer = document.getElementById("avatar-flip-container");
+  const avatarInner = document.getElementById("avatar-flip-inner");
+
+  if (avatarContainer && avatarInner) {
+    const toggleAvatar = () => {
+      const isFlipped = avatarInner.classList.toggle("girado");
+      avatarContainer.setAttribute("aria-pressed", String(isFlipped));
+    };
+
+    avatarContainer.addEventListener("click", toggleAvatar);
+    avatarContainer.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleAvatar();
+      }
+    });
+
+    avatarContainer.setAttribute("aria-pressed", "false");
   }
 
   const cards = document.querySelectorAll(".cuadro-marco-card");
