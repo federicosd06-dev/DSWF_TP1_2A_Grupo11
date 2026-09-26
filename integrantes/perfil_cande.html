@@ -4,26 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Equipo 11 ~ Cande</title>
-
-    <!--
-      Obtenemos el tema que se debe usar al cargar la página:
-      primero buscamos una preferencia guardada por el usuario.
-      Si no existe, usamos la preferencia de tema del sistema.
-    -->
     <script>
       (function () {
         const temaSalvado = localStorage.getItem("theme") ||
           (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oscuro" : "claro");
 
         document.documentElement.setAttribute("data-theme", temaSalvado);
-
-        // Evitamos animaciones durante la inicialización para prevenir parpadeos.
         document.documentElement.classList.add("no-transiciones");
       })();
     </script>
 
     <link rel="stylesheet" href="../css/styles.css" />
-    <link rel="stylesheet" href="../css/cande_perfil.css" />
+    <link rel="stylesheet" href="../css/styles_knd.css" />
     <script src="../js/main.js" defer></script>
     <script src="../js/cande_perfil.js" defer></script>
   </head>
@@ -61,14 +53,13 @@
     </header>
     <main>
       <article class="tarjeta-perfil cande">
-        <!-- FOTO / AVATAR / MASCOTA -->
         <img src="../img/perfil_knd.jpeg" alt="Foto de perfil de Cande" class="avatar" />
 
         <h1>Candelaria Chazarreta</h1>
         <p><strong>Ciudad:</strong> Santiago del Estero, Argentina</p>
         <p><strong>Edad:</strong> 27 años</p>
 
-        <!-- HABILIDADES (Mínimo 4) -->
+        <!-- HABILIDADES -->
         <section class="bloque-perfil">
           <h2>Habilidades</h2>
           <ul class="habilidades-lista">
@@ -84,44 +75,34 @@
             <li>Git y GitHub</li>
           </ul>
         </section>
-<!-- DISCOS FAVORITOS (Estilo Vinilo Circular) -->
+
+        <!-- DISCOS FAVORITOS-->
         <section class="bloque-perfil">
-          <h2>Discos Favoritos</h2>
-            <div class="vinilos-grid" id="grid-discos">
-            
-            <div class="disco-card" tabindex="0" role="button" aria-label="Amnesiac de Radiohead">
-              <div class="vinilo">
-                <img src="https://lastfm-img.freetls.fastly.net/i/u/770x0/ec9a4ee43da68e091a2ab4aff1bc5533.jpg#ec9a4ee43da68e091a2ab4aff1bc5533" alt="Portada Amnesiac" class="vinilo-tapa" />
-                <div class="vinilo-centro"></div>
-              </div>
-              <span class="disco-rank">#1</span>
-              <p class="disco-titulo">Amnesiac</p>
-              <p class="disco-autor">Radiohead</p>
+          <h2 id="titulo-musica">Discos Favoritos</h2>
+          <div class="flip-grid" id="grid-discos">
+
+            <div class="flip-card-fija">
+              <img src="../img/knd/radiohead-amnesiac.jpg" alt="Portada de Amnesiac" class="flip-card-img" />
+              <p class="flip-card-titulo">Amnesiac</p>
+              <p class="flip-card-autor">Radiohead</p>
             </div>
 
-            <div class="disco-card" tabindex="0" role="button" aria-label="Ultraviolence de Lana del Rey">
-              <div class="vinilo">
-                <img src="https://lastfm-img.freetls.fastly.net/i/u/770x0/916438133fc249e7c96f66ae29d5d1af.jpg#916438133fc249e7c96f66ae29d5d1af" alt="Portada Ultraviolence" class="vinilo-tapa" />
-                <div class="vinilo-centro"></div>
-              </div>
-              <span class="disco-rank">#2</span>
-              <p class="disco-titulo">Ultraviolence</p>
-              <p class="disco-autor">Lana del Rey</p>
+            <div class="flip-card-fija">
+              <img src="../img/knd/ultraviolence-lana_del_rey.png" alt="Portada de Ultraviolence" class="flip-card-img" />
+              <p class="flip-card-titulo">Ultraviolence</p>
+              <p class="flip-card-autor">Lana del Rey</p>
             </div>
 
-            <div class="disco-card" tabindex="0" role="button" aria-label="Vida de Sui Generis">
-              <div class="vinilo">
-                <img src="https://lastfm-img.freetls.fastly.net/i/u/770x0/dc1cf2ac77fa96db6060593039a2400f.jpg#dc1cf2ac77fa96db6060593039a2400f" class="vinilo-tapa" />
-                <div class="vinilo-centro"></div>
-              </div>
-              <span class="disco-rank">#3</span>
-              <p class="disco-titulo">Vida</p>
-              <p class="disco-autor">Sui Generis</p>
+            <div class="flip-card-fija">
+              <img src="../img/knd/sui_generis-vida.png" alt="Portada de Vida" class="flip-card-img" />
+              <p class="flip-card-titulo">Vida</p>
+              <p class="flip-card-autor">Sui Generis</p>
             </div>
 
           </div>
         </section>
-        <!-- PELÍCULAS FAVORITAS (Mínimo 3) — tarjetas flip -->
+
+        <!-- PELÍCULAS FAVORITAS - tarjetas flip -->
         <section class="bloque-perfil">
           <h2>Películas Favoritas</h2>
           <p class="flip-ayuda">Tocá una tarjeta para ver más</p>
@@ -129,7 +110,7 @@
             <div class="flip-card" tabindex="0" role="button" aria-label="Ver más sobre The Shining">
               <div class="flip-card-inner">
                 <div class="flip-card-frente">
-                  <img src="https://www.themoviedb.org/t/p/w600_and_h900_face/uAR0AWqhQL1hQa69UDEbb2rE5Wx.jpg" alt="Poster de The Shining" class="flip-card-img" />
+                  <img src="../img/knd/poster-the shinning.png" alt="Poster de The Shining" class="flip-card-img" />
                   <p class="flip-card-titulo">The Shining</p>
                   <p class="flip-card-autor">Stanley Kubrick</p>
                 </div>
@@ -141,7 +122,7 @@
             <div class="flip-card" tabindex="0" role="button" aria-label="Ver más sobre Suspiria">
               <div class="flip-card-inner">
                 <div class="flip-card-frente">
-                  <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/f4EJQrq5bKCqJK6I5moST9kur2p.jpg" alt="Poster de Suspiria" class="flip-card-img" />
+                  <img src="../img/knd/poster-suspiria.jpg" alt="Poster de Suspiria" class="flip-card-img" />
                     <p class="flip-card-titulo">Suspiria</p>
                   <p class="flip-card-autor">Dario Argento</p>
                 </div>
@@ -153,7 +134,7 @@
             <div class="flip-card" tabindex="0" role="button" aria-label="Ver más sobre Melancholia">
               <div class="flip-card-inner">
                 <div class="flip-card-frente">
-                  <img src="https://www.themoviedb.org/t/p/w600_and_h900_face/fMneszMiQuTKY8JUXrGGB5vwqJf.jpg" alt="Poster de Melancholia" class="flip-card-img" />
+                  <img src="../img/knd/poster-melancholia.jpg" alt="Poster de Melancholia" class="flip-card-img" />
                   <p class="flip-card-titulo">Melancholia</p>
                   <p class="flip-card-autor">Lars von Trier</p>
                 </div>
@@ -164,19 +145,20 @@
             </div>
           </div>
         </section>
-<!-- GADGET INTERACTIVO: Recomendador de Películas -->
-        <section class="bloque-interactivo" aria-live="polite">
+
+        <!-- GADGET INTERACTIVO: Recomendador de Películas -->
+        <section class="bloque-interactivo">
           <h2>¿Qué miramos hoy?</h2>
           <p>¿No te decides? Dejá que la ruleta elija una de mis películas favoritas por vos.</p>
           <button id="btn-mi-interaccion" type="button">Girar la ruleta</button>
-          <div id="resultado-interaccion" class="resultado-ruleta"></div>
+          <div id="resultado-interaccion" class="resultado-ruleta" aria-live="polite"></div>
         </section>
-                
+
       </article>
     </main>
 
     <footer>
-      <p>&copy; 2026 - Perfil de Cande</p>
+      <p>&copy; 2026 · Grupo 11 · Candelaria Chazarreta</p>
     </footer>
 
   </body>
