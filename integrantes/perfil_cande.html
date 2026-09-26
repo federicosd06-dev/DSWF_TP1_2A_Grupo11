@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Equipo 11 ~ Cande</title>
+    <script>
+      (function () {
+        const temaSalvado = localStorage.getItem("theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oscuro" : "claro");
+
+        document.documentElement.setAttribute("data-theme", temaSalvado);
+        document.documentElement.classList.add("no-transiciones");
+      })();
+    </script>
+
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/styles_knd.css" />
+    <script src="../js/main.js" defer></script>
+    <script src="../js/cande_perfil.js" defer></script>
+  </head>
+  <body>
+    <!-- MENÚ DE NAVEGACIÓN GLOBAL -->
+    <header>
+      <div class="nav-contenedor">
+        <a href="../index.html" class="nav-logo">Equipo <span>11</span></a>
+        <div class="nav-utilidades">
+          <nav>
+            <ul id="nav-list">
+              <li><a href="../index.html">Inicio</a></li>
+              <li><a href="../bitacora.html">Bitácora</a></li>
+              <li><a href="../index.html#quienes-somos">¿Quiénes somos?</a></li>
+            </ul>
+          </nav>
+          <button id="menu-toggle"
+                  class="menu-toggle"
+                  aria-label="Abrir menú de navegación"
+                  aria-expanded="false"
+                  aria-controls="nav-list"
+                  type="button">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema de la página">
+            <span class="theme-ic-wrapper" aria-hidden="true">
+              <span class="ic-sol">☀️</span>
+              <span class="ic-luna">🌙</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <article class="tarjeta-perfil cande">
+        <img src="../img/perfil_knd.jpeg" alt="Foto de perfil de Cande" class="avatar" />
+
+        <h1>Candelaria Chazarreta</h1>
+        <p><strong>Ciudad:</strong> Santiago del Estero, Argentina</p>
+        <p><strong>Edad:</strong> 27 años</p>
+
+        <!-- HABILIDADES -->
+        <section class="bloque-perfil">
+          <h2>Habilidades</h2>
+          <ul class="habilidades-lista">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>Node.js</li>
+            <li>TypeScript</li>
+            <li>C#</li>
+            <li>MySQL</li>
+            <li>Figma</li>
+            <li>Git y GitHub</li>
+          </ul>
+        </section>
+
+        <!-- DISCOS FAVORITOS-->
+        <section class="bloque-perfil">
+          <h2 id="titulo-musica">Discos Favoritos</h2>
+          <div class="flip-grid" id="grid-discos">
+
+            <div class="flip-card-fija">
+              <img src="../img/knd/radiohead-amnesiac.jpg" alt="Portada de Amnesiac" class="flip-card-img" />
+              <p class="flip-card-titulo">Amnesiac</p>
+              <p class="flip-card-autor">Radiohead</p>
+            </div>
+
+            <div class="flip-card-fija">
+              <img src="../img/knd/ultraviolence-lana_del_rey.png" alt="Portada de Ultraviolence" class="flip-card-img" />
+              <p class="flip-card-titulo">Ultraviolence</p>
+              <p class="flip-card-autor">Lana del Rey</p>
+            </div>
+
+            <div class="flip-card-fija">
+              <img src="../img/knd/sui_generis-vida.png" alt="Portada de Vida" class="flip-card-img" />
+              <p class="flip-card-titulo">Vida</p>
+              <p class="flip-card-autor">Sui Generis</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- PELÍCULAS FAVORITAS - tarjetas flip -->
+        <section class="bloque-perfil">
+          <h2>Películas Favoritas</h2>
+          <p class="flip-ayuda">Tocá una tarjeta para ver más</p>
+          <div class="flip-grid" id="flip-peliculas">
+            <div class="flip-card" tabindex="0" role="button" aria-label="Ver más sobre The Shining">
+              <div class="flip-card-inner">
+                <div class="flip-card-frente">
+                  <img src="../img/knd/poster-the shinning.png" alt="Poster de The Shining" class="flip-card-img" />
+                  <p class="flip-card-titulo">The Shining</p>
+                  <p class="flip-card-autor">Stanley Kubrick</p>
+                </div>
+                <div class="flip-card-dorso">
+                   <p class="flip-card-frase">Es una eperiencia cinematográfica inmersiva e impactante que explora la psicología de la locura y el aislamiento.</p>
+                </div>
+              </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Ver más sobre Suspiria">
+              <div class="flip-card-inner">
+                <div class="flip-card-frente">
+                  <img src="../img/knd/poster-suspiria.jpg" alt="Poster de Suspiria" class="flip-card-img" />
+                    <p class="flip-card-titulo">Suspiria</p>
+                  <p class="flip-card-autor">Dario Argento</p>
+                </div>
+                <div class="flip-card-dorso">
+                  <p class="flip-card-frase">Una obra maestra del horror italiano con una narrativa llena de simbolismo y atmósfera.</p>
+                </div>
+              </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Ver más sobre Melancholia">
+              <div class="flip-card-inner">
+                <div class="flip-card-frente">
+                  <img src="../img/knd/poster-melancholia.jpg" alt="Poster de Melancholia" class="flip-card-img" />
+                  <p class="flip-card-titulo">Melancholia</p>
+                  <p class="flip-card-autor">Lars von Trier</p>
+                </div>
+                <div class="flip-card-dorso">
+                  <p class="flip-card-frase">La depresión y ansiedad personal frente al inevitable impacto del fin del mundo.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- GADGET INTERACTIVO: Recomendador de Películas -->
+        <section class="bloque-interactivo">
+          <h2>¿Qué miramos hoy?</h2>
+          <p>¿No te decides? Dejá que la ruleta elija una de mis películas favoritas por vos.</p>
+          <button id="btn-mi-interaccion" type="button">Girar la ruleta</button>
+          <div id="resultado-interaccion" class="resultado-ruleta" aria-live="polite"></div>
+        </section>
+
+      </article>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 · Grupo 11 · Candelaria Chazarreta</p>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,457 @@
+
+<!doctype html>
+<html lang="es" data-theme="claro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Equipo 11 ~ Adrian Javier Cano</title>
+
+    <!--
+      Obtenemos el tema que se debe usar al cargar la página:
+      primero buscamos una preferencia guardada por el usuario.
+      Si no existe, usamos la preferencia de tema del sistema.
+    -->
+    <script>
+      (function () {
+        const temaSalvado =
+          localStorage.getItem("theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "oscuro"
+            : "claro");
+
+        document.documentElement.setAttribute("data-theme", temaSalvado);
+
+        // Evitamos animaciones durante la inicialización para prevenir parpadeos.
+        document.documentElement.classList.add("no-transiciones");
+      })();
+    </script>
+
+    <!-- Hojas de estilo del proyecto y personalizadas -->
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/perfil_javier.css" />
+
+    <!-- Scripts diferidos -->
+    <script src="../js/main.js" defer></script>
+    <script src="../adrian_perfil.js" defer></script>
+  </head>
+  <body>
+    <!-- MENÚ DE NAVEGACIÓN GLOBAL -->
+    <header>
+      <div class="nav-contenedor">
+        <a href="../index.html" class="nav-logo">Equipo <span>11</span></a>
+        <div class="nav-utilidades">
+          <nav aria-label="Navegación principal">
+            <ul id="nav-list">
+              <li><a href="../index.html">Inicio</a></li>
+              <li><a href="../bitacora.html">Bitácora</a></li>
+              <li><a href="../index.html#quienes-somos">¿Quiénes somos?</a></li>
+            </ul>
+          </nav>
+          <button
+            id="menu-toggle"
+            class="menu-toggle"
+            aria-label="Abrir menú de navegación"
+            aria-expanded="false"
+            aria-controls="nav-list"
+            type="button"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+          <button
+            id="theme-toggle"
+            class="theme-toggle-btn"
+            aria-label="Cambiar tema de la página"
+            type="button"
+          >
+            <span class="theme-ic-wrapper" aria-hidden="true">
+              <span class="ic-sol">☀️</span>
+              <span class="ic-luna">🌙</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <article class="tarjeta-perfil javier">
+        <!-- FOTO DE PERFIL / AVATAR 3D GIRATORIO (PERRO <-> TRINITY) -->
+        <div
+          class="avatar-flip-wrapper"
+          id="avatar-flip-container"
+          role="button"
+          tabindex="0"
+          aria-label="Foto de perfil de Adrian Javier Cano. Hacé clic para girar y ver a Trinity"
+          title="Hacé clic para girar la foto"
+        >
+          <div class="avatar-flip-inner" id="avatar-flip-inner">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1676914697574-4c07313ec055?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Foto de perfil de Adrian Javier Cano (Perro)"
+              class="avatar avatar-cara avatar-frente"
+            />
+            <img
+              src="../img/Javier/trinity.jpeg"
+              alt="Foto de perfil alternativa: Trinity"
+              class="avatar avatar-cara avatar-dorso"
+            />
+          </div>
+        </div>
+
+        <!-- ENCABEZADO E IDENTIDAD -->
+        <header class="javier-header">
+          <h1 class="javier-nombre">Adrian Javier Cano</h1>
+          <span class="javier-rol-badge">IA Multiagéntica &amp; Ciberseguridad</span>
+
+          <!-- TERMINAL LINUX MATRIX: CORRIENDO ITEMS Y EXPLOIT -->
+          <div class="terminal-datos-matrix" role="region" aria-label="Terminal interactiva del sistema">
+            <div class="terminal-bar">
+              <span class="terminal-dot red" title="Cerrar"></span>
+              <span class="terminal-dot yellow" title="Minimizar"></span>
+              <span class="terminal-dot green" title="Maximizar"></span>
+              <span class="terminal-title">adrian@matrix:~$ sys --profile</span>
+              <button id="btn-replay-terminal" class="terminal-replay-btn" type="button" title="Reejecutar comandos y exploit">⟳ Reejecutar</button>
+            </div>
+            <div class="terminal-body" id="terminal-consola" tabindex="0" aria-live="polite">
+              <div class="terminal-line">
+                <span class="terminal-prompt">adrian@matrix:~$</span>
+                <span class="terminal-text"><strong>Ubicación:</strong> Mendoza, Argentina</span>
+              </div>
+              <div class="terminal-line">
+                <span class="terminal-prompt">adrian@matrix:~$</span>
+                <span class="terminal-text"><strong>Edad:</strong> 48 años</span>
+                <span class="terminal-cursor" aria-hidden="true">_</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+
+        <!-- HABILIDADES TÉCNICAS -->
+        <section class="bloque-perfil" aria-labelledby="titulo-habilidades">
+          <h2 id="titulo-habilidades" class="javier-seccion-titulo">
+            <span class="icono" aria-hidden="true">⚡</span> Habilidades
+          </h2>
+          <ul class="javier-habilidades-lista">
+            <li>IA Multiagéntica</li>
+            <li>Ciberseguridad</li>
+            <li>Derecho Informático</li>
+            <li>IA y Derecho</li>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>Git &amp; GitHub</li>
+            <li>Uso e Integración de IA</li>
+            <li>Metodologías Ágiles</li>
+            <li>Resolución de Problemas</li>
+          </ul>
+        </section>
+
+        <!-- PELÍCULAS FAVORITAS (EN MARCOS CON ANIMACIÓN 3D) -->
+        <section class="bloque-perfil" aria-labelledby="titulo-peliculas">
+          <h2 id="titulo-peliculas" class="javier-seccion-titulo">
+            <span class="icono" aria-hidden="true">🎬</span> Películas Favoritas
+          </h2>
+          <p class="javier-subtitulo-guia">
+            Hacé clic o presioná Enter sobre un cuadro para girarlo y conocer su historia.
+          </p>
+
+          <div class="javier-galeria-grid" id="grid-peliculas">
+            <!-- PELÍCULA 1: MATRIX -->
+            <article
+              class="cuadro-marco-card"
+              data-item="matrix"
+              tabindex="0"
+              role="button"
+              aria-label="Ver detalles de The Matrix"
+            >
+              <div class="cuadro-inner">
+                <!-- Frente: Cuadro enmarcado -->
+                <div class="cuadro-frente">
+                  <div class="cuadro-img-wrapper">
+                    <img
+                      src="../img/Javier/the_matrix.jpg"
+                      alt="Póster enmarcado de The Matrix"
+                      class="cuadro-img"
+                    />
+                  </div>
+                  <div class="cuadro-placa">
+                    <h3 class="cuadro-titulo">The Matrix</h3>
+                    <span class="cuadro-subtitulo">Hermanas Wachowski · 1999</span>
+                  </div>
+                </div>
+                <!-- Dorso: Reseña y Cita -->
+                <div class="cuadro-dorso">
+                  <div class="cuadro-dorso-header">
+                    <span class="cuadro-dorso-categoria">Película de Culto</span>
+                    <h4 class="cuadro-dorso-titulo">The Matrix</h4>
+                  </div>
+                  <div class="cuadro-dorso-cuerpo">
+                    <p class="cuadro-resena">
+                      Un hito que revolucionó los efectos visuales y la filosofía en el cine.
+                      Nos invitó a preguntarnos qué es real y cuál es el precio de la libertad frente a los sistemas de control.
+                    </p>
+                    <p class="cuadro-cita">«No hay cuchara.»</p>
+                  </div>
+                  <div class="cuadro-dorso-footer">
+                    <span>Hermanas Wachowski · Warner Bros.</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- PELÍCULA 2: INTERESTELAR -->
+            <article
+              class="cuadro-marco-card"
+              data-item="interestelar"
+              tabindex="0"
+              role="button"
+              aria-label="Ver detalles de Interestelar"
+            >
+              <div class="cuadro-inner">
+                <!-- Frente: Cuadro enmarcado -->
+                <div class="cuadro-frente">
+                  <div class="cuadro-img-wrapper">
+                    <img
+                      src="../img/Javier/interestelar.jpg"
+                      alt="Póster enmarcado de Interestelar"
+                      class="cuadro-img"
+                    />
+                  </div>
+                  <div class="cuadro-placa">
+                    <h3 class="cuadro-titulo">Interestelar</h3>
+                    <span class="cuadro-subtitulo">Christopher Nolan · 2014</span>
+                  </div>
+                </div>
+                <!-- Dorso: Reseña y Cita -->
+                <div class="cuadro-dorso">
+                  <div class="cuadro-dorso-header">
+                    <span class="cuadro-dorso-categoria">Ciencia Ficción</span>
+                    <h4 class="cuadro-dorso-titulo">Interestelar</h4>
+                  </div>
+                  <div class="cuadro-dorso-cuerpo">
+                    <p class="cuadro-resena">
+                      Una odisea científica y emocional inolvidable. La relatividad del tiempo,
+                      los agujeros negros y la certeza de que el amor trasciende todas las dimensiones.
+                    </p>
+                    <p class="cuadro-cita">«No te vayas dócil en esa buena noche.»</p>
+                  </div>
+                  <div class="cuadro-dorso-footer">
+                    <span>Christopher Nolan · Paramount</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- PELÍCULA 3: HACKERS -->
+            <article
+              class="cuadro-marco-card"
+              data-item="hackers"
+              tabindex="0"
+              role="button"
+              aria-label="Ver detalles de Hackers"
+            >
+              <div class="cuadro-inner">
+                <!-- Frente: Cuadro enmarcado -->
+                <div class="cuadro-frente">
+                  <div class="cuadro-img-wrapper">
+                    <img
+                      src="../img/Javier/Hackerss.jpeg"
+                      alt="Póster enmarcado de Hackers"
+                      class="cuadro-img"
+                    />
+                  </div>
+                  <div class="cuadro-placa">
+                    <h3 class="cuadro-titulo">Hackers</h3>
+                    <span class="cuadro-subtitulo">Iain Softley · 1995</span>
+                  </div>
+                </div>
+                <!-- Dorso: Reseña y Cita -->
+                <div class="cuadro-dorso">
+                  <div class="cuadro-dorso-header">
+                    <span class="cuadro-dorso-categoria">Cyberpunk / Tecnología</span>
+                    <h4 class="cuadro-dorso-titulo">Hackers</h4>
+                  </div>
+                  <div class="cuadro-dorso-cuerpo">
+                    <p class="cuadro-resena">
+                      La estética noventera de la informática en su máxima expresión.
+                      Un grupo de jóvenes piratas informáticos enfrentándose a una conspiración corporativa.
+                    </p>
+                    <p class="cuadro-cita">«Hack the planet!»</p>
+                  </div>
+                  <div class="cuadro-dorso-footer">
+                    <span>Iain Softley · United Artists</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- DISCOS FAVORITOS (PORTADAS ENMARCADAS Y ANIMADAS) -->
+        <section class="bloque-perfil" aria-labelledby="titulo-discos">
+          <h2 id="titulo-discos" class="javier-seccion-titulo">
+            <span class="icono" aria-hidden="true">🎵</span> Portadas de Discos Favoritos
+          </h2>
+          <p class="javier-subtitulo-guia">
+            Hacé clic o presioná Enter sobre cualquier portada para ver la reseña en su dorso.
+          </p>
+
+          <div class="javier-galeria-grid" id="grid-discos">
+            <!-- DISCO 1: SODA STEREO -->
+            <article
+              class="cuadro-marco-card"
+              data-item="soda"
+              tabindex="0"
+              role="button"
+              aria-label="Ver detalles de Canción Animal de Soda Stereo"
+            >
+              <div class="cuadro-inner">
+                <!-- Frente: Portada enmarcada -->
+                <div class="cuadro-frente">
+                  <div class="cuadro-img-wrapper">
+                    <img
+                      src="../img/Javier/Soda-Stereo-Cancion-animal-primera-portada.jpg"
+                      alt="Portada enmarcada de Canción Animal de Soda Stereo"
+                      class="cuadro-img"
+                    />
+                  </div>
+                  <div class="cuadro-placa">
+                    <h3 class="cuadro-titulo">Canción Animal</h3>
+                    <span class="cuadro-subtitulo">Soda Stereo · 1990</span>
+                  </div>
+                </div>
+                <!-- Dorso: Reseña y Cita -->
+                <div class="cuadro-dorso">
+                  <div class="cuadro-dorso-header">
+                    <span class="cuadro-dorso-categoria">Rock Nacional</span>
+                    <h4 class="cuadro-dorso-titulo">Canción Animal</h4>
+                  </div>
+                  <div class="cuadro-dorso-cuerpo">
+                    <p class="cuadro-resena">
+                      Un antes y un después en el rock latinoamericano. Guitarras potentes, sonido crudo
+                      y canciones himno como «De música ligera» y «Té para tres».
+                    </p>
+                    <p class="cuadro-cita">«Nada más queda...»</p>
+                  </div>
+                  <div class="cuadro-dorso-footer">
+                    <span>Álbum de Estudio · Soda Stereo</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- DISCO 2: GUNS N' ROSES -->
+            <article
+              class="cuadro-marco-card"
+              data-item="guns"
+              tabindex="0"
+              role="button"
+              aria-label="Ver detalles de Use Your Illusion I de Guns N' Roses"
+            >
+              <div class="cuadro-inner">
+                <!-- Frente: Portada enmarcada -->
+                <div class="cuadro-frente">
+                  <div class="cuadro-img-wrapper">
+                    <img
+                      src="../img/Javier/GunsNRosesUseYourIllusionICDCover.jpg"
+                      alt="Portada enmarcada de Use Your Illusion I de Guns N' Roses"
+                      class="cuadro-img"
+                    />
+                  </div>
+                  <div class="cuadro-placa">
+                    <h3 class="cuadro-titulo">Use Your Illusion I</h3>
+                    <span class="cuadro-subtitulo">Guns N' Roses · 1991</span>
+                  </div>
+                </div>
+                <!-- Dorso: Reseña y Cita -->
+                <div class="cuadro-dorso">
+                  <div class="cuadro-dorso-header">
+                    <span class="cuadro-dorso-categoria">Hard Rock</span>
+                    <h4 class="cuadro-dorso-titulo">Use Your Illusion I</h4>
+                  </div>
+                  <div class="cuadro-dorso-cuerpo">
+                    <p class="cuadro-resena">
+                      Potencia y virtuosismo puro. Baladas monumentales como «November Rain»
+                      y la energía arrolladora de Axl Rose y Slash en su pico creativo.
+                    </p>
+                    <p class="cuadro-cita">«'Cause nothin' lasts forever, even cold November rain.»</p>
+                  </div>
+                  <div class="cuadro-dorso-footer">
+                    <span>Geffen Records · Guns N' Roses</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- DISCO 3: OASIS -->
+            <article
+              class="cuadro-marco-card"
+              data-item="oasis"
+              tabindex="0"
+              role="button"
+              aria-label="Ver detalles de What's the Story Morning Glory de Oasis"
+            >
+              <div class="cuadro-inner">
+                <!-- Frente: Portada enmarcada -->
+                <div class="cuadro-frente">
+                  <div class="cuadro-img-wrapper">
+                    <img
+                      src="../img/Javier/oasis.jpeg"
+                      alt="Portada enmarcada de (What's the Story) Morning Glory? de Oasis"
+                      class="cuadro-img"
+                    />
+                  </div>
+                  <div class="cuadro-placa">
+                    <h3 class="cuadro-titulo" title="(What's the Story) Morning Glory?">(What's the Story) Morning Glory?</h3>
+                    <span class="cuadro-subtitulo">Oasis · 1995</span>
+                  </div>
+                </div>
+                <!-- Dorso: Reseña y Cita -->
+                <div class="cuadro-dorso">
+                  <div class="cuadro-dorso-header">
+                    <span class="cuadro-dorso-categoria">Britpop</span>
+                    <h4 class="cuadro-dorso-titulo">Morning Glory?</h4>
+                  </div>
+                  <div class="cuadro-dorso-cuerpo">
+                    <p class="cuadro-resena">
+                      El disco definitorio del britpop noventero. Melodías directas al corazón,
+                      actitud desenfadada y clásicos como «Wonderwall» y «Champagne Supernova».
+                    </p>
+                    <p class="cuadro-cita">«Don't look back in anger, I heard you say.»</p>
+                  </div>
+                  <div class="cuadro-dorso-footer">
+                    <span>Creation Records · Oasis</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- MONITOR DE IP DEL NAVEGANTE (ESTILO TERMINAL MATRIX) -->
+        <section class="bloque-perfil ip-monitor-matrix" aria-labelledby="titulo-ip">
+          <div class="terminal-bar">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="terminal-title">matrix-tracer --client-ip</span>
+          </div>
+          <div class="ip-monitor-body">
+            <h2 id="titulo-ip" class="ip-etiqueta">&gt; DIRECCIÓN IP DEL NAVEGANTE:</h2>
+            <div id="ip-usuario" class="ip-display" aria-live="polite">
+              <span class="ip-cargando">Detectando IP...</span>
+            </div>
+            <p class="ip-status">&gt; Conexión de red: <span class="ip-status-ok">ESTABLECIDA CON LA MATRIX</span></p>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <!-- FOOTER GLOBAL -->
+    <footer>
+      <p>&copy; 2026 · Perfil de Adrian Javier Cano · Grupo 11 · Comisión A · IFTS Nº 29</p>
+    </footer>
+  </body>
+</html>

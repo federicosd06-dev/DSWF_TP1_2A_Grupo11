@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="es" data-theme="claro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Equipo 11 ~ TP1 para Frontend</title>
+
+    <!--
+      Obtenemos el tema que se debe usar al cargar la página:
+      primero buscamos una preferencia guardada por el usuario.
+      Si no existe, usamos la preferencia de tema del sistema.
+    -->
+    <script>
+      (function () {
+        const temaSalvado = localStorage.getItem("theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oscuro" : "claro");
+
+        document.documentElement.setAttribute("data-theme", temaSalvado);
+
+        // Evitamos animaciones durante la inicialización para prevenir parpadeos.
+        document.documentElement.classList.add("no-transiciones");
+      })();
+    </script>
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <!-- MENÚ DE NAVEGACIÓN GLOBAL -->
+    <header>
+      <div class="nav-contenedor">
+        <a href="index.html" class="nav-logo">Equipo <span>11</span></a>
+        <div class="nav-utilidades">
+          <nav>
+            <ul id="nav-list">
+              <li><a href="index.html" aria-current="page">Inicio</a></li>
+              <li><a href="bitacora.html">Bitácora</a></li>
+              <li><a href="#quienes-somos">¿Quiénes somos?</a></li>
+            </ul>
+          </nav>
+          <button id="menu-toggle" 
+                  class="menu-toggle" 
+                  aria-label="Abrir menú de navegación" 
+                  aria-expanded="false" 
+                  aria-controls="nav-list" 
+                  type="button">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema de la página">
+            <span class="theme-ic-wrapper" aria-hidden="true">
+              <span class="ic-sol">☀️</span>
+              <span class="ic-luna">🌙</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- PROPÓSITO DEL EQUIPO -->
+      <section class="banner">
+        <h1>Somos el <span>Grupo 11</span></h1>
+        <p>
+          Estudiantes de Desarrollo de Software, aprendiendo y construyendo juntos.
+        </p>
+      </section>
+
+      <!-- LISTADO DE INTEGRANTES -->
+      <section id="quienes-somos" class="equipo-listado">
+
+        <h2>¿Quiénes somos?</h2>
+
+        <div class="contenedor-tarjetas">
+
+          <article class="tarjeta fede">
+            <div class="tarjeta-izq">
+                <span class="tarjeta-etiqueta">Coordinación</span>
+                <h3 class="tarjeta-titulo">Federico Acosta Maneiro</h3>
+                <p class="tarjeta-desc">Líder de Proyecto ~ Estructuración & Deploy</p>
+            </div>
+
+            <div class="tarjeta-der">
+              <img class="avatar-movil" src="img/perfil.jpeg"
+                alt="Foto de Federico Acosta Maneiro" />
+              <a class="tarjeta-btn" aria-label="Ver perfil completo de Federico Acosta Maneiro" 
+                href="integrantes/perfil_fede.html">
+                <span class="tarjeta-btn-texto">Ver perfil</span>
+                <span class="tarjeta-btn-flecha" aria-hidden="true">→</span>
+              </a>
+            </div>
+            <img class="avatar-desktop" src="img/perfil.jpeg" alt="Ana Martínez"/>
+          </article>
+
+          <article class="tarjeta ria">
+            <div class="tarjeta-izq">
+                <span class="tarjeta-etiqueta">UI & Animaciones</span>
+                <h3 class="tarjeta-titulo">María Victoria Mariani</h3>
+                <p class="tarjeta-desc">UI + Responsive, Animaciones & Accesibilidad</p>
+            </div>
+            
+            <div class="tarjeta-der">
+              <img class="avatar-movil" src="img/ria/sami100.jpg"
+                alt="Foto de una gatita siamesa durmiendo al sol entre libros." />
+              <a class="tarjeta-btn" aria-label="Ver perfil completo de María Victoria Mariani" 
+                href="integrantes/perfil_victoria.html">
+                <span class="tarjeta-btn-texto">Ver perfil</span>
+                <span class="tarjeta-btn-flecha" aria-hidden="true">→</span>
+              </a>
+            </div>
+            <img class="avatar-desktop" src="img/ria/sami100.jpg" alt="Foto de una gatita siamesa durmiendo al sol entre libros."/>
+          </article>
+
+          <article class="tarjeta cande">
+            <div class="tarjeta-izq">
+                <span class="tarjeta-etiqueta">Bitacora & Navegación</span>
+                <h3 class="tarjeta-titulo">Candelaria Chazarreta</h3>
+                <p class="tarjeta-desc">Maquetación de la bitácora, enlaces y recorrido entre secciones.</p>
+            </div>
+            
+            <div class="tarjeta-der">
+              <img class="avatar-movil" src="img/perfil_knd.jpeg"
+                alt="Foto de Candelaria Chazarreta" />
+              <a class="tarjeta-btn" aria-label="Ver perfil completo de Candelaria Chazarreta" 
+                href="integrantes/perfil_cande.html">
+                <span class="tarjeta-btn-texto">Ver perfil</span>
+                <span class="tarjeta-btn-flecha" aria-hidden="true">→</span>
+              </a>
+            </div>
+            <img class="avatar-desktop" src="img/perfil_knd.jpeg" alt="Candelaria Chazarreta"/>
+          </article>
+
+          <article class="tarjeta javier">
+            <div class="tarjeta-izq">
+                <span class="tarjeta-etiqueta">Documentación</span>
+                <h3 class="tarjeta-titulo">Adrian Javier Cano</h3>
+                <p class="tarjeta-desc">README, documentación técnica y registro del uso de IA.</p>
+            </div>
+            
+            <div class="tarjeta-der">
+              <img class="avatar-movil" src="https://plus.unsplash.com/premium_photo-1676914697574-4c07313ec055?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Foto de Adrian Javier Cano" />
+              <a class="tarjeta-btn" aria-label="Ver perfil completo de Adrian Javier Cano" 
+                href="integrantes/perfil_adrian.html">
+                <span class="tarjeta-btn-texto">Ver perfil</span>
+                <span class="tarjeta-btn-flecha" aria-hidden="true">→</span>
+              </a>
+            </div>
+            <img class="avatar-desktop" src="https://plus.unsplash.com/premium_photo-1676914697574-4c07313ec055?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Marcos Aquino"/>
+          </article>
+
+          <article class="tarjeta marcos">
+            <div class="tarjeta-izq">
+                <span class="tarjeta-etiqueta">QA & Recursos</span>
+                <h3 class="tarjeta-titulo">Marcos Aquino</h3>
+                <p class="tarjeta-desc">Testing responsive, revisión de consola y optimización multimedia.</p>
+            </div>
+            
+            <div class="tarjeta-der">
+              <img class="avatar-movil" src="./img/machito_marcos.jpeg"
+                alt="Foto de Marcos Aquino" />
+              <a class="tarjeta-btn" aria-label="Ver perfil completo de Marcos Aquino" 
+                href="integrantes/perfil_marcos.html">
+                <span class="tarjeta-btn-texto">Ver perfil</span>
+                <span class="tarjeta-btn-flecha" aria-hidden="true">→</span>
+              </a>
+            </div>
+            <img class="avatar-desktop" src="./img/machito_marcos.jpeg" alt="Marcos Aquino"/>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+        <p class="footer-content">
+          <span>&copy; 2026 · Grupo 11 · Comisión A · IFTS Nº 29</span> 
+          <a href="https://github.com/federicosd06-dev/DSWF_TP1_2A_Grupo11" 
+            class="footer-inline-link" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            title="Ir al repositorio de GitHub del Grupo"
+            aria-label="Ver el repositorio de GitHub del Grupo 11">
+            <svg class="footer-icon" alt="Icono de GitHub" viewBox="0 0 16 16" version="1.1">
+              <path fill="currentColor" d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+            </svg>
+          </a>
+        </p>
+    </footer>
+  </body>
+</html>

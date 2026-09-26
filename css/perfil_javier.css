@@ -1,0 +1,1105 @@
+/* ===================================================
+   ESTILOS PROPIOS DEL PERFIL DE ADRIAN JAVIER CANO
+   Tema: MATRIX VERDE (#00ff41 / #00aa2e)
+   Soporte completo: 1 solo cuerpo (sin header estático)
+   Modo Claro: Todo a blanco (sin recuadros negros)
+   Modo Oscuro: Matrix Cyberpunk Neón
+   =================================================== */
+
+/* ===================================================
+   1. UNIFICACIÓN DEL CUERPO (NO HEADER ESTÁTICO)
+   =================================================== */
+header {
+  position: relative !important;
+  top: auto !important;
+  box-shadow: none !important;
+}
+
+/* ===================================================
+   2. VARIABLES Y PALETA MATRIX
+   =================================================== */
+:root {
+  /* Modo Claro por defecto */
+  --color-javier: #008824;
+  --color-javier-hover: #00661a;
+  --color-javier-bg: rgba(0, 136, 36, 0.08);
+  --color-javier-glow: rgba(0, 136, 36, 0.25);
+  --color-marco-borde: #f1f5f2;
+  --color-marco-interior: #ffffff;
+  --color-marco-sombra: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="oscuro"] {
+  /* Modo Matrix Cyberpunk */
+  --color-javier: #00ff41;
+  --color-javier-hover: #5dfc89;
+  --color-javier-bg: rgba(0, 255, 65, 0.12);
+  --color-javier-glow: rgba(0, 255, 65, 0.45);
+  --color-marco-borde: #071c0d;
+  --color-marco-interior: #020703;
+  --color-marco-sombra: rgba(0, 0, 0, 0.85);
+
+  /* Paleta de degradados oscuro Matrix */
+  --grad-matrix-fondo: radial-gradient(circle at 50% 15%, #051a0c 0%, #020a05 45%, #010402 100%);
+  --grad-matrix-card: linear-gradient(135deg, #020804 0%, #071d0e 50%, #020703 100%);
+  --grad-matrix-bloque: linear-gradient(145deg, #010603 0%, #06190b 50%, #010402 100%);
+  --grad-matrix-placa: linear-gradient(180deg, rgba(0, 255, 65, 0.16) 0%, rgba(2, 7, 3, 0.95) 100%);
+}
+
+/* Modificador específico para la tarjeta de perfil de Adrian */
+.tarjeta-perfil.javier {
+  --color-secundario: var(--color-javier);
+  --color-btn-fede: var(--color-javier);
+  width: 100%;
+  max-width: 1200px;
+  border-top: 4px solid var(--color-javier);
+  box-shadow: 0 4px 20px rgba(0, 255, 65, 0.12);
+}
+
+/* ===================================================
+   Avatar 3D Giratorio (Perro <-> Trinity)
+   =================================================== */
+.avatar-flip-wrapper {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 1.5rem;
+  perspective: 1000px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 50%;
+  position: relative;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.avatar-flip-wrapper:hover {
+  transform: scale(1.06);
+}
+
+.avatar-flip-wrapper:focus-visible {
+  outline: 3px solid var(--color-javier);
+  outline-offset: 4px;
+}
+
+.avatar-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 50%;
+}
+
+.avatar.avatar-cara {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  border-radius: 50% !important;
+  object-fit: cover;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  border: 4px solid var(--color-javier) !important;
+  box-shadow: 0 0 22px var(--color-javier-glow) !important;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  pointer-events: none;
+}
+
+.avatar-flip-wrapper:hover .avatar.avatar-cara {
+  box-shadow: 0 0 32px var(--color-javier) !important;
+}
+
+.avatar-cara.avatar-frente {
+  transform: rotateY(0deg) translateZ(1px);
+  z-index: 2;
+}
+
+.avatar-cara.avatar-dorso {
+  transform: rotateY(180deg) translateZ(1px);
+  z-index: 1;
+}
+
+/* Encabezado e información de contacto */
+.javier-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.javier-nombre {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: var(--color-texto);
+  margin-bottom: 0.3rem;
+}
+
+.javier-rol-badge {
+  display: inline-block;
+  background-color: var(--color-javier-bg);
+  color: var(--color-javier);
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  border: 1px solid var(--color-javier);
+  box-shadow: 0 0 10px var(--color-javier-glow);
+}
+
+/* Lista de Habilidades en Pills Matrix */
+.javier-habilidades-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  padding: 0;
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.javier-habilidades-lista li {
+  background-color: var(--color-javier-bg);
+  color: var(--color-javier);
+  padding: 0.45rem 1rem;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border: 1px solid var(--color-javier);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.javier-habilidades-lista li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px var(--color-javier-glow);
+}
+
+/* Encabezados de sección con detalle temático */
+.javier-seccion-titulo {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-texto);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.javier-seccion-titulo span.icono {
+  color: var(--color-javier);
+  text-shadow: 0 0 8px var(--color-javier-glow);
+}
+
+.javier-subtitulo-guia {
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+  margin-bottom: 1.2rem;
+  font-style: italic;
+}
+
+/* ===================================================
+   3. TERMINAL LINUX MATRIX: UBICACIÓN Y EDAD
+   =================================================== */
+
+.terminal-datos-matrix {
+  max-width: 520px;
+  width: 100%;
+  margin: 1.1rem auto 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: left;
+  font-family: "Courier New", Consolas, "Fira Code", monospace;
+  position: relative;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.terminal-dot.red { background-color: #ff5f56; }
+.terminal-dot.yellow { background-color: #ffbd2e; }
+.terminal-dot.green { background-color: #27c93f; }
+
+.terminal-title {
+  font-size: 0.76rem;
+  margin-left: 6px;
+  letter-spacing: 0.4px;
+  font-weight: 700;
+  flex-grow: 1;
+}
+
+.terminal-replay-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 255, 65, 0.4);
+  color: #00ff41;
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.terminal-replay-btn:hover {
+  background: rgba(0, 255, 65, 0.18);
+  border-color: #00ff41;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+}
+
+.terminal-body {
+  padding: 0.85rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: relative;
+  z-index: 2;
+  min-height: 175px;
+  max-height: 250px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 255, 65, 0.4) transparent;
+}
+
+.terminal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 255, 65, 0.35);
+  border-radius: 4px;
+}
+
+.terminal-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.terminal-prompt {
+  font-weight: 700;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.terminal-cmd {
+  font-weight: 700;
+}
+
+.terminal-line.terminal-step .terminal-text {
+  opacity: 0.9;
+}
+
+.terminal-line.terminal-exploit .terminal-text {
+  color: #00ff41 !important;
+  background: rgba(0, 255, 65, 0.14);
+  border: 1px solid rgba(0, 255, 65, 0.4);
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  box-shadow: 0 0 12px rgba(0, 255, 65, 0.35);
+  animation: glitchPulso 0.4s ease;
+}
+
+.terminal-prompt-root {
+  color: #ff3b30 !important;
+  font-weight: 800;
+  text-shadow: 0 0 8px rgba(255, 59, 48, 0.6);
+}
+
+.terminal-cursor {
+  display: inline-block;
+  font-weight: 700;
+  animation: parpadeoCursor 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes parpadeoCursor {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes glitchPulso {
+  0% { transform: scale(0.97); opacity: 0.7; }
+  50% { transform: scale(1.02); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* ===================================================
+   4. MARCOS DE CUADROS & POSTERS (Películas y Discos)
+   =================================================== */
+
+.javier-galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.cuadro-marco-card {
+  perspective: 1000px;
+  cursor: pointer;
+  height: 380px;
+  position: relative;
+  box-sizing: border-box !important;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cuadro-marco-card,
+.cuadro-marco-card *,
+.cuadro-marco-card:focus,
+.cuadro-marco-card:focus-visible,
+.cuadro-marco-card:active {
+  outline: none !important;
+}
+
+.cuadro-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 12px;
+  box-sizing: border-box !important;
+  outline: none !important;
+  border: none !important;
+}
+
+.cuadro-marco-card.girada .cuadro-inner {
+  transform: rotateY(180deg);
+}
+
+.cuadro-frente,
+.cuadro-dorso {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box !important;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  outline: none !important;
+}
+
+.cuadro-frente {
+  transform: rotateY(0deg) translateZ(1px);
+  padding: 8px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.25s ease;
+  z-index: 2;
+}
+
+.cuadro-dorso {
+  transform: rotateY(180deg) translateZ(1px);
+  padding: 1.4rem 1.2rem;
+  justify-content: space-between;
+  text-align: center;
+  transition: opacity 0.25s ease;
+  z-index: 1;
+}
+
+/* Control estricto de visibilidad para eliminar cualquier sangrado o defecto debajo del marco */
+.cuadro-marco-card:not(.girada) .cuadro-dorso {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.cuadro-marco-card.girada .cuadro-dorso {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  z-index: 3;
+}
+
+.cuadro-marco-card.girada .cuadro-frente {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.cuadro-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 4px;
+  flex-shrink: 0;
+  box-sizing: border-box !important;
+}
+
+.cuadro-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.cuadro-marco-card:hover .cuadro-img {
+  transform: scale(1.05);
+}
+
+.cuadro-img-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+
+.cuadro-marco-card:hover .cuadro-img-wrapper::after {
+  left: 170%;
+}
+
+.cuadro-placa {
+  margin-top: 8px;
+  text-align: center;
+  padding: 4px 6px;
+  border-radius: 4px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 52px;
+  box-sizing: border-box !important;
+  overflow: hidden;
+}
+
+.cuadro-titulo {
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cuadro-subtitulo {
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.cuadro-dorso-header {
+  padding-bottom: 0.6rem;
+}
+
+.cuadro-dorso-categoria {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+.cuadro-dorso-titulo {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-top: 0.2rem;
+}
+
+.cuadro-dorso-cuerpo {
+  margin: 0.8rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.cuadro-resena {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin-bottom: 0.6rem;
+}
+
+.cuadro-cita {
+  font-size: 0.78rem;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.cuadro-dorso-footer {
+  font-size: 0.72rem;
+  border-top: 1px solid var(--color-borde);
+  padding-top: 0.4rem;
+}
+
+
+/* ===================================================
+   6. MODO CLARO: TODO A BLANCO (SIN RECUADROS NEGROS)
+   =================================================== */
+
+[data-theme="claro"] body {
+  background-color: #ffffff !important;
+}
+
+/* Header blanco integrado al cuerpo */
+[data-theme="claro"] header {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="claro"] .nav-logo {
+  color: #111827 !important;
+}
+
+[data-theme="claro"] .nav-logo span {
+  color: #008824 !important;
+}
+
+[data-theme="claro"] #nav-list a {
+  color: #374151 !important;
+}
+
+[data-theme="claro"] #nav-list a:hover {
+  color: #008824 !important;
+}
+
+[data-theme="claro"] .menu-toggle span {
+  background-color: #111827 !important;
+}
+
+[data-theme="claro"] .theme-toggle-btn {
+  background-color: #f3f4f6 !important;
+  border-color: #d1d5db !important;
+}
+
+/* Footer blanco */
+[data-theme="claro"] footer {
+  background-color: #ffffff !important;
+  color: #4b5563 !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Tarjeta principal blanca */
+[data-theme="claro"] .tarjeta-perfil.javier {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-top: 4px solid #008824 !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Secciones de habilidades y tarjetas secundarias */
+[data-theme="claro"] .bloque-perfil,
+[data-theme="claro"] .bloque-interactivo {
+  background-color: #fbfdfb !important;
+  border: 1px solid rgba(0, 136, 36, 0.16) !important;
+}
+
+/* Terminal Matrix en Modo Claro (Blanco y Verde, sin negro) */
+[data-theme="claro"] .terminal-datos-matrix {
+  background-color: #ffffff !important;
+  border: 1.5px solid #008824 !important;
+  box-shadow: 0 3px 14px rgba(0, 136, 36, 0.12) !important;
+}
+
+[data-theme="claro"] .terminal-bar {
+  background-color: #f0fdf4 !important;
+  border-bottom: 1px solid rgba(0, 136, 36, 0.2) !important;
+}
+
+[data-theme="claro"] .terminal-title {
+  color: #008824 !important;
+}
+
+[data-theme="claro"] .terminal-prompt {
+  color: #008824 !important;
+}
+
+[data-theme="claro"] .terminal-text {
+  color: #15803d !important;
+}
+
+[data-theme="claro"] .terminal-text strong {
+  color: #0f172a !important;
+}
+
+[data-theme="claro"] .terminal-cursor {
+  color: #008824 !important;
+}
+
+[data-theme="claro"] .terminal-replay-btn {
+  border-color: rgba(0, 136, 36, 0.4) !important;
+  color: #008824 !important;
+}
+
+[data-theme="claro"] .terminal-replay-btn:hover {
+  background: rgba(0, 136, 36, 0.12) !important;
+  border-color: #008824 !important;
+}
+
+[data-theme="claro"] .terminal-line.terminal-exploit .terminal-text {
+  color: #008824 !important;
+  background: rgba(0, 136, 36, 0.1) !important;
+  border-color: rgba(0, 136, 36, 0.35) !important;
+  box-shadow: 0 0 8px rgba(0, 136, 36, 0.2) !important;
+}
+
+/* Cuadros y Marcos en Modo Claro (Blancos con bisel claro, sin negro) */
+[data-theme="claro"] .cuadro-frente {
+  background-color: #ffffff !important;
+  border: 10px solid #f3f6f4 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), inset 0 0 0 2px #008824 !important;
+}
+
+[data-theme="claro"] .cuadro-marco-card:hover .cuadro-frente {
+  border-color: #e5ede7 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 136, 36, 0.25), inset 0 0 0 2px #008824 !important;
+}
+
+[data-theme="claro"] .cuadro-img-wrapper {
+  background-color: #f8faf9 !important;
+}
+
+[data-theme="claro"] .cuadro-placa {
+  background: linear-gradient(180deg, #f0fdf4, #ffffff) !important;
+  border: 1px solid rgba(0, 136, 36, 0.22) !important;
+}
+
+[data-theme="claro"] .cuadro-titulo {
+  color: #0f172a !important;
+}
+
+[data-theme="claro"] .cuadro-subtitulo {
+  color: #008824 !important;
+}
+
+[data-theme="claro"] .cuadro-dorso {
+  background-color: #ffffff !important;
+  border: 3px solid #008824 !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="claro"] .cuadro-dorso-header {
+  border-bottom: 1px dashed rgba(0, 136, 36, 0.3) !important;
+}
+
+[data-theme="claro"] .cuadro-dorso-categoria {
+  color: #008824 !important;
+}
+
+[data-theme="claro"] .cuadro-dorso-titulo {
+  color: #0f172a !important;
+}
+
+[data-theme="claro"] .cuadro-resena {
+  color: #334155 !important;
+}
+
+[data-theme="claro"] .cuadro-cita {
+  color: #008824 !important;
+}
+
+
+
+/* ===================================================
+   7. MODO OSCURO: MATRIX CYBERPUNK NEÓN (DEGRADADO NEGRO Y VERDE)
+   =================================================== */
+
+[data-theme="oscuro"] body {
+  background: radial-gradient(circle at 50% 15%, #051a0c 0%, #020a05 45%, #010402 100%) !important;
+  background-attachment: fixed !important;
+  background-color: #010402 !important;
+}
+
+[data-theme="oscuro"] header {
+  background: linear-gradient(180deg, #000000 0%, #020803 100%) !important;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.28) !important;
+}
+
+[data-theme="oscuro"] footer {
+  background: linear-gradient(180deg, #020803 0%, #000000 100%) !important;
+  border-top: 1px solid rgba(0, 255, 65, 0.28) !important;
+  color: #94a3b8 !important;
+}
+
+[data-theme="oscuro"] .tarjeta-perfil.javier {
+  background: linear-gradient(135deg, #020804 0%, #071d0e 50%, #020703 100%) !important;
+  border: 1px solid rgba(0, 255, 65, 0.3) !important;
+  border-top: 4px solid #00ff41 !important;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.8), 0 0 16px rgba(0, 255, 65, 0.15) !important;
+}
+
+[data-theme="oscuro"] .javier-rol-badge {
+  background: linear-gradient(135deg, rgba(0, 255, 65, 0.22) 0%, rgba(0, 255, 65, 0.06) 100%) !important;
+  border: 1px solid #00ff41 !important;
+  color: #00ff41 !important;
+  box-shadow: 0 0 14px rgba(0, 255, 65, 0.35) !important;
+}
+
+[data-theme="oscuro"] .javier-habilidades-lista li {
+  background: linear-gradient(135deg, rgba(0, 255, 65, 0.18) 0%, rgba(0, 255, 65, 0.05) 100%) !important;
+  border: 1px solid #00ff41 !important;
+  color: #00ff41 !important;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.18) !important;
+}
+
+[data-theme="oscuro"] .javier-habilidades-lista li:hover {
+  background: linear-gradient(135deg, rgba(0, 255, 65, 0.28) 0%, rgba(0, 255, 65, 0.12) 100%) !important;
+  box-shadow: 0 0 16px rgba(0, 255, 65, 0.45) !important;
+}
+
+[data-theme="oscuro"] .bloque-perfil,
+[data-theme="oscuro"] .bloque-interactivo {
+  background: linear-gradient(145deg, #010603 0%, #06190b 50%, #010402 100%) !important;
+  border: 1px solid rgba(0, 255, 65, 0.25) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 255, 65, 0.08) !important;
+}
+
+/* Terminal oscura con scanlines */
+[data-theme="oscuro"] .terminal-datos-matrix {
+  background: linear-gradient(180deg, #010402 0%, #041206 50%, #010302 100%) !important;
+  border: 1px solid #00ff41 !important;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3), inset 0 0 12px rgba(0, 255, 65, 0.08) !important;
+}
+
+[data-theme="oscuro"] .terminal-datos-matrix::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.35) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+[data-theme="oscuro"] .terminal-bar {
+  background: linear-gradient(180deg, #020703 0%, #010402 100%) !important;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.35) !important;
+}
+
+[data-theme="oscuro"] .terminal-title {
+  color: #00ff41 !important;
+}
+
+[data-theme="oscuro"] .terminal-prompt {
+  color: #5dfc89 !important;
+  text-shadow: 0 0 8px #00ff41 !important;
+}
+
+[data-theme="oscuro"] .terminal-text {
+  color: #00ff41 !important;
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.5) !important;
+}
+
+[data-theme="oscuro"] .terminal-text strong {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.7) !important;
+}
+
+[data-theme="oscuro"] .terminal-cursor {
+  color: #00ff41 !important;
+}
+
+/* Cuadros oscuros con degradado negro y verde */
+[data-theme="oscuro"] .cuadro-frente {
+  background: linear-gradient(145deg, #020603 0%, #081d0d 60%, #020603 100%) !important;
+  border: 10px solid #071c0d !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75), inset 0 0 0 2px #00ff41, inset 0 0 14px rgba(0, 0, 0, 0.8) !important;
+}
+
+[data-theme="oscuro"] .cuadro-marco-card:hover .cuadro-frente {
+  border-color: #0e3019 !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85), 0 0 22px rgba(0, 255, 65, 0.5), inset 0 0 0 2px #00ff41 !important;
+}
+
+[data-theme="oscuro"] .cuadro-img-wrapper {
+  background-color: #020804 !important;
+}
+
+[data-theme="oscuro"] .cuadro-placa {
+  background: linear-gradient(180deg, rgba(0, 255, 65, 0.16) 0%, rgba(2, 7, 3, 0.95) 100%) !important;
+  border: 1px solid rgba(0, 255, 65, 0.35) !important;
+}
+
+[data-theme="oscuro"] .cuadro-titulo {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.3) !important;
+}
+
+[data-theme="oscuro"] .cuadro-subtitulo {
+  color: #00ff41 !important;
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.4) !important;
+}
+
+[data-theme="oscuro"] .cuadro-dorso {
+  background: linear-gradient(135deg, #020603 0%, #09220e 50%, #020502 100%) !important;
+  border: 4px solid #00ff41 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), 0 0 18px rgba(0, 255, 65, 0.45) !important;
+}
+
+[data-theme="oscuro"] .cuadro-dorso-header {
+  border-bottom: 1px dashed rgba(0, 255, 65, 0.35) !important;
+}
+
+[data-theme="oscuro"] .cuadro-dorso-categoria {
+  color: #00ff41 !important;
+}
+
+[data-theme="oscuro"] .cuadro-dorso-titulo {
+  color: #ffffff !important;
+}
+
+[data-theme="oscuro"] .cuadro-resena {
+  color: #d6d9de !important;
+}
+
+[data-theme="oscuro"] .cuadro-cita {
+  color: #00ff41 !important;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.4) !important;
+}
+
+/* ===================================================
+   MONITOR DE IP MATRIX (En grande y verde con degradado)
+   =================================================== */
+
+.ip-monitor-matrix {
+  margin-top: 2rem;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: "Courier New", Consolas, "Fira Code", monospace;
+  position: relative;
+  text-align: center;
+}
+
+.ip-monitor-body {
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ip-etiqueta {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.ip-display {
+  font-size: clamp(2rem, 5.5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: 2px;
+  line-height: 1.15;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  margin: 0.6rem 0;
+  display: inline-block;
+  font-family: "Courier New", Consolas, "Fira Code", monospace;
+  user-select: all;
+  transition: all 0.3s ease;
+}
+
+.ip-status {
+  font-size: 0.82rem;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.ip-status-ok {
+  font-weight: 800;
+}
+
+/* Modo Claro: Todo blanco con verde de alto contraste */
+[data-theme="claro"] .ip-monitor-matrix {
+  background-color: #ffffff !important;
+  border: 1.5px solid #008824 !important;
+  box-shadow: 0 4px 16px rgba(0, 136, 36, 0.1) !important;
+}
+
+[data-theme="claro"] .ip-monitor-matrix .terminal-bar {
+  background-color: #f0fdf4 !important;
+  border-bottom: 1px solid rgba(0, 136, 36, 0.2) !important;
+}
+
+[data-theme="claro"] .ip-monitor-matrix .terminal-title {
+  color: #008824 !important;
+}
+
+[data-theme="claro"] .ip-etiqueta {
+  color: #0f172a !important;
+}
+
+[data-theme="claro"] .ip-display {
+  color: #008824 !important;
+  background-color: #f0fdf4 !important;
+  border: 1.5px solid rgba(0, 136, 36, 0.3) !important;
+  box-shadow: 0 2px 10px rgba(0, 136, 36, 0.12) !important;
+}
+
+[data-theme="claro"] .ip-status {
+  color: #4b5563 !important;
+}
+
+[data-theme="claro"] .ip-status-ok {
+  color: #008824 !important;
+}
+
+/* Modo Oscuro: Matrix Cyberpunk Neón con degradado */
+[data-theme="oscuro"] .ip-monitor-matrix {
+  background: linear-gradient(145deg, #010603 0%, #06190b 50%, #010402 100%) !important;
+  border: 1.5px solid #00ff41 !important;
+  box-shadow: 0 0 25px rgba(0, 255, 65, 0.3), inset 0 0 12px rgba(0, 255, 65, 0.08) !important;
+}
+
+[data-theme="oscuro"] .ip-monitor-matrix .terminal-bar {
+  background: linear-gradient(180deg, #020703 0%, #010402 100%) !important;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.35) !important;
+}
+
+[data-theme="oscuro"] .ip-monitor-matrix .terminal-title {
+  color: #00ff41 !important;
+}
+
+[data-theme="oscuro"] .ip-etiqueta {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+}
+
+[data-theme="oscuro"] .ip-display {
+  color: #00ff41 !important;
+  background: linear-gradient(180deg, rgba(0, 255, 65, 0.15) 0%, rgba(2, 7, 3, 0.8) 100%) !important;
+  border: 1px solid rgba(0, 255, 65, 0.45) !important;
+  text-shadow: 0 0 16px #00ff41, 0 0 30px rgba(0, 255, 65, 0.6) !important;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.25) !important;
+}
+
+[data-theme="oscuro"] .ip-status {
+  color: #94a3b8 !important;
+}
+
+[data-theme="oscuro"] .ip-status-ok {
+  color: #00ff41 !important;
+  text-shadow: 0 0 8px #00ff41;
+}
+
+/* ===================================================
+   8. RESPONSIVE DESIGN
+   =================================================== */
+
+@media (max-width: 899px) {
+  .javier-galeria-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  .cuadro-marco-card {
+    height: 380px;
+  }
+}
+
+@media (max-width: 550px) {
+  .avatar-flip-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+
+  .javier-galeria-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .cuadro-marco-card {
+    max-width: 320px;
+    margin: 0 auto;
+    width: 100%;
+    height: 380px;
+  }
+
+  .terminal-datos-matrix {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .terminal-body {
+    padding: 0.75rem 0.85rem;
+    min-height: 160px;
+    max-height: 220px;
+  }
+
+  .terminal-line {
+    font-size: 0.8rem;
+    gap: 0.4rem;
+  }
+
+  .terminal-replay-btn {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+  }
+}
+
+/* ===================================================
+   9. ACCESIBILIDAD (Movimiento reducido)
+   =================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar-flip-inner {
+    transition: none !important;
+  }
+  .cuadro-inner {
+    transition: none !important;
+  }
+  .cuadro-marco-card.girada .cuadro-inner {
+    transform: none;
+  }
+  .cuadro-dorso {
+    position: static;
+    transform: none;
+  }
+  .cuadro-marco-card.destacada .cuadro-inner {
+    animation: none;
+  }
+  .cuadro-img {
+    transition: none;
+  }
+  .cuadro-img-wrapper::after {
+    display: none;
+  }
+}
