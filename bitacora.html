@@ -4,12 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bitácora ~ Equipo 11</title>
-
-    <!--
-      Obtenemos el tema que se debe usar al cargar la página:
-      primero buscamos una preferencia guardada por el usuario.
-      Si no existe, usamos la preferencia de tema del sistema.
-    -->
     <script>
       (function () {
         const temaSalvado = localStorage.getItem("theme") ||
@@ -17,7 +11,6 @@
 
         document.documentElement.setAttribute("data-theme", temaSalvado);
 
-        // Evitamos animaciones durante la inicialización para prevenir parpadeos.
         document.documentElement.classList.add("no-transiciones");
       })();
     </script>
@@ -27,7 +20,7 @@
     <script type="module" src="js/bitacora.js"></script>
   </head>
   <body>
-    <!-- MENÚ DE NAVEGACIÓN GLOBAL (idéntico al de index.html) -->
+    <!-- MENÚ DE NAVEGACIÓN GLOBAL -->
     <header>
       <div class="nav-contenedor">
         <a href="index.html" class="nav-logo">Equipo <span>11</span></a>
