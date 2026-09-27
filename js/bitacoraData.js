@@ -40,6 +40,50 @@ const bitacoraData = [
     categoria: "Diseño",
     titulo: "Rediseño del banner",
     texto: "Se rediseñó parcialmente la sección hero, que de ahora en más pasa a llamarse banner, sumándole una textura decorativa y adaptando su comportamiento para pantallas pequeñas."
-  }
+  },
+  {
+    fecha: "25 de septiembre de 2026",
+    categoria: "Estructura",
+    titulo: "Incorporación de la sección Bitácora",
+    texto: "Se desarrolló la página de bitácora para documentar el proceso del equipo. Se maquetó la estructura HTML, se aplicaron estilos con tipografía fluida, se implementó su lógica interactiva en JavaScript y se verificó la navegación interna."
+  },
+  {
+    fecha: "25 de septiembre de 2026",
+    categoria: "Mantenimiento",
+    titulo: "Limpieza de código y corrección de sintaxis",
+    texto: "Se aplicaron mejoras generales de accesibilidad, limpieza de código y se solucionó un bug menor de sintaxis (un cierre de corchete faltante)."
+  },
+  {
+    fecha: "26 de septiembre de 2026",
+    categoria: "Accesibilidad",
+    titulo: "Corrección de accesibilidad en el acordeón",
+    texto: "Se reestructuró el HTML del acordeón de la bitácora para garantizar su validez. Se corrigió la jerarquía de encabezados, se eliminaron etiquetas inválidas dentro de los botones y se añadieron atributos ARIA para su correcta interpretación por lectores de pantalla."
+  },
+  {
+    fecha: "25 de septiembre de 2026",
+    categoria: "Organización",
+    titulo: "Acuerdo de modularización del CSS por perfil",
+    texto: "Se estableció como acuerdo del equipo separar los estilos CSS en archivos independientes según el perfil de cada integrante. Esta medida busca evitar conflictos de fusión (merge conflicts) en la hoja global, facilitar las revisiones de código y agilizar el mantenimiento individual."
+  },
+  {
+    fecha: "26 de septiembre de 2026",
+    categoria: "Dificultades",
+    titulo: "Conflicto por reversión inadvertida y ruptura de enlaces",
+    texto: "Tras el merge de la rama Feature/icon GitHub (#10), se creó y fusionó un PR de revert (#11) guiado por IA sin previa revisión del equipo. Esto provocó una reubicación desorganizada de 578 líneas de código CSS hacia la hoja global styles.css y rompió el enlace hacia la bitácora desde el perfil de Victoria al no incluir la referencia al directorio padre (solicitando integrantes/bitacora.html en lugar de ../bitacora.html)."
+  },
+  {
+    fecha: "26 de septiembre de 2026",
+    categoria: "Soluciones",
+    titulo: "Restauración mediante 'Revert del Revert' y protocolo de flujo de trabajo",
+    texto: "Para restaurar el estado estable, se realizó una reversión del PR previo ('Revert Revert Feature/icon GitHub'). A través del canal de comunicación del equipo, se aclaró el origen del problema y se establecieron acuerdos de trabajo estrictos: prohibición de auto-aprobar o auto-mergear PRs propios, evaluación crítica de las respuestas de la IA antes de ejecutar comandos en Git y obligación de consultar al grupo o enviar capturas ante cualquier duda técnica antes de alterar el repositorio compartido."
+  },
+  {
+  fecha: "27 de septiembre de 2026",
+  categoria: "Documentación",
+  titulo: "Finalización del README.md, guía técnica y documentación para la presentación",
+  texto: "Se completó la redacción integral del archivo README.md obligatorio para la entrega final del proyecto. Se consolidaron los enlaces de GitHub y del deploy en Vercel, la estructura general del proyecto, la matriz de roles y responsabilidades de los integrantes y las guías de ejecución local (Live Server).\n\nAsimismo, se incluyó la documentación técnica de JavaScript explicando el funcionamiento de scripts principales: main.js (efecto 3D en tarjetas) y bitacora.js (inyección dinámica de entradas). Finalmente, se registró formalmente la declaración sobre el uso ético y asistencial de la IA en tareas de matemáticas para animaciones 3D, persistencia y depuración responsive."
+}
+
+
 ];
 export { bitacoraData };
