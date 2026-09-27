@@ -9,8 +9,6 @@ function renderLog() {
     if (entrada.categoria === "Bug detectado") claseTag += " tag-alerta";
     if (entrada.categoria === "Bug resuelto") claseTag += " tag-exito";
 
-    // IDs únicos por entrada: conectan el botón con su panel (aria-controls)
-    // y el panel con su encabezado (aria-labelledby).
     const idHeader = `header-bitacora-${indice}`;
     const idPanel = `panel-bitacora-${indice}`;
 
@@ -48,9 +46,6 @@ function renderLog() {
   const acordeonHeaders = document.querySelectorAll(".timeline-header");
   acordeonHeaders.forEach(header => {
     header.addEventListener("click", () => {
-      // Ojo: antes era header.parentElement, pero ahora el padre directo
-      // del botón es el <h2>, no el <article>. Con closest() buscamos
-      // el <article> más cercano sin importar cuántos niveles haya.
       const item = header.closest(".timeline-item");
       const content = item.querySelector(".timeline-content");
       const isOpen = item.classList.contains("activo");
