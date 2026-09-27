@@ -1,0 +1,207 @@
+/* ===================================================
+   ESTILOS PROPIOS DEL PERFIL DE CANDE
+   =================================================== */
+
+.tarjeta-perfil.cande {
+  --color-secundario: var(--color-etiqueta-rosa);
+  --color-btn-fede: var(--color-etiqueta-rosa);
+}
+
+.tarjeta-perfil.cande .avatar {
+  border-color: var(--color-etiqueta-rosa);
+}
+
+/* Habilidades como pills compactas */
+.habilidades-lista {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+}
+
+.habilidades-lista li {
+  background-color: var(--color-etiqueta-rosa-bg);
+  color: var(--color-etiqueta-rosa);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tarjeta-perfil.cande .habilidades-lista li {
+  font-family: var(--fuente-principal);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.035em;
+  border-radius: 3px;
+  padding: 0.34rem 0.72rem;
+  border: 1px solid rgba(236, 72, 153, 0.16);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.tarjeta-perfil.cande .habilidades-lista li:hover {
+  transform: translateY(-2px);
+  background-color: rgba(236, 72, 153, 0.20);
+  box-shadow: 0 5px 18px rgba(236, 72, 153, 0.08);
+}
+
+/* ===================================================
+   TÍTULOS DE SECCIÓN 
+   =================================================== */
+.tarjeta-perfil.cande .bloque-perfil h2,
+.tarjeta-perfil.cande .bloque-interactivo h2 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-etiqueta-rosa);
+  margin-bottom: 0.9rem;
+}
+
+/* ===================================================
+   TARJETAS FLIP (películas) y TARJETAS FIJAS (discos)
+   =================================================== */
+.flip-ayuda {
+  font-size: 0.8rem;
+  color: var(--color-texto-suave);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.flip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.flip-card {
+  width: 180px;
+  height: 280px;
+  perspective: 800px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.flip-card:focus-visible {
+  outline: 2px solid var(--color-etiqueta-rosa);
+  outline-offset: 3px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.girada .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-frente,
+.flip-card-dorso {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* evita que el frente se transparente al girar en Safari */
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--color-tarjeta);
+  border: 1px solid var(--color-borde);
+  box-shadow: 0 6px 14px var(--color-sombra);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.flip-card-frente {
+  justify-content: flex-start;
+}
+
+.flip-card-fija {
+  width: 180px;
+  border-radius: 10px;
+  background-color: var(--color-tarjeta);
+  border: 1px solid var(--color-borde);
+  box-shadow: 0 6px 14px var(--color-sombra);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.flip-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-color: var(--color-fondo);
+  border-radius: 6px;
+  margin-bottom: 0.4rem;
+}
+
+.flip-card-fija .flip-card-img {
+  height: 164px;
+}
+
+.flip-card-titulo {
+  color: var(--color-texto);
+  font-weight: 700;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  margin-top: 0.2rem;
+}
+
+.flip-card-frente .flip-card-autor,
+.flip-card-fija .flip-card-autor {
+  color: var(--color-texto-suave);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.flip-card-dorso .flip-card-autor {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
+}
+
+.flip-card-dorso {
+  transform: rotateY(180deg);
+  justify-content: center;
+  background-color: #831843; /* Tono magenta/rosa oscuro e intenso */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.flip-card-frase {
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 600;
+  color: #f8fafc; 
+  line-height: 1.35;
+}
+
+/* ===================================================
+   GADGET: RECOMENDADOR DE PELÍCULAS
+   =================================================== */
+.resultado-ruleta {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--color-etiqueta-rosa);
+  min-height: 1.5em; /* Evita saltos de diseño cuando el texto está vacío */
+}
+.flip-card.destacada {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--color-etiqueta-rosa-bg);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
