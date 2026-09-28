@@ -1,3 +1,5 @@
+<!doctype html>
+<html lang="es" data-theme="claro">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,8 +12,11 @@
     -->
     <script>
       (function () {
-        const temaSalvado = localStorage.getItem("theme") ||
-          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oscuro" : "claro");
+        const temaSalvado =
+          localStorage.getItem("theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "oscuro"
+            : "claro");
 
         document.documentElement.setAttribute("data-theme", temaSalvado);
 
@@ -21,7 +26,9 @@
     </script>
 
     <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/styles_fede.css" />
     <script src="../js/main.js" defer></script>
+    <script src="../js/fede_perfil.js" defer></script>
   </head>
   <body>
     <!-- MENÚ DE NAVEGACIÓN GLOBAL -->
@@ -36,17 +43,23 @@
               <li><a href="../index.html#quienes-somos">¿Quiénes somos?</a></li>
             </ul>
           </nav>
-          <button id="menu-toggle" 
-                  class="menu-toggle" 
-                  aria-label="Abrir menú de navegación" 
-                  aria-expanded="false" 
-                  aria-controls="nav-list" 
-                  type="button">
+          <button
+            id="menu-toggle"
+            class="menu-toggle"
+            aria-label="Abrir menú de navegación"
+            aria-expanded="false"
+            aria-controls="nav-list"
+            type="button"
+          >
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </button>
-          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema de la página">
+          <button
+            id="theme-toggle"
+            class="theme-toggle-btn"
+            aria-label="Cambiar tema de la página"
+          >
             <span class="theme-ic-wrapper" aria-hidden="true">
               <span class="ic-sol">☀️</span>
               <span class="ic-luna">🌙</span>
@@ -55,74 +68,189 @@
         </div>
       </div>
     </header>
-    <main>
-      <article class="tarjeta-perfil">
-        <!-- FOTO / AVATAR / MASCOTA -->
-        <img src="../img/perfil.jpeg" alt="Foto de perfil" class="avatar" />
 
-        <h1>Federico Acosta Maneiro</h1>
+    <main>
+      <article class="tarjeta-perfil fede">
+        <img
+          src="../img/fede/perfil.jpeg"
+          alt="Foto de perrita blanca acostada en la cama, mirando a cámara tiernamente."
+          class="avatar"
+        />
+
+        <h1 data-texto="Federico Acosta Maneiro">Federico Acosta Maneiro</h1>
         <p><strong>Ciudad:</strong> Buenos Aires, Argentina</p>
         <p><strong>Edad:</strong> 32 años</p>
 
-        <!-- HABILIDADES (Mínimo 4) -->
-        <section class="bloque-perfil">
-          <h2>Habilidades</h2>
-          <ul>
-            <li>HTML5</li>
-            <li>CSS3</li>
-            <li>JavaScript</li>
-            <li>React</li>
-            <li>Node.js</li>
-            <li>Java</li>
-            <li>Spring Boot</li>
-            <li>C#</li>
-            <li>MySQL</li>
-            <li>Figma</li>
-            <li>Manejo de Git y GitHub</li>
+        <!-- HABILIDADES -->
+        <section class="bloque-perfil" aria-labelledby="titulo-habilidades">
+          <h2 id="titulo-habilidades">Habilidades</h2>
+
+          <div class="fede-grupo">
+            <h3>Frontend</h3>
+            <ul class="fede-chips">
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>JavaScript</li>
+              <li>React</li>
+            </ul>
+          </div>
+
+          <div class="fede-grupo">
+            <h3>Backend y datos</h3>
+            <ul class="fede-chips">
+              <li>Node.js</li>
+              <li>Java</li>
+              <li>Spring Boot</li>
+              <li>C#</li>
+              <li>MySQL</li>
+            </ul>
+          </div>
+
+          <div class="fede-grupo">
+            <h3>Herramientas</h3>
+            <ul class="fede-chips">
+              <li>Figma</li>
+              <li>Git y GitHub</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- PELÍCULAS -->
+        <section class="bloque-perfil" aria-labelledby="titulo-peliculas">
+          <h2 id="titulo-peliculas">Películas favoritas</h2>
+
+          <ul class="fede-pelis">
+            <li class="fede-peli peli-blade" tabindex="0">
+              <span class="fede-peli-cara">
+                <img
+                  class="fede-peli-img"
+                  src="../img/fede/blade-runner.webp"
+                  alt="Póster de Blade Runner"
+                />
+                <span class="fede-peli-titulo">Blade Runner</span>
+                <span class="fede-peli-dato">Cyberpunk y existencialismo</span>
+              </span>
+            </li>
+            <li class="fede-peli peli-halloween" tabindex="0">
+              <span class="fede-peli-cara">
+                <img
+                  class="fede-peli-img"
+                  src="../img/fede/halloween-2.webp"
+                  alt="Póster de Halloween 2"
+                />
+                <span class="fede-peli-titulo">Halloween 2</span>
+                <span class="fede-peli-dato"
+                  >Si no te gusta el slasher, mirala</span
+                >
+              </span>
+            </li>
+            <li class="fede-peli peli-ghost" tabindex="0">
+              <span class="fede-peli-cara">
+                <img
+                  class="fede-peli-img"
+                  src="../img/fede/ghost-in-the-shell.jpg"
+                  alt="Póster de Ghost in the Shell"
+                />
+                <span class="fede-peli-titulo">Ghost in the Shell</span>
+                <span class="fede-peli-dato"
+                  >Más cyberpunk y existencialismo</span
+                >
+              </span>
+            </li>
           </ul>
         </section>
 
-        <!-- PELÍCULAS FAVORITAS (Mínimo 3) -->
-        <section class="bloque-perfil">
-          <h2>Películas Favoritas</h2>
-          <ol>
-            <li>Blade Runner</li>
-            <li>Halloween 2</li>
-            <li>Ghost in the Shell</li>
-          </ol>
+        <!-- DISCOS -->
+        <section class="bloque-perfil" aria-labelledby="titulo-discos">
+          <h2 id="titulo-discos">Discos favoritos</h2>
+
+          <ul class="fede-discos">
+            <li class="fede-disco-item">
+              <div class="fede-disco disco-souvlaki" tabindex="0">
+                <span class="fede-vinilo" aria-hidden="true"></span>
+                <span class="fede-funda" aria-hidden="true">
+                  <img
+                    class="fede-funda-img"
+                    src="../img/fede/souvlaki.webp"
+                    alt=""
+                  />
+                </span>
+              </div>
+              <p class="fede-disco-titulo">Souvlaki</p>
+              <p class="fede-disco-autor">Slowdive</p>
+            </li>
+
+            <li class="fede-disco-item">
+              <div class="fede-disco disco-world" tabindex="0">
+                <span class="fede-vinilo" aria-hidden="true"></span>
+                <span class="fede-funda" aria-hidden="true">
+                  <img
+                    class="fede-funda-img"
+                    src="../img/fede/world-is-yours.webp"
+                    alt=""
+                  />
+                </span>
+              </div>
+              <p class="fede-disco-titulo">World is Yours</p>
+              <p class="fede-disco-autor">Mass of the Fermenting Dregs</p>
+            </li>
+
+            <li class="fede-disco-item">
+              <div class="fede-disco disco-split" tabindex="0">
+                <span class="fede-vinilo" aria-hidden="true"></span>
+                <span class="fede-funda" aria-hidden="true">
+                  <img
+                    class="fede-funda-img"
+                    src="../img/fede/dropdead-totalitar.webp"
+                    alt=""
+                  />
+                </span>
+              </div>
+              <p class="fede-disco-titulo">Dropdead Totalitär</p>
+              <p class="fede-disco-autor">Dropdead & Totalitär</p>
+            </li>
+          </ul>
         </section>
 
-        <!-- DISCOS FAVORITOS (Mínimo 3) -->
-        <section class="bloque-perfil">
-          <h2>Discos Favoritos</h2>
-          <ol>
-            <li>Souvlaki ~ Slowdive</li>
-            <li>World is Yours ~ Mass of the Fermenting Dregs</li>
-            <li>Dropdead Totalitär split ~ Dropdead & Totalitär</li>
-          </ol>
-        </section>
-
-        <!-- FUNCIÓN DINÁMICA PROPIA EN JS -->
-        <section class="bloque-interactivo">
-          <h2>Interacción Dinámica</h2>
-          <button id="btn-mi-interaccion">Ver saludo personalizado</button>
-          <p id="resultado-interaccion"></p>
+        <!-- TERMINAL -->
+        <section class="bloque-interactivo" aria-labelledby="titulo-terminal">
+          <h2 id="titulo-terminal">Terminal</h2>
+          <p>Ejecutá un comando y mirá qué responde.</p>
+          <button id="btn-mi-interaccion" type="button">Ejecutar whoami</button>
+          <div
+            id="resultado-interaccion"
+            class="fede-terminal"
+            aria-live="polite"
+          ></div>
         </section>
       </article>
     </main>
 
     <footer>
-      <p>&copy; 2026 - Perfil de Fede</p>
-    </footer>
+      <p class="footer-content">
+        <span>2026 · Grupo 11 · Federico Acosta Maneiro</span>
 
-    <script>
-      // JS propio del Perfil 1
-      document
-        .getElementById("btn-mi-interaccion")
-        .addEventListener("click", () => {
-          document.getElementById("resultado-interaccion").textContent =
-            "¡Hola! Gracias por visitar mi perfil.";
-        });
-    </script>
+        <a
+          href="https://github.com/federicosd06-dev"
+          class="footer-inline-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Ir al GitHub de Federico Acosta Maneiro"
+          aria-label="Ir al GitHub de Federico Acosta Maneiro"
+        >
+          <svg
+            class="footer-icon"
+            alt="Icono de GitHub"
+            viewBox="0 0 16 16"
+            version="1.1"
+          >
+            <path
+              fill="currentColor"
+              d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"
+            ></path>
+          </svg>
+        </a>
+      </p>
+    </footer>
   </body>
 </html>

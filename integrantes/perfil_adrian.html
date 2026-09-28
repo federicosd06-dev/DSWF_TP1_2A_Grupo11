@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Perfil Abandonado</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome icons CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+              display: ["Space Grotesk", "sans-serif"],
+            },
+            animation: {
+              "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              "bounce-short": "bounce 1s infinite 2s",
+              shake: "shake 0.5s cubic-bezier(.36,.07,.19,.97) both",
+              "spin-fast": "spin 0.6s linear infinite",
+            },
+            keyframes: {
+              shake: {
+                "10%, 90%": { transform: "translate3d(-1px, 0, 0)" },
+                "20%, 80%": { transform: "translate3d(2px, 0, 0)" },
+                "30%, 50%, 70%": { transform: "translate3d(-4px, 0, 0)" },
+                "40%, 60%": { transform: "translate3d(4px, 0, 0)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .stamp-tape {
+        background: rgba(239, 68, 68, 0.95);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        transform: rotate(-12deg);
+      }
+      .retro-grid {
+        background-size: 30px 30px;
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px
+          );
+      }
+      .grayscale-avatar {
+        filter: grayscale(100%) contrast(110%) brightness(90%);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center justify-center p-4 font-sans retro-grid relative overflow-x-hidden"
+  >
+    <!-- Toast Notification -->
+    <div
+      id="toast"
+      class="fixed top-5 right-5 transform translate-x-full transition-transform duration-300 z-50 bg-slate-800 border-l-4 border-amber-500 text-slate-100 px-5 py-4 rounded-xl shadow-2xl flex items-center gap-3 max-w-sm pointer-events-none opacity-0"
+    >
+      <i
+        id="toast-icon"
+        class="fa-solid fa-triangle-exclamation text-amber-400 text-xl"
+      ></i>
+      <div>
+        <h4 id="toast-title" class="font-bold text-sm text-slate-200">
+          Notificación
+        </h4>
+        <p id="toast-message" class="text-xs text-slate-400">
+          Mensaje de prueba
+        </p>
+      </div>
+    </div>
+
+    <!-- MODAL FICTICIO 1: Intentar Revivir -->
+    <div
+      id="modal-revive"
+      class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <div
+        class="bg-slate-900 border border-slate-800 w-full max-w-md rounded-2xl p-6 shadow-2xl text-center relative overflow-hidden"
+      >
+        <div
+          class="w-12 h-12 bg-amber-500/10 border border-amber-500/30 rounded-full flex items-center justify-center mx-auto mb-4 text-amber-400 text-xl"
+        >
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+        <h3 class="text-xl font-bold text-slate-100 font-display">
+          Ritual de Resurrección
+        </h3>
+        <p class="text-sm text-slate-400 mt-2">
+          ¿Invocamos un hechizo para intentar reincorporar al soldado caído al
+          grupo de trabajo?
+        </p>
+
+        <!-- Barra de Progreso Ficticia -->
+        <div id="revive-progress-container" class="mt-5 hidden">
+          <div
+            class="flex justify-between text-xs font-mono text-slate-400 mb-1"
+          >
+            <span id="revive-status-text">Iniciando ritual...</span>
+            <span id="revive-percent">0%</span>
+          </div>
+          <div
+            class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-slate-800"
+          >
+            <div
+              id="revive-progress-bar"
+              class="bg-amber-500 h-full w-0 transition-all duration-300"
+            ></div>
+          </div>
+        </div>
+
+        <div id="revive-modal-actions" class="flex gap-3 mt-6">
+          <button
+            onclick="closeModal('modal-revive')"
+            class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold rounded-xl text-sm transition-colors"
+          >
+            Cancelar
+          </button>
+          <button
+            onclick="executeReviveRitual()"
+            class="flex-1 py-2.5 bg-amber-600 hover:bg-amber-500 text-white font-semibold rounded-xl text-sm transition-colors flex items-center justify-center gap-2"
+          >
+            <span>Lanzar Hechizo</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL FICTICIO 2: Enviar Culpa -->
+    <div
+      id="modal-guilt"
+      class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <div
+        class="bg-slate-900 border border-slate-800 w-full max-w-md rounded-2xl p-6 shadow-2xl relative"
+      >
+        <button
+          onclick="closeModal('modal-guilt')"
+          class="absolute top-4 right-4 text-slate-500 hover:text-slate-300"
+        >
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+
+        <div class="flex items-center gap-3 mb-4">
+          <div
+            class="w-10 h-10 bg-sky-500/10 border border-sky-500/30 rounded-full flex items-center justify-center text-sky-400 text-lg"
+          >
+            <i class="fa-solid fa-comment-dots"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-100 font-display">
+              Mensajería
+            </h3>
+            <p class="text-xs text-slate-400">Envía remordimiento a Adrián</p>
+          </div>
+        </div>
+
+        <!-- Plantillas ficticias -->
+        <div class="space-y-2 mb-4">
+          <label
+            class="text-xs font-mono text-slate-400 uppercase tracking-wider"
+            >Plantillas rápidas:</label
+          >
+          <div class="grid grid-cols-1 gap-1.5 text-xs">
+            <button
+              onclick="
+                setGuiltText(
+                  'Acá te dejamos 666 líneas de código esperándote cuando decidas volver. ☕',
+                )
+              "
+              class="text-left p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800 border border-slate-800/80 text-slate-300 transition-colors"
+            >
+              "Acá te dejamos 666 líneas de código esperándote..."
+            </button>
+            <button
+              onclick="
+                setGuiltText(
+                  '¿Así que preferiste dormir 8 horas en vez de sufrir aprendiendo git? 😂',
+                )
+              "
+              class="text-left p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800 border border-slate-800/80 text-slate-300 transition-colors"
+            >
+              "¿Así que preferiste dormir 8 horas en vez de..."
+            </button>
+            <button
+              onclick="
+                setGuiltText(
+                  'Te extrañamos en el repo. Que disfrutes la paz mental que perdió Victoria. 💤',
+                )
+              "
+              class="text-left p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800 border border-slate-800/80 text-slate-300 transition-colors"
+            >
+              "Te extrañamos en el repo. Que disfrutes la paz..."
+            </button>
+          </div>
+        </div>
+
+        <!-- Textarea -->
+        <textarea
+          id="guilt-text"
+          rows="3"
+          class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500/50 resize-none mb-4"
+          placeholder="Escribe un mensaje de condolencia ficticio..."
+        ></textarea>
+
+        <!-- Envío Simulado -->
+        <div id="guilt-progress" class="hidden mb-4">
+          <div
+            class="flex justify-between text-xs font-mono text-slate-400 mb-1"
+          >
+            <span>Conectando con el satélite del arrepentimiento...</span>
+          </div>
+          <div class="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden">
+            <div
+              id="guilt-bar"
+              class="bg-sky-500 h-full w-0 transition-all duration-300"
+            ></div>
+          </div>
+        </div>
+
+        <button
+          id="btn-send-fake-guilt"
+          onclick="executeFakeSendGuilt()"
+          class="w-full py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-semibold rounded-xl text-sm transition-colors flex items-center justify-center gap-2"
+        >
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>Enviar Remordimiento</span>
+        </button>
+      </div>
+    </div>
+
+    <main
+      class="w-full max-w-lg bg-slate-900/90 border border-slate-800 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden my-8"
+    >
+      <!-- Header Banner Badge -->
+      <div
+        class="flex justify-between items-center mb-6 border-b border-slate-800/80 pb-4"
+      >
+        <div class="flex items-center gap-2">
+          <span
+            class="inline-block w-3 h-3 rounded-full bg-red-500 animate-pulse"
+          ></span>
+          <span
+            class="text-xs font-mono font-semibold tracking-wider text-red-400 uppercase"
+            >Estado: Deserción Detectada</span
+          >
+        </div>
+        <span class="text-xs font-mono text-slate-500"
+          >ID: #000-SOLDADO-CAIDO</span
+        >
+      </div>
+
+      <div class="relative flex flex-col items-center mb-6">
+        <!-- Tape Stamp OVER Avatar -->
+        <div
+          class="absolute -top-3 z-20 stamp-tape bg-red-600 text-white font-display font-extrabold text-xs sm:text-sm uppercase tracking-widest px-6 py-1.5 border-2 border-white/20 rounded shadow-lg select-none"
+        >
+          <i class="fa-solid fa-ban mr-1"></i> Baja por Deserción
+        </div>
+
+        <!-- Avatar Frame -->
+        <div
+          class="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full p-2 bg-gradient-to-b from-slate-700 to-slate-800 border-2 border-slate-700 shadow-2xl mt-4"
+        >
+          <div
+            class="w-full h-full rounded-full overflow-hidden relative bg-slate-950 flex items-center justify-center border border-slate-800"
+          >
+            <img
+              id="avatar-img"
+              src="../img/adrian/adrian.jfif"
+              alt="Imagen de Adrian"
+              class="w-full h-full object-cover grayscale-avatar transition-all duration-500 opacity-60 hover:opacity-80"
+            />
+          </div>
+
+          <!-- Status Badge Icon -->
+          <div
+            class="absolute bottom-2 right-2 bg-slate-900 border-2 border-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-slate-400 shadow-lg"
+            title="Estado: Desaparecido en Acción"
+          >
+            <i class="fa-solid fa-ghost text-slate-400"></i>
+          </div>
+        </div>
+
+        <div class="text-center mt-5">
+          <h1
+            class="text-2xl sm:text-3xl font-display font-bold tracking-tight text-slate-100 flex items-center justify-center gap-2"
+          >
+            Acá pondríamos tu perfil
+          </h1>
+          <p
+            class="text-xs sm:text-sm font-mono text-amber-400 font-semibold mt-1"
+          >
+            "...pero decidiste bajarte de la carrera 🏃‍♂️💨"
+          </p>
+          <p class="text-slate-400 text-sm mt-3 px-2 leading-relaxed">
+            Reservamos este glorioso espacio para tus commits, pero fuiste
+            avistado por última vez disfrutando de tu tiempo libre mientras
+            Vicky sigue luchando con tus merges de git.
+          </p>
+        </div>
+      </div>
+
+      <!-- Timer -->
+      <div
+        class="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 mb-4 text-center"
+      >
+        <span class="text-xs uppercase font-mono text-slate-500 tracking-wider"
+          >Tiempo Transcurrido Desde Su Partida</span
+        >
+        <div class="flex justify-center items-center gap-4 mt-2 font-mono">
+          <div class="flex flex-col">
+            <span
+              id="counter-days"
+              class="text-2xl sm:text-3xl font-bold text-slate-200"
+              >06</span
+            >
+            <span class="text-[10px] text-slate-500 uppercase">Días</span>
+          </div>
+          <span class="text-xl text-slate-600">:</span>
+          <div class="flex flex-col">
+            <span
+              id="counter-hours"
+              class="text-2xl sm:text-3xl font-bold text-slate-200"
+              >19</span
+            >
+            <span class="text-[10px] text-slate-500 uppercase">Hs</span>
+          </div>
+          <span class="text-xl text-slate-600">:</span>
+          <div class="flex flex-col">
+            <span
+              id="counter-mins"
+              class="text-2xl sm:text-3xl font-bold text-slate-200"
+              >21</span
+            >
+            <span class="text-[10px] text-slate-500 uppercase">Min</span>
+          </div>
+          <span class="text-xl text-slate-600">:</span>
+          <div class="flex flex-col">
+            <span
+              id="counter-secs"
+              class="text-2xl sm:text-3xl font-bold text-red-400"
+              >30</span
+            >
+            <span class="text-[10px] text-slate-500 uppercase">Seg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fictional Guilt Counter -->
+      <div
+        class="bg-slate-950/40 border border-slate-800/50 rounded-xl p-2.5 mb-6 text-center flex items-center justify-between px-4"
+      >
+        <span class="text-xs font-mono text-slate-400"
+          >Puntos de Culpa Acreditados:</span
+        >
+        <span
+          id="guilt-counter"
+          class="text-sm font-mono font-bold text-sky-400 bg-sky-950/50 px-2.5 py-0.5 rounded-md border border-sky-800/40"
+          >0 pts</span
+        >
+      </div>
+
+      <div class="space-y-3">
+        <!-- Button 1: Revivir -->
+        <button
+          onclick="reviveAttempt()"
+          class="w-full py-3 px-4 bg-slate-800 hover:bg-slate-700 active:scale-[0.98] border border-slate-700 text-slate-200 rounded-xl font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2 group shadow-md"
+        >
+          <i
+            class="fa-solid fa-wand-magic-sparkles text-amber-400 group-hover:rotate-12 transition-transform"
+          ></i>
+          <span>Intentar revivir participación</span>
+        </button>
+
+        <!-- Button 2: Mandar Culpa -->
+        <button
+          onclick="sendGuiltMessage()"
+          class="w-full py-3 px-4 bg-slate-800 hover:bg-slate-700 active:scale-[0.98] border border-slate-700 text-slate-200 rounded-xl font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2 group shadow-md"
+        >
+          <i
+            class="fa-solid fa-comment-dots text-sky-400 group-hover:scale-110 transition-transform"
+          ></i>
+          <span>Mandar mensaje de culpa</span>
+        </button>
+
+        <!-- Button Main Page -->
+        <a
+          href="../index.html"
+          class="w-full py-3 px-4 bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white rounded-xl font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2 group shadow-lg shadow-emerald-950/40 border border-emerald-500/30"
+        >
+          <i
+            class="fa-solid fa-house group-hover:-translate-y-0.5 transition-transform"
+          ></i>
+          <span>Volver a la página principal</span>
+        </a>
+      </div>
+
+      <!-- Footer Note -->
+      <div class="mt-6 text-center border-t border-slate-800/60 pt-4">
+        <p class="text-xs text-slate-500 italic">
+          ~ Realizado con cariño por tu glorioso ex-líder de equipo que aún
+          sigue sufriendo con el código y la documentación. ~
+        </p>
+      </div>
+    </main>
+
+    <script>
+      // Counter Logic
+      let seconds = 30;
+      let minutes = 21;
+      let hours = 19;
+      let days = 6;
+      let guiltPoints = 0;
+
+      setInterval(() => {
+        seconds++;
+        if (seconds >= 60) {
+          seconds = 0;
+          minutes++;
+        }
+        if (minutes >= 60) {
+          minutes = 0;
+          hours++;
+        }
+        if (hours >= 24) {
+          hours = 0;
+          days++;
+        }
+        document.getElementById("counter-secs").innerText = seconds
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("counter-mins").innerText = minutes
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("counter-hours").innerText = hours
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("counter-days").innerText = days
+          .toString()
+          .padStart(2, "0");
+      }, 1000);
+
+      // Toast System
+      let toastTimeout;
+      function showToast(
+        title,
+        message,
+        iconClass = "fa-triangle-exclamation",
+        iconColor = "text-amber-400",
+        borderColor = "border-amber-500",
+      ) {
+        const toast = document.getElementById("toast");
+        const toastTitle = document.getElementById("toast-title");
+        const toastMsg = document.getElementById("toast-message");
+        const toastIcon = document.getElementById("toast-icon");
+
+        clearTimeout(toastTimeout);
+
+        toastTitle.innerText = title;
+        toastMsg.innerText = message;
+        toastIcon.className = `fa-solid ${iconClass} ${iconColor} text-xl`;
+        toast.className = `fixed top-5 right-5 transition-all duration-300 z-50 bg-slate-800 border-l-4 ${borderColor} text-slate-100 px-5 py-4 rounded-xl shadow-2xl flex items-center gap-3 max-w-sm opacity-100 translate-x-0`;
+
+        toastTimeout = setTimeout(() => {
+          toast.classList.add("translate-x-full", "opacity-0");
+        }, 4500);
+      }
+
+      // Modal Helpers
+      function openModal(id) {
+        const modal = document.getElementById(id);
+        modal.classList.remove("opacity-0", "pointer-events-none");
+        modal.classList.add("opacity-100");
+      }
+
+      function closeModal(id) {
+        const modal = document.getElementById(id);
+        modal.classList.remove("opacity-100");
+        modal.classList.add("opacity-0", "pointer-events-none");
+      }
+
+      // --- FUNCIONALIDAD FICTICIA 1: REVIVE ATTEMPT ---
+      function reviveAttempt() {
+        openModal("modal-revive");
+      }
+
+      function executeReviveRitual() {
+        const actions = document.getElementById("revive-modal-actions");
+        const progressContainer = document.getElementById(
+          "revive-progress-container",
+        );
+        const progressBar = document.getElementById("revive-progress-bar");
+        const statusText = document.getElementById("revive-status-text");
+        const percentText = document.getElementById("revive-percent");
+        const avatar = document.getElementById("avatar-img");
+
+        actions.classList.add("hidden");
+        progressContainer.classList.remove("hidden");
+        avatar.classList.add("animate-shake");
+
+        const steps = [
+          { pct: 20, label: "Buscando rama 'feature/adrian'..." },
+          { pct: 45, label: "Generando pedido de documentación..." },
+          { pct: 75, label: "Enviando necesidad de README.md..." },
+          { pct: 99, label: "Rechazado por el firewall de Mendoza." },
+        ];
+
+        let stepIdx = 0;
+        const interval = setInterval(() => {
+          if (stepIdx < steps.length) {
+            progressBar.style.width = steps[stepIdx].pct + "%";
+            percentText.innerText = steps[stepIdx].pct + "%";
+            statusText.innerText = steps[stepIdx].label;
+            stepIdx++;
+          } else {
+            clearInterval(interval);
+            setTimeout(() => {
+              avatar.classList.remove("animate-shake");
+              closeModal("modal-revive");
+
+              setTimeout(() => {
+                actions.classList.remove("hidden");
+                progressContainer.classList.add("hidden");
+                progressBar.style.width = "0%";
+              }, 400);
+
+              const fakeErrors = [
+                "Error 404: El sujeto prefirió la paz mental y rechaza aprender a usar Git.",
+                "Invocando hechizo de revivir... FAILED. La ayuda de Victoria no fue suficiente.",
+                "El servidor devolvió status 418: Te dijo 'Soy casi abogado, no voy a programar más'.",
+                "Resurrección fallida: La persona fue vista felizmente dejándole sus tareas a su grandioso líder.",
+              ];
+              const randomErr =
+                fakeErrors[Math.floor(Math.random() * fakeErrors.length)];
+              showToast(
+                "Ritual Fallido",
+                randomErr,
+                "fa-skull",
+                "text-red-400",
+                "border-red-500",
+              );
+            }, 1200);
+          }
+        }, 1400);
+      }
+
+      // --- FUNCIONALIDAD FICTICIA 2: GUILT MESSAGE ---
+      function sendGuiltMessage() {
+        openModal("modal-guilt");
+      }
+
+      function setGuiltText(text) {
+        document.getElementById("guilt-text").value = text;
+      }
+
+      function executeFakeSendGuilt() {
+        const btn = document.getElementById("btn-send-fake-guilt");
+        const progress = document.getElementById("guilt-progress");
+        const bar = document.getElementById("guilt-bar");
+
+        btn.classList.add("hidden");
+        progress.classList.remove("hidden");
+
+        bar.style.width = "30%";
+        setTimeout(() => {
+          bar.style.width = "70%";
+        }, 300);
+        setTimeout(() => {
+          bar.style.width = "100%";
+        }, 600);
+
+        setTimeout(() => {
+          closeModal("modal-guilt");
+
+          // Incrementar contador simulado de culpa
+          guiltPoints++;
+          document.getElementById("guilt-counter").innerText =
+            `${guiltPoints} pts`;
+
+          // Restablecer modal
+          setTimeout(() => {
+            btn.classList.remove("hidden");
+            progress.classList.add("hidden");
+            bar.style.width = "0%";
+          }, 400);
+
+          const guiltResponses = [
+            "Notificación enviada al limbo: +1 punto de culpa registrado.",
+            "Se ha emitido un suspiro colectivo en dirección a su descanso.",
+            "Mensaje entregado con éxito a la nube... mendocina.",
+            "Culpa registrada en la base de datos del proyecto. Puntos acumulados: " +
+              guiltPoints,
+          ];
+          const randomResp =
+            guiltResponses[Math.floor(Math.random() * guiltResponses.length)];
+          showToast(
+            "Culpa Transmitida",
+            randomResp,
+            "fa-heart-crack",
+            "text-sky-400",
+            "border-sky-500",
+          );
+        }, 900);
+      }
+    </script>
+  </body>
+</html>
