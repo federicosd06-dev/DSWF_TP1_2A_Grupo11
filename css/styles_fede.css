@@ -1,0 +1,649 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Share+Tech+Mono&display=swap");
+
+/* ===================================================
+   PERFIL DE FEDE ~ VERSIÓN CYBERPUNK
+   La tarjeta se vuelve un panel oscuro con bordes
+   biselados y neón cian/magenta. El resto del sitio
+   (header, footer, tema) no se toca.
+   =================================================== */
+
+.tarjeta-perfil.fede {
+  --neon-cian: #22d3ee;
+  --neon-magenta: #ff2a6d;
+  --neon-amarillo: #fcee0a;
+  --cy-fondo: #0a0f1f;
+  --cy-panel: rgba(10, 20, 40, 0.72);
+  --cy-texto: #d6e4ff;
+  --cy-suave: #8ea3c7;
+
+  --corte: 14px;
+  --forma: polygon(
+    0 0,
+    calc(100% - var(--corte)) 0,
+    100% var(--corte),
+    100% 100%,
+    var(--corte) 100%,
+    0 calc(100% - var(--corte))
+  );
+
+  --fuente-display: "Chakra Petch", "Poppins", sans-serif;
+  --fuente-datos: "Share Tech Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  --color-secundario: var(--neon-cian);
+  --color-btn-fede: transparent;
+  --color-hover: var(--neon-cian);
+
+  position: relative;
+  color: var(--cy-texto);
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  border-radius: 4px;
+  background:
+    linear-gradient(rgba(34, 211, 238, 0.05) 1px, transparent 1px) 0 0 / 28px
+      28px,
+    linear-gradient(90deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px) 0 0 /
+      28px 28px,
+    radial-gradient(120% 80% at 50% 0%, #15224a 0%, var(--cy-fondo) 60%);
+  box-shadow:
+    0 0 0 1px rgba(255, 42, 109, 0.25),
+    0 0 40px rgba(34, 211, 238, 0.12);
+}
+
+/* ---------- Identidad ---------- */
+
+.tarjeta-perfil.fede .avatar {
+  border: 3px solid var(--neon-cian);
+  box-shadow:
+    0 0 0 4px var(--cy-fondo),
+    0 0 0 6px var(--neon-magenta),
+    0 0 26px rgba(34, 211, 238, 0.45);
+}
+
+.tarjeta-perfil.fede h1 {
+  position: relative;
+  color: #ffffff;
+  font-family: var(--fuente-display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 12px rgba(34, 211, 238, 0.6);
+}
+
+/* Glitch al cargar y luego cada 6 segundos: dos copias desplazadas del título */
+.tarjeta-perfil.fede h1::before,
+.tarjeta-perfil.fede h1::after {
+  content: attr(data-texto);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tarjeta-perfil.fede h1::before {
+  color: var(--neon-magenta);
+  text-shadow: none;
+  animation: fede-corte-a 6s steps(1, end) 0.2s infinite;
+}
+
+.tarjeta-perfil.fede h1::after {
+  color: var(--neon-cian);
+  text-shadow: none;
+  animation: fede-corte-b 6s steps(1, end) 0.2s infinite;
+}
+
+@keyframes fede-corte-a {
+  0% {
+    opacity: 1;
+    clip-path: inset(10% 0 60% 0);
+    transform: translateX(-4px);
+  }
+  2% {
+    opacity: 1;
+    clip-path: inset(55% 0 15% 0);
+    transform: translateX(5px);
+  }
+  4% {
+    opacity: 1;
+    clip-path: inset(30% 0 40% 0);
+    transform: translateX(-3px);
+  }
+  6% {
+    opacity: 1;
+    clip-path: inset(70% 0 5% 0);
+    transform: translateX(4px);
+  }
+  8%,
+  100% {
+    opacity: 0;
+    clip-path: inset(0);
+    transform: none;
+  }
+}
+
+@keyframes fede-corte-b {
+  0% {
+    opacity: 1;
+    clip-path: inset(60% 0 10% 0);
+    transform: translateX(4px);
+  }
+  2% {
+    opacity: 1;
+    clip-path: inset(15% 0 55% 0);
+    transform: translateX(-5px);
+  }
+  4% {
+    opacity: 1;
+    clip-path: inset(45% 0 25% 0);
+    transform: translateX(3px);
+  }
+  6% {
+    opacity: 1;
+    clip-path: inset(5% 0 70% 0);
+    transform: translateX(-4px);
+  }
+  8%,
+  100% {
+    opacity: 0;
+    clip-path: inset(0);
+    transform: none;
+  }
+}
+
+.tarjeta-perfil.fede p strong {
+  color: var(--neon-cian);
+  font-family: var(--fuente-datos);
+  font-weight: 400;
+}
+
+/* ---------- Bloques con esquinas tipo HUD ---------- */
+
+.tarjeta-perfil.fede .bloque-perfil,
+.tarjeta-perfil.fede .bloque-interactivo {
+  position: relative;
+  background: var(--cy-panel);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  border-radius: 2px;
+}
+
+.tarjeta-perfil.fede .bloque-perfil::before,
+.tarjeta-perfil.fede .bloque-interactivo::before,
+.tarjeta-perfil.fede .bloque-perfil::after,
+.tarjeta-perfil.fede .bloque-interactivo::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+
+.tarjeta-perfil.fede .bloque-perfil::before,
+.tarjeta-perfil.fede .bloque-interactivo::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--neon-cian);
+  border-left: 2px solid var(--neon-cian);
+}
+
+.tarjeta-perfil.fede .bloque-perfil::after,
+.tarjeta-perfil.fede .bloque-interactivo::after {
+  right: -1px;
+  bottom: -1px;
+  border-right: 2px solid var(--neon-magenta);
+  border-bottom: 2px solid var(--neon-magenta);
+}
+
+.tarjeta-perfil.fede .bloque-perfil h2,
+.tarjeta-perfil.fede .bloque-interactivo h2 {
+  color: var(--neon-cian);
+  font-family: var(--fuente-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.35);
+  border: 0;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.tarjeta-perfil.fede .bloque-perfil h2::before,
+.tarjeta-perfil.fede .bloque-interactivo h2::before {
+  content: "// ";
+  color: var(--neon-magenta);
+}
+
+/* ---------- Habilidades ---------- */
+
+.fede-grupo {
+  --chip: var(--neon-cian);
+}
+
+.fede-grupo:nth-of-type(2) {
+  --chip: var(--neon-magenta);
+}
+
+.fede-grupo:nth-of-type(3) {
+  --chip: var(--neon-amarillo);
+}
+
+.fede-grupo + .fede-grupo {
+  margin-top: 1rem;
+}
+
+.tarjeta-perfil.fede .fede-grupo h3 {
+  color: var(--cy-suave);
+  font-family: var(--fuente-datos);
+  font-weight: 400;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.tarjeta-perfil.fede .fede-grupo h3::before {
+  content: "> ";
+  color: var(--chip);
+}
+
+.tarjeta-perfil.fede .fede-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+}
+
+.tarjeta-perfil.fede .fede-chips li {
+  margin: 0;
+  padding: 0.3rem 0.8rem;
+  border-left: 2px solid var(--chip);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--chip);
+  font-family: var(--fuente-datos);
+  font-size: 0.85rem;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 6px),
+    calc(100% - 6px) 100%,
+    0 100%
+  );
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tarjeta-perfil.fede .fede-chips li:hover {
+    background: var(--chip);
+    color: var(--cy-fondo);
+  }
+}
+
+/* ---------- Películas ---------- */
+
+.fede-pelis {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 0;
+}
+
+.fede-peli {
+  --tono-a: #0b1d3a;
+  --tono-b: #7a1d4f;
+  --borde: rgba(34, 211, 238, 0.5);
+
+  position: relative;
+  min-height: 210px;
+  cursor: default;
+  transition:
+    filter 0.3s ease,
+    transform 0.3s ease;
+}
+
+.peli-blade {
+  --tono-a: #0b1d3a;
+  --tono-b: #7a1d4f;
+}
+
+.peli-halloween {
+  --tono-a: #150808;
+  --tono-b: #a30f1e;
+}
+
+.peli-ghost {
+  --tono-a: #04222a;
+  --tono-b: #0a6c8a;
+}
+
+.fede-peli-cara {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.2rem;
+  padding: 1rem;
+  background: var(--borde);
+  clip-path: var(--forma);
+  color: #ffffff;
+}
+
+/* Fondo interior: deja 1px de borde visible. Si la imagen falta, se ve este degradé */
+.fede-peli-cara::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  clip-path: var(--forma);
+  background: linear-gradient(160deg, var(--tono-a), var(--tono-b));
+}
+
+/* Póster */
+.fede-peli-img {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  object-fit: cover;
+  clip-path: var(--forma);
+  filter: saturate(0.85) contrast(1.05);
+  transition: filter 0.3s ease;
+}
+
+/* Líneas CRT y sombra inferior por encima del póster para que el texto se lea */
+.fede-peli-cara::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  clip-path: var(--forma);
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2) 0 1px,
+      transparent 1px 4px
+    ),
+    linear-gradient(
+      to top,
+      rgba(4, 10, 20, 0.92) 0%,
+      rgba(4, 10, 20, 0.55) 35%,
+      transparent 65%
+    );
+}
+
+.fede-peli-titulo,
+.fede-peli-dato {
+  position: relative;
+  z-index: 2;
+}
+
+.fede-peli-titulo {
+  font-family: var(--fuente-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.fede-peli-dato {
+  font-family: var(--fuente-datos);
+  font-size: 0.85rem;
+  color: var(--neon-cian);
+}
+
+.fede-peli:focus-visible {
+  outline: 2px solid var(--neon-cian);
+  outline-offset: 4px;
+}
+
+.fede-peli.activo {
+  --borde: var(--neon-cian);
+  filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.7));
+}
+
+.fede-peli.activo .fede-peli-img {
+  filter: saturate(1.15) contrast(1.05);
+}
+
+.fede-peli.activo .fede-peli-titulo {
+  animation: fede-glitch 0.35s steps(2, end) 1;
+  text-shadow: 0 0 10px var(--neon-cian);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fede-peli:hover,
+  .fede-peli:focus-visible {
+    --borde: var(--neon-cian);
+    filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.7));
+    transform: translateY(-3px);
+  }
+
+  .fede-peli:hover .fede-peli-img,
+  .fede-peli:focus-visible .fede-peli-img {
+    filter: saturate(1.15) contrast(1.05);
+  }
+
+  .fede-peli:hover .fede-peli-titulo,
+  .fede-peli:focus-visible .fede-peli-titulo {
+    animation: fede-glitch 0.35s steps(2, end) 1;
+    text-shadow: 0 0 10px var(--neon-cian);
+  }
+}
+
+@keyframes fede-glitch {
+  0% {
+    text-shadow:
+      -2px 0 var(--neon-magenta),
+      2px 0 var(--neon-cian);
+  }
+  50% {
+    text-shadow:
+      2px 0 var(--neon-magenta),
+      -2px 0 var(--neon-cian);
+  }
+  100% {
+    text-shadow: 0 0 10px var(--neon-cian);
+  }
+}
+
+/* ---------- Discos ---------- */
+
+.fede-discos {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem 1rem;
+  padding: 0;
+}
+
+.fede-disco {
+  --tono-a: #1e3a8a;
+  --tono-b: #a78bfa;
+
+  position: relative;
+  margin-bottom: 0.6rem;
+  transition: filter 0.3s ease;
+}
+
+.fede-disco:focus-visible {
+  outline: 2px solid var(--neon-cian);
+  outline-offset: 4px;
+}
+
+.disco-souvlaki {
+  --tono-a: #1e3a8a;
+  --tono-b: #a78bfa;
+}
+
+.disco-world {
+  --tono-a: #ff2a6d;
+  --tono-b: #3b0764;
+}
+
+.disco-split {
+  --tono-a: #e5e7eb;
+  --tono-b: #111827;
+}
+
+.fede-funda {
+  --corte: 12px;
+
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 70%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, var(--tono-a), var(--tono-b));
+  clip-path: var(--forma);
+}
+
+/* Carátula */
+.fede-funda-img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fede-vinilo {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 70%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      var(--neon-magenta) 0 14%,
+      #050505 14% 17%,
+      transparent 17%
+    ),
+    repeating-radial-gradient(circle, #101010 0 2px, #1d1d1d 2px 4px);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.fede-disco.activo {
+  filter: drop-shadow(0 0 8px rgba(255, 42, 109, 0.6));
+}
+
+.fede-disco.activo .fede-vinilo {
+  transform: translateX(40%) rotate(120deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fede-disco:hover,
+  .fede-disco:focus-visible {
+    filter: drop-shadow(0 0 8px rgba(255, 42, 109, 0.6));
+  }
+
+  .fede-disco:hover .fede-vinilo,
+  .fede-disco:focus-visible .fede-vinilo {
+    transform: translateX(40%) rotate(120deg);
+  }
+}
+
+.fede-disco-titulo {
+  color: #ffffff;
+  font-family: var(--fuente-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.fede-disco-autor {
+  color: var(--cy-suave);
+  font-family: var(--fuente-datos);
+  font-size: 0.85rem;
+}
+
+/* ---------- Terminal ---------- */
+
+.tarjeta-perfil.fede .bloque-interactivo p {
+  color: var(--cy-suave);
+}
+
+.tarjeta-perfil.fede #btn-mi-interaccion {
+  --corte: 10px;
+
+  padding: 0.65rem 1.3rem;
+  border: 1px solid var(--neon-cian);
+  border-radius: 0;
+  background: transparent;
+  color: var(--neon-cian);
+  font-family: var(--fuente-datos);
+  font-size: 0.95rem;
+  font-weight: 400;
+  clip-path: var(--forma);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+/* El foco se ve con relleno, porque clip-path recortaría un outline */
+.tarjeta-perfil.fede
+  #btn-mi-interaccion:is(:hover, :focus-visible):not(:disabled) {
+  background: var(--neon-cian);
+  color: #04101c;
+}
+
+.tarjeta-perfil.fede #resultado-interaccion {
+  margin-top: 1rem;
+  min-height: 7.5rem;
+  padding: 1rem;
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  border-radius: 0;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(34, 211, 238, 0.04) 0 1px,
+      transparent 1px 3px
+    ),
+    #050a14;
+  box-shadow: inset 0 0 30px rgba(34, 211, 238, 0.06);
+  color: #67e8f9;
+  font-family: var(--fuente-datos);
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.fede-terminal.escribiendo::after {
+  content: "▌";
+  color: var(--neon-magenta);
+  animation: fede-cursor 1s steps(2, start) infinite;
+}
+
+@keyframes fede-cursor {
+  to {
+    visibility: hidden;
+  }
+}
+
+#btn-mi-interaccion:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 400px) {
+  .fede-pelis,
+  .fede-discos {
+    grid-template-columns: 1fr;
+  }
+
+  .fede-peli {
+    min-height: 170px;
+  }
+
+  .fede-funda,
+  .fede-vinilo {
+    width: 55%;
+  }
+}
