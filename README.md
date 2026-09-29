@@ -147,7 +147,6 @@ DSWF_TP1_2A_Grupo11/
 
 | Función | Qué hace |
 |---|---|
-| Quitar `no-transiciones` | Al cargar el DOM, habilita las transiciones que estaban bloqueadas para evitar parpadeos iniciales. |
 | Menú móvil (`menu-toggle`) | Abre y cierra la navegación en pantallas chicas, la cierra al hacer clic en un enlace y la resetea al pasar a escritorio. |
 | Cambio de tema (`theme-toggle`) | Alterna entre claro/oscuro, guarda la preferencia en `localStorage` y anima la transición con la View Transitions API (efecto circular desde el botón), respetando `prefers-reduced-motion`. |
 | `manejarMovimiento` / `resetearAnimacion` | Efecto 3D de inclinación en las tarjetas de la portada según la posición del mouse; solo se activa con puntero fino, pantalla ≥ 900px y sin movimiento reducido. |
@@ -252,6 +251,7 @@ Ideas y pendientes para las próximas entregas:
 
 ## Uso de Inteligencia Artificial
 
-*(borrador para que el equipo revise y ajuste antes de la entrega)*
+| Documento específico sobre el uso de la AI | [`docs/AI.md`](./docs/AI.md) |
 
 El equipo utilizó asistencia de IA como apoyo puntual en tareas específicas: los cálculos matemáticos del efecto 3D de las tarjetas de la portada (`main.js`), el diseño de la lógica de persistencia del tema en `localStorage` y la depuración de comportamientos responsive. Todo el código sugerido fue revisado y validado por el equipo antes de integrarlo al repositorio, siguiendo los acuerdos de flujo de trabajo establecidos en la bitácora (evaluación crítica de las respuestas de la IA antes de ejecutar comandos, y consulta al grupo ante cualquier duda antes de alterar el repositorio compartido).
+
