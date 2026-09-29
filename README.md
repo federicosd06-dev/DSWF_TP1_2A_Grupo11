@@ -22,7 +22,7 @@ Sitio web grupal desarrollado para la materia **Desarrollo de Software Web Front
     - [Perfil de Marcos — `marcos_perfil.js`](#perfil-de-marcos--marcos_perfiljs)
     - [Perfil de Cande — `cande_perfil.js`](#perfil-de-cande--cande_perfiljs)
     - [Perfil de Victoria — `victoria_perfil.js`](#perfil-de-victoria--victoria_perfiljs)
-    - [Perfil de Adrian — script inline en `perfil_adrian.html`](#perfil-de-adrian--script-inline-en-perfil_adrianhtml)
+    - [Perfil de broma — script inline en `perfil_adrian.html`](#perfil-de-broma--script-inline-en-perfil_adrianhtml)
   - [Documentación técnica ampliada](#documentación-técnica-ampliada)
   - [Cómo ejecutar el proyecto en local](#cómo-ejecutar-el-proyecto-en-local)
   - [Sitio publicado](#sitio-publicado)
@@ -35,11 +35,10 @@ Sitio web grupal desarrollado para la materia **Desarrollo de Software Web Front
 
 | Integrante | Rol en el proyecto | Perfil de GitHub |
 |---|---|---|
-| Federico Acosta Maneiro | Líder de proyecto ~ Estructuración & Deploy | [@federicosd06-dev](https://github.com/federicosd06-dev) |
+| Federico Acosta Maneiro | Estructuración, Documentación & Deploy | [@federicosd06-dev](https://github.com/federicosd06-dev) |
 | María Victoria Mariani | UI + Responsive, Animaciones & Accesibilidad | [@mvjhart](https://github.com/mvjhart) |
 | Candelaria Chazarreta | Bitácora & Navegación | [@kndxt](https://github.com/kndxt) |
-| Marcos Aquino | QA & Recursos | **TODO: agregar usuario de GitHub** |
-| Adrian Javier Cano | Documentación (abandonó la cursada) | **TODO: agregar usuario de GitHub, si corresponde** |
+| Marcos Aquino | QA & Recursos | [@Marcos028](https://github.com/Marcos028) |
 
 > Repositorio del grupo: <https://github.com/federicosd06-dev/DSWF_TP1_2A_Grupo11>
 
@@ -200,7 +199,7 @@ DSWF_TP1_2A_Grupo11/
 
 ![Pestañas móviles y puntos decorativos](img/screenshots/victoria-pestanas.png)
 
-### Perfil de Adrian — script inline en `perfil_adrian.html`
+### Perfil de broma — script inline en `perfil_adrian.html`
 
 `adrian_perfil.js` está vacío a propósito: toda la lógica de esta página (a modo de broma del equipo) vive en un `<script>` dentro del propio HTML.
 
@@ -210,7 +209,7 @@ DSWF_TP1_2A_Grupo11/
 | Sistema de toasts | Muestra notificaciones emergentes con distintos íconos y colores. |
 | Modales ficticios | "Ritual de resurrección" y "Mandar mensaje de culpa", con barras de progreso simuladas y respuestas aleatorias. |
 
-![Modal ficticio abierto en la página de Adrian](img/screenshots/adrian-modal.png)
+![Modal ficticio abierto en la página de broma](img/screenshots/adrian-modal.png)
 
 ## Documentación técnica ampliada
 
@@ -218,12 +217,12 @@ Además del resumen anterior, cada integrante escribió una documentación más 
 
 | Página / perfil | Documento |
 | --- | --- |
-| Portada (`index.html`, `main.js`) | [`docs/Funcionalidades-Index.md`](./docs/Funcionalidades-Index.md) |
+| Portada (`index.html`, `main.js`) | [`docs/funcionalidades-index.md`](./docs/funcionalidades-index.md) |
 | Bitácora (`bitacora.html`) | [`docs/bitacora-funcionalidades.md`](./docs/bitacora-funcionalidades.md) |
 | Perfil de Fede | [`docs/documentacion_js_fede.md`](./docs/documentacion_js_fede.md) |
 | Perfil de Marcos | [`docs/documentacion_js_marcos.md`](./docs/documentacion_js_marcos.md) |
 | Perfil de Cande | [`docs/documentacion_js_cande.md`](./docs/documentacion_js_cande.md) |
-| Perfil de Victoria | [`docs/Perfil-Ria-Funciones.md`](./docs/Perfil-Ria-Funciones.md) |
+| Perfil de Victoria | [`docs/documentacion_js_ria.md`](./docs/documentacion_js_ria.md) |
 
 Esta sección es un plus sobre lo exigido por la consigna: la explicación mínima de cada función ya está en la sección anterior, autocontenida en este README.
 
@@ -245,7 +244,6 @@ No requiere instalación de dependencias ni build previo: es HTML, CSS y JS plan
 
 Ideas y pendientes para las próximas entregas:
 
-- Corregir los `id` duplicados en las pestañas móviles del perfil de Victoria (el botón tiene dos `id` a la vez y falta el `id="tab-musica"` que referencia el panel de música).
 - Terminar de migrar a `styles_marcos.css` las reglas de Marcos que quedaron mezcladas en el CSS global tras el incidente de reversión relatado en la bitácora, y definir la variable `--sombra-tarjeta` que usa ese archivo.
 - Incorporar validación automática de HTML/CSS antes de cada entrega.
 
