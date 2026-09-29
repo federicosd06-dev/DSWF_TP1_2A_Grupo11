@@ -1,10 +1,8 @@
-## Funcionalidades JavaScript
-
-### Portada (`index.html`)
+# Portada (`index.html`)
 
 La portada utiliza JavaScript para gestionar la navegación responsive, el cambio de tema y una interacción visual sobre las tarjetas de integrantes. Las funcionalidades se implementaron considerando distintos dispositivos, preferencias de movimiento y compatibilidad del navegador.
 
-#### 1. Menú responsive de navegación
+## 1. Menú responsive de navegación
 
 **Objetivo**
 
@@ -39,7 +37,7 @@ La funcionalidad está vinculada al comportamiento responsive del menú, pero la
 
 ---
 
-#### 2. Cambio de tema, persistencia y transición visual
+## 2. Cambio de tema, persistencia y transición visual
 
 **Objetivo**
 
@@ -133,7 +131,7 @@ Esto permite separar la funcionalidad principal —cambiar el tema— del efecto
 
 ---
 
-#### 3. Efecto 3D interactivo de las tarjetas
+## 3. Efecto 3D interactivo de las tarjetas
 
 **Objetivo**
 
@@ -227,7 +225,7 @@ Los cambios se detectan mediante los eventos `change` de los objetos `MediaQuery
 
 ---
 
-#### Consideraciones generales de implementación
+## Consideraciones generales de implementación
 
 Las funcionalidades de la portada se diseñaron separando la **lógica de interacción** de la **presentación visual**.
 
@@ -244,7 +242,7 @@ CSS se ocupa de la presentación, las transformaciones y las animaciones visuale
 
 Esta separación permite modificar la apariencia de las interacciones sin tener que modificar la lógica que controla su funcionamiento.
 
-#### Resumen de APIs y mecanismos utilizados
+## Resumen de APIs y mecanismos utilizados
 
 | Recurso                                | Uso                                                                            |
 | -------------------------------------- | ------------------------------------------------------------------------------ |

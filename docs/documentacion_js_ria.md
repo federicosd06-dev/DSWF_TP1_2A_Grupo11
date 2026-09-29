@@ -1,8 +1,8 @@
-### Perfil individual (`perfil_victoria.html`)
+# Perfil individual (`perfil_victoria.html`)
 
 El perfil individual utiliza JavaScript para gestionar las pestañas de contenido en dispositivos pequeños, adaptar determinadas interacciones al tipo de puntero disponible y controlar una animación decorativa. Estas funcionalidades se complementan con CSS para mantener separadas la lógica de interacción y la presentación visual.
 
-#### 1. Pestañas de contenido en móvil
+## 1. Pestañas de contenido en móvil
 
 **Objetivo**
 
@@ -51,7 +51,7 @@ De esta manera, JavaScript controla el estado de la interacción móvil mientras
 
 ---
 
-#### 2. Interacciones adaptadas al tipo de puntero
+## 2. Interacciones adaptadas al tipo de puntero
 
 El perfil utiliza `window.matchMedia("(pointer: coarse)")` para detectar si el dispositivo dispone de un puntero táctil o poco preciso.
 
@@ -66,7 +66,7 @@ La lógica de interacción se complementa con CSS mediante las media queries `po
 
 ---
 
-#### 3. Interacción táctil para películas y música
+## 3. Interacción táctil para películas y música
 
 **Objetivo**
 
@@ -106,7 +106,7 @@ Esto evita intentar reproducir mediante JavaScript una interacción que el naveg
 
 ---
 
-#### 4. Interacción táctil para las habilidades
+## 4. Interacción táctil para las habilidades
 
 Las habilidades utilizan un mecanismo similar al de los pósters.
 
@@ -120,7 +120,7 @@ Esto permite mantener un comportamiento equivalente entre diferentes dispositivo
 
 ---
 
-#### 5. Limpieza al cambiar el tipo de puntero
+## 5. Limpieza al cambiar el tipo de puntero
 
 El objeto `pointerQuery` también permite detectar cambios en el tipo de puntero mediante el evento `change`.
 
@@ -144,7 +144,7 @@ Este comportamiento mantiene consistente el estado visual cuando cambia dinámic
 
 ---
 
-#### 6. Animación decorativa de puntos
+## 6. Animación decorativa de puntos
 
 El perfil incluye una animación visual formada por pequeños puntos decorativos ubicados alrededor de la tarjeta.
 
@@ -177,7 +177,7 @@ La opacidad se obtiene a partir de una función sinusoidal, lo que produce una v
 
 ---
 
-#### 7. Respeto por `prefers-reduced-motion`
+## 7. Respeto por `prefers-reduced-motion`
 
 La animación decorativa comprueba la preferencia del usuario mediante:
 
@@ -191,7 +191,7 @@ Esto permite conservar el elemento decorativo sin imponer una animación continu
 
 ---
 
-#### Separación entre JavaScript y CSS
+## Separación entre JavaScript y CSS
 
 Las interacciones del perfil se diseñaron separando la lógica de comportamiento de la presentación visual.
 
@@ -216,7 +216,7 @@ CSS se ocupa principalmente de:
 
 Esta separación permite cambiar la apariencia de las interacciones sin modificar la lógica que controla su funcionamiento.
 
-#### Resumen de APIs y mecanismos utilizados
+## Resumen de APIs y mecanismos utilizados
 
 | Recurso                                     | Uso                                                                      |
 | ------------------------------------------- | ------------------------------------------------------------------------ |
