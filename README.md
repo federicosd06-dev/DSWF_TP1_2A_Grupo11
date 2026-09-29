@@ -217,7 +217,7 @@ Además del resumen anterior, cada integrante escribió una documentación más 
 
 | Página / perfil | Documento |
 | --- | --- |
-| Portada (`index.html`, `main.js`) | [`docs/funcionalidades-index.md`](./docs/funcionalidades-index.md) |
+| Portada (`index.html`, `main.js`) | [`docs/index-funcionalidades.md`](./docs/index-funcionalidades.md) |
 | Bitácora (`bitacora.html`) | [`docs/bitacora-funcionalidades.md`](./docs/bitacora-funcionalidades.md) |
 | Perfil de Fede | [`docs/documentacion_js_fede.md`](./docs/documentacion_js_fede.md) |
 | Perfil de Marcos | [`docs/documentacion_js_marcos.md`](./docs/documentacion_js_marcos.md) |
@@ -244,7 +244,8 @@ No requiere instalación de dependencias ni build previo: es HTML, CSS y JS plan
 
 Ideas y pendientes para las próximas entregas:
 
-- Terminar de migrar a `styles_marcos.css` las reglas de Marcos que quedaron mezcladas en el CSS global tras el incidente de reversión relatado en la bitácora, y definir la variable `--sombra-tarjeta` que usa ese archivo.
+- Continuar incorporando nuevas tecnologías y herramientas de desarrollo, con una futura migración progresiva hacia React.
+- Mejorar la organización, reutilización y mantenimiento del código a medida que el proyecto evolucione.
 - Incorporar validación automática de HTML/CSS antes de cada entrega.
 
 ## Uso de Inteligencia Artificial
