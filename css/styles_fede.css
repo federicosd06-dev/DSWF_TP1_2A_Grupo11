@@ -453,7 +453,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1.5rem 1rem;
-  padding: 0;
+  padding: 0.6rem;
 }
 
 .fede-disco {
@@ -507,6 +507,7 @@
   object-fit: cover;
 }
 
+/* El vinilo se desliza fuera de la funda (solo traslación) */
 .fede-vinilo {
   position: absolute;
   z-index: 1;
@@ -514,7 +515,40 @@
   left: 0;
   width: 70%;
   aspect-ratio: 1;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* El giro vive en un elemento aparte, para no pisar la traslación de .fede-vinilo */
+.fede-vinilo-disco {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
+  overflow: hidden;
+  background: #0b0b0f;
+  transform: rotate(120deg);
+  transition: transform 0.5s ease;
+}
+
+/* Tapa del disco impresa sobre el vinilo (estilo "picture disc") */
+.fede-vinilo-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.55) brightness(0.7) contrast(1.05);
+  transition: filter 0.4s ease;
+}
+
+/* Surcos y etiqueta central, por encima de la imagen */
+.fede-vinilo-disco::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
   background:
     radial-gradient(
       circle,
@@ -522,18 +556,27 @@
       #050505 14% 17%,
       transparent 17%
     ),
-    repeating-radial-gradient(circle, #101010 0 2px, #1d1d1d 2px 4px);
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    repeating-radial-gradient(
+      circle,
+      rgba(0, 0, 0, 0.35) 0 2px,
+      transparent 2px 4px
+    );
 }
 
+/* Táctil: el toque alterna .activo, igual que el hover en desktop */
 .fede-disco.activo {
   filter: drop-shadow(0 0 8px rgba(255, 42, 109, 0.6));
 }
 
 .fede-disco.activo .fede-vinilo {
-  transform: translateX(40%) rotate(120deg);
+  transform: translateX(45%);
 }
 
+.fede-disco.activo .fede-vinilo-img {
+  filter: grayscale(0) brightness(1) contrast(1);
+}
+
+/* Desktop: hover y foco de teclado revelan el vinilo */
 @media (hover: hover) and (pointer: fine) {
   .fede-disco:hover,
   .fede-disco:focus-visible {
@@ -542,7 +585,33 @@
 
   .fede-disco:hover .fede-vinilo,
   .fede-disco:focus-visible .fede-vinilo {
-    transform: translateX(40%) rotate(120deg);
+    transform: translateX(45%);
+  }
+
+  .fede-disco:hover .fede-vinilo-img,
+  .fede-disco:focus-visible .fede-vinilo-img {
+    filter: grayscale(0) brightness(1) contrast(1);
+  }
+}
+
+/* Gira mientras el vinilo está expuesto: hover, foco de teclado o toque */
+.fede-disco.activo .fede-vinilo-disco {
+  animation: fede-girar 2.4s linear infinite;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fede-disco:hover .fede-vinilo-disco,
+  .fede-disco:focus-visible .fede-vinilo-disco {
+    animation: fede-girar 2.4s linear infinite;
+  }
+}
+
+@keyframes fede-girar {
+  from {
+    transform: rotate(120deg);
+  }
+  to {
+    transform: rotate(480deg);
   }
 }
 
