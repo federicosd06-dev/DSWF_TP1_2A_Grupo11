@@ -12,8 +12,11 @@
     -->
     <script>
       (function () {
-        const temaSalvado = localStorage.getItem("theme") ||
-          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oscuro" : "claro");
+        const temaSalvado =
+          localStorage.getItem("theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "oscuro"
+            : "claro");
 
         document.documentElement.setAttribute("data-theme", temaSalvado);
 
@@ -40,17 +43,23 @@
               <li><a href="../index.html#quienes-somos">¿Quiénes somos?</a></li>
             </ul>
           </nav>
-          <button id="menu-toggle" 
-                  class="menu-toggle" 
-                  aria-label="Abrir menú de navegación" 
-                  aria-expanded="false" 
-                  aria-controls="nav-list" 
-                  type="button">
+          <button
+            id="menu-toggle"
+            class="menu-toggle"
+            aria-label="Abrir menú de navegación"
+            aria-expanded="false"
+            aria-controls="nav-list"
+            type="button"
+          >
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </button>
-          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema de la página">
+          <button
+            id="theme-toggle"
+            class="theme-toggle-btn"
+            aria-label="Cambiar tema de la página"
+          >
             <span class="theme-ic-wrapper" aria-hidden="true">
               <span class="ic-sol">☀️</span>
               <span class="ic-luna">🌙</span>
@@ -61,46 +70,41 @@
     </header>
 
     <main>
-
       <div class="tarjeta-unificada-ria">
-
         <!-- =================================================
              PERFIL + PELÍCULAS
              ================================================= -->
 
         <div class="fila-tarjeta">
-
           <!-- PERFIL -->
 
           <div class="columna-tarjeta">
-              <!-- Puntos decorativos animados por JavaScript -->
-              <div class="puntos-decorativos" aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
+            <!-- Puntos decorativos animados por JavaScript -->
+            <div class="puntos-decorativos" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
 
             <div class="contenido-perfil">
-
               <div class="identidad">
-
                 <img
                   src="../img/ria/sami100.jpg"
                   alt="Foto de una gatita siamesa durmiendo al sol entre libros."
@@ -110,15 +114,10 @@
                   <h1>María Victoria Mariani</h1>
                   <p>Buenos Aires, Argentina · 35 años</p>
                 </div>
-
               </div>
 
-
               <section aria-labelledby="titulo-habilidades">
-
-                <h2 id="titulo-habilidades">
-                  Habilidades
-                </h2>
+                <h2 id="titulo-habilidades">Habilidades</h2>
 
                 <ul class="habilidades">
                   <li>PHP</li>
@@ -127,18 +126,17 @@
                   <li>Java</li>
                   <li>Python</li>
                 </ul>
-
               </section>
-
             </div>
-
 
             <!-- Pestañas solamente visibles en móvil -->
 
-            <div class="tabs-movil" role="tablist" aria-label="Contenido del perfil">
-
+            <div
+              class="tabs-movil"
+              role="tablist"
+              aria-label="Contenido del perfil"
+            >
               <button
-                id="seccion-musica"
                 id="tab-peliculas"
                 class="btn-tab"
                 data-target="seccion-peliculas"
@@ -160,33 +158,23 @@
               >
                 Música
               </button>
-
             </div>
-
           </div>
-
 
           <!-- PELÍCULAS -->
 
           <div class="columna-tarjeta">
-
             <div
               id="seccion-peliculas"
               class="contenido-tab"
               role="tabpanel"
               aria-labelledby="tab-peliculas"
             >
-
               <section aria-labelledby="titulo-peliculas">
-
-                <h2 id="titulo-peliculas">
-                  Películas favoritas
-                </h2>
+                <h2 id="titulo-peliculas">Películas favoritas</h2>
 
                 <ul class="lista-items">
-
                   <li class="item">
-
                     <div
                       class="contenedor-poster"
                       tabindex="0"
@@ -198,40 +186,27 @@
                         class="poster-item"
                       />
 
-                      <span
-                        class="indicador-poster"
-                        aria-hidden="true"
-                      >
+                      <span class="indicador-poster" aria-hidden="true">
                         ♥
                       </span>
                     </div>
 
-
                     <div class="info-item">
-
                       <div class="info-inicial">
-
                         <span class="titulo-item">
                           Dungeons &amp; Dragons
                         </span>
 
-                        <span class="subtitulo-item">
-                          2023
-                        </span>
-
+                        <span class="subtitulo-item"> 2023 </span>
                       </div>
 
                       <div id="comentario-dnd" class="comentario-item">
                         "Una película realmente divertida."
                       </div>
-
                     </div>
-
                   </li>
 
-
                   <li class="item">
-
                     <div
                       class="contenedor-poster"
                       tabindex="0"
@@ -243,40 +218,28 @@
                         class="poster-item"
                       />
 
-                      <span
-                        class="indicador-poster"
-                        aria-hidden="true"
-                      >
+                      <span class="indicador-poster" aria-hidden="true">
                         ♥
                       </span>
                     </div>
 
-
                     <div class="info-item">
-
                       <div class="info-inicial">
-
                         <span class="titulo-item">
                           The Lord of the Rings Trilogy
                         </span>
 
-                        <span class="subtitulo-item">
-                          2001–2003
-                        </span>
-
+                        <span class="subtitulo-item"> 2001–2003 </span>
                       </div>
 
                       <div id="comentario-lort" class="comentario-item">
-                        "Un homenaje a la obra de uno de los mejores escritores de la historia."
+                        "Un homenaje a la obra de uno de los mejores escritores
+                        de la historia."
                       </div>
-
                     </div>
-
                   </li>
 
-
                   <li class="item">
-
                     <div
                       class="contenedor-poster"
                       tabindex="0"
@@ -288,47 +251,29 @@
                         class="poster-item"
                       />
 
-                      <span
-                        class="indicador-poster"
-                        aria-hidden="true"
-                      >
+                      <span class="indicador-poster" aria-hidden="true">
                         ♥
                       </span>
                     </div>
 
-
                     <div class="info-item">
-
                       <div class="info-inicial">
+                        <span class="titulo-item"> Howl's Moving Castle </span>
 
-                        <span class="titulo-item">
-                          Howl's Moving Castle
-                        </span>
-
-                        <span class="subtitulo-item">
-                          2004
-                        </span>
-
+                        <span class="subtitulo-item"> 2004 </span>
                       </div>
 
                       <div id="comentario-hmc" class="comentario-item">
-                        "Si solo pudiera quedarme con una película animada, sería esta."
+                        "Si solo pudiera quedarme con una película animada,
+                        sería esta."
                       </div>
-
                     </div>
-
                   </li>
-
                 </ul>
-
               </section>
-
             </div>
-
           </div>
-
         </div>
-
 
         <!-- =================================================
              MÚSICA — SIGUE SIENDO UNA FILA INDEPENDIENTE
@@ -340,17 +285,11 @@
           role="tabpanel"
           aria-labelledby="tab-musica"
         >
-
           <section aria-labelledby="titulo-musica">
-
-            <h2 id="titulo-musica">
-              Música favorita
-            </h2>
+            <h2 id="titulo-musica">Música favorita</h2>
 
             <ul class="lista-items">
-
               <li class="item">
-
                 <div
                   class="contenedor-poster"
                   tabindex="0"
@@ -362,35 +301,20 @@
                     class="poster-item"
                   />
 
-                  <span
-                    class="indicador-poster"
-                    aria-hidden="true"
-                  >
-                    ♥
-                  </span>
+                  <span class="indicador-poster" aria-hidden="true"> ♥ </span>
                 </div>
 
-
                 <div class="info-item">
-
                   <div class="info-inicial">
+                    <span class="titulo-item"> You Never Walk Alone </span>
 
-                    <span class="titulo-item">
-                      You Never Walk Alone
-                    </span>
-
-                    <span class="subtitulo-item">
-                      2017 - BTS
-                    </span>
-
+                    <span class="subtitulo-item"> 2017 - BTS </span>
                   </div>
 
                   <div id="comentario-ynwa" class="comentario-item">
                     "Un viaje lírico hacia el interior de siete artistas."
                   </div>
-
                 </div>
-
 
                 <a
                   href="https://www.youtube.com/results?search_query=BTS+You+Never+Walk+Alone"
@@ -402,12 +326,9 @@
                 >
                   ▶
                 </a>
-
               </li>
 
-
               <li class="item">
-
                 <div
                   class="contenedor-poster"
                   tabindex="0"
@@ -419,35 +340,23 @@
                     class="poster-item"
                   />
 
-                  <span
-                    class="indicador-poster"
-                    aria-hidden="true"
-                  >
-                    ♥
-                  </span>
+                  <span class="indicador-poster" aria-hidden="true"> ♥ </span>
                 </div>
 
-
                 <div class="info-item">
-
                   <div class="info-inicial">
-
                     <span class="titulo-item">
                       The Story of Light: Epilogue
                     </span>
 
-                    <span class="subtitulo-item">
-                      2018 - SHINee
-                    </span>
-
+                    <span class="subtitulo-item"> 2018 - SHINee </span>
                   </div>
 
                   <div id="comentario-lse" class="comentario-item">
-                    "Un homenaje a un artista increíble que nos dejó demasiado pronto."
+                    "Un homenaje a un artista increíble que nos dejó demasiado
+                    pronto."
                   </div>
-
                 </div>
-
 
                 <a
                   href="https://www.youtube.com/results?search_query=SHINee+The+Story+of+Light+Epilogue"
@@ -459,12 +368,9 @@
                 >
                   ▶
                 </a>
-
               </li>
 
-
               <li class="item">
-
                 <div
                   class="contenedor-poster"
                   tabindex="0"
@@ -476,35 +382,21 @@
                     class="poster-item"
                   />
 
-                  <span
-                    class="indicador-poster"
-                    aria-hidden="true"
-                  >
-                    ♥
-                  </span>
+                  <span class="indicador-poster" aria-hidden="true"> ♥ </span>
                 </div>
 
-
                 <div class="info-item">
-
                   <div class="info-inicial">
+                    <span class="titulo-item"> Circle </span>
 
-                    <span class="titulo-item">
-                      Circle
-                    </span>
-
-                    <span class="subtitulo-item">
-                      2025 - Onew
-                    </span>
-
+                    <span class="subtitulo-item"> 2025 - Onew </span>
                   </div>
 
                   <div id="comentario-co" class="comentario-item">
-                    "Vibra pura para cualquier situación. Perfecto para programar."
+                    "Vibra pura para cualquier situación. Perfecto para
+                    programar."
                   </div>
-
                 </div>
-
 
                 <a
                   href="https://www.youtube.com/results?search_query=Onew+Circle"
@@ -516,33 +408,37 @@
                 >
                   ▶
                 </a>
-
               </li>
-
             </ul>
-
           </section>
-
         </div>
-
       </div>
-
     </main>
 
     <footer>
-        <p class="footer-content">
-          <span>&copy; 2026 · Grupo 11 · María Victoria Mariani</span> 
-          <a href="https://github.com/mvjhart" 
-            class="footer-inline-link" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            title="Ir al GitHub de María Victoria Mariani"
-            aria-label="Ir al GitHub de María Victoria Mariani">
-            <svg class="footer-icon" alt="Icono de GitHub" viewBox="0 0 16 16" version="1.1">
-              <path fill="currentColor" d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
-            </svg>
-          </a>
-        </p>
+      <p class="footer-content">
+        <span>&copy; 2026 · Grupo 11 · María Victoria Mariani</span>
+        <a
+          href="https://github.com/mvjhart"
+          class="footer-inline-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Ir al GitHub de María Victoria Mariani"
+          aria-label="Ir al GitHub de María Victoria Mariani"
+        >
+          <svg
+            class="footer-icon"
+            alt="Icono de GitHub"
+            viewBox="0 0 16 16"
+            version="1.1"
+          >
+            <path
+              fill="currentColor"
+              d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"
+            ></path>
+          </svg>
+        </a>
+      </p>
     </footer>
   </body>
 </html>
