@@ -122,7 +122,7 @@ DSWF_TP1_2A_Grupo11/
 | Victoria | `#a855f7` violeta · chips en `#ef4444`, `#f59e0b`, `#10b981`, `#3b82f6`, `#8b5cf6` | Un color por habilidad |
 | Cande | `#ec4899` rosa | Tarjetas flip y dorso en `#831843` |
 | Marcos | `#f43f5e` coral | Tarjetas flip de películas y álbumes |
-| Adrian | Paleta de Tailwind (slate, amber, red, sky, emerald) | Página especial fuera de la línea gráfica general, como parte de la broma del grupo |
+| Adrian | Paleta de Tailwind (slate, amber, red, sky, emerald) | Página especial fuera de la línea gráfica general, como parte humorística |
 
 ### Google Fonts
 
@@ -131,8 +131,8 @@ DSWF_TP1_2A_Grupo11/
 | Poppins | 300, 400, 600, 700 | Tipografía global del sitio |
 | Chakra Petch | 500, 700 | Títulos del perfil de Fede |
 | Share Tech Mono | Regular | Texto tipo terminal del perfil de Fede |
-| Plus Jakarta Sans | 400, 600, 700, 800 | Página especial de Adrian |
-| Space Grotesk | 500, 700 | Página especial de Adrian |
+| Plus Jakarta Sans | 400, 600, 700, 800 | Página especial de humor |
+| Space Grotesk | 500, 700 | Página especial de humor |
 
 ### Iconografía
 
